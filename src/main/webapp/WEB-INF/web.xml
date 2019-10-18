@@ -8,6 +8,10 @@
         <servlet-name>clienteControle</servlet-name>
         <servlet-class>com.suicidaesquadrao.controle.clienteControle</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>usuarioControle</servlet-name>
+        <servlet-class>com.suicidaesquadrao.controle.usuarioControle</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>produtoControle</servlet-name>
         <url-pattern>/produtoControle</url-pattern>
@@ -15,6 +19,10 @@
     <servlet-mapping>
         <servlet-name>clienteControle</servlet-name>
         <url-pattern>/clienteControle</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>usuarioControle</servlet-name>
+        <url-pattern>/usuarioControle</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

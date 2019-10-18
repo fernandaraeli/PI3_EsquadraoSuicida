@@ -8,6 +8,16 @@
     <packaging>war</packaging>
 
     <name>TADES</name>
+   
+        <developers>
+                 
+	 <developer> <name>Deise De Moraes</name> </developer>   
+	 <developer> <name>Fernanda Raeli</name> </developer>   
+ <developer> <name>Igor Kuroda</name> </developer>   
+    	 <developer> <name>Flavio Oliveira</name> </developer>   
+
+        </developers>
+
 
     <properties>
         <endorsed.dir>${project.build.directory}/endorsed</endorsed.dir>
