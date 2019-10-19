@@ -1,19 +1,11 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package com.suicidaesquadrao.model;
 
 import util.validacaoException;
 
-/**
- *
- * @author Flavio
- */
+
 public class usuarios {
     
-    private int id;
+    private int id_usuario;
     private String nome;
     private String user;
     private String senha;
@@ -24,30 +16,24 @@ public class usuarios {
       public void valida () throws validacaoException{
         if(user==null||senha.equals("")){
             throw new validacaoException("O campo é obrigatório");
-        //}if(quantidade==0){
-          //  throw new validacaoException("O campo é obrigatório");
-        //}if(preco==0){
-            //throw new validacaoException("O campo é obrigatório");
-        //}if(filial==0){
-          //  throw new validacaoException("O campo é obrigatório");
         }
     }
 
-    public usuarios(int id, String nome, String usuario, String senha, int id_filial, int id_perfil) {
-        this.id = id;
+    public usuarios(int id_usuario, String nome, String user, String senha, int id_filial, int id_perfil) {
+        this.id_usuario = id_usuario;
         this.nome = nome;
-        this.user = usuario;
+        this.user = user;
         this.senha = senha;
         this.id_filial = id_filial;
         this.id_perfil = id_perfil;
     }
 
-    public int getId() {
-        return id;
+    public int getId_usuario() {
+        return id_usuario;
     }
 
-    public void setId(int id) {
-        this.id = id;
+    public void setId_usuario(int id_usuario) {
+        this.id_usuario = id_usuario;
     }
 
     public String getNome() {
@@ -88,10 +74,6 @@ public class usuarios {
 
     public void setId_perfil(int id_perfil) {
         this.id_perfil = id_perfil;
-    }
-      
-    
-
-    
-    
+    }    
 }
+   
