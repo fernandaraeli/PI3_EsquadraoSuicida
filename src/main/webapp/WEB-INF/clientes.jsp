@@ -12,7 +12,7 @@
         <hr>
         <script type="text/javascript">
             function Voltar(){
-                location.href = 'index.html'
+                location.href = 'index.html';
             }
             </script>
         
@@ -33,6 +33,41 @@
                      <input type="submit" value="Salvar" onclick="alert('${mensagem}')">
                      <input type="reset" value="Limpar">
                      <input type="button" value="Sair" onClick="Voltar()"> 
-        </form>       
+        </form> 
+            <table border="1">
+            <tr>
+            <th>Id</th>
+            <th>Razão Social</th>
+            <th>CNPJ</th>
+            <th>Telefone</th>
+            <th>E-mail</th>
+            <th>Endereço</th>
+            <th>Complemento</th>
+            <th>Número</th>
+            <th>CEP</th>
+            <th>Bairro</th>
+            <th>Cidade</th>
+            
+            </tr>
+            <c:forEach var="c" items="${clientes}">
+                <tr>
+                    <td>${c.id}</td>
+                    <td>${c.razao}</td>
+                    <td>${c.cnpj}</td>
+                    <td>${c.telefone}</td>
+                    <td>${c.email}</td>
+                    <td>${c.endereco}</td>
+                    <td>${c.complemento}</td>
+                    <td>${c.numero}</td>
+                    <td>${c.cep}</td>
+                    <td>${c.bairro}</td>
+                    <td>${c.cidade}</td>
+                    <td><a href=clienteControle?acao=editar&id=${c.id}>Editar</a>
+                    <td><a href=clienteControle?acao=excluir&id=${c.id}>Excluir</a>
+                </tr>
+            </c:forEach>
+                
+        </table>
+                     
     </body>
 </html>

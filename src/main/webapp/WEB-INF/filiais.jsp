@@ -12,6 +12,11 @@
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>Cadastro Filiais</title>
     </head>
+           <script type="text/javascript">
+            function Voltar(){
+                location.href = 'index.html';
+            }
+            </script>
     <body>
         <h2 style=" color: red">${mensagem}</h2>
         <h1>Filiais</h1>
@@ -27,7 +32,7 @@
                 
             <input type="submit" value="enviar"/>
                 <%--<input type="submit" value="Salvar" onclick="alert('${mensagem}')"><a href="produto.jsp"></a> --%> 
-                <%--<input type="button" value="Sair"><a href="produto.jsp"></a>--%>        
+            <input type="button" value="Sair" onClick="Voltar()">       
         </form>
         
         <br>
