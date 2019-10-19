@@ -79,6 +79,7 @@ public class clienteControle extends HttpServlet {
         if (id!=null && !id.equals("")){
             cliente.setId(Integer.parseInt(id));
         }
+        
         try{
             
          cliente.valida();
