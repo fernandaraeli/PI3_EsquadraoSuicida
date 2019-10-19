@@ -35,16 +35,20 @@ public class produtoControle extends HttpServlet {
         String acao=request.getParameter("acao");
         String id=request.getParameter("id");
         try{
+            //para excluir produto
             if(acao!=null && acao.equals("excluir")){
             Integer idProduto = Integer.parseInt(id);
             ProdutoDAO.excluir(idProduto);
             request.setAttribute("mensagem", "Produto excluído!");
+            //Editar
             }else if(acao!=null && acao.equals("editar")){
             Integer idProduto = Integer.parseInt(id);
             produtos produto = ProdutoDAO.getProdutoId(idProduto);
             request.setAttribute("produto", produto);
-            }    
+            }  
+        //atualiza lista    
         request.setAttribute("produtos", ProdutoDAO.getProduto());
+        //Trativa de erros
         }catch (SQLException ex){
             request.setAttribute("mensagem", "Erro de Banco de Dados: "+ ex.getMessage());
         }catch (ClassNotFoundException ex){
@@ -64,7 +68,7 @@ public class produtoControle extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        
+        //preencher campos
         String nome= request.getParameter("nome");
         float quantidade=Float.parseFloat(request.getParameter("quantidade"));
         double preco=Double.parseDouble(request.getParameter("preco"));
@@ -76,7 +80,7 @@ public class produtoControle extends HttpServlet {
             produto.setId(Integer.parseInt(id));
         }
         try{
-            
+         //valida campo e atualiza   
          produto.valida();
          if(produto.getId()!=0){
              ProdutoDAO.atualizar(produto);
@@ -87,7 +91,7 @@ public class produtoControle extends HttpServlet {
              request.setAttribute("mensagem", "Produto Salvo");
          }
            
-          
+         //Tratativas de Erro 
         }catch (validacaoException ex){
            request.setAttribute("mensagem", "Erro de Validacao dos Campos: "+ ex.getMessage());
            request.setAttribute("produtos", produto);

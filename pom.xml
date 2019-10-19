@@ -6,6 +6,27 @@
     <artifactId>TADES</artifactId>
     <version>1.0.1-SNAPSHOT</version>
     <packaging>war</packaging>
+    <organization>
+        <name>Esquadrao Suicida</name>
+    </organization>
+    <developers>
+        <developer>
+        <id>deisemoraesf</id>
+        <name>Deise Moraes Farias</name>
+        </developer>
+        <developer>
+        <id>flavioqoliveira26</id>
+        <name>Flávio Quaresma de Oliveira</name>
+        </developer>
+        <developer>
+        <id>fernandaraeli</id>
+        <name>Fernanda Mayumi Hassoda Raeli</name>
+        </developer>
+        <developer>
+        <id>igorkuroda</id>
+        <name>Igor Pavan Kuroda</name>
+        </developer>
+    </developers>
 
     <name>TADES</name>
 

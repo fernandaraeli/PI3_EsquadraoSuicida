@@ -5,6 +5,11 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>Produtos</title>
+        <script>
+            function Voltar(){
+                location.href = 'index.html';
+            }
+        </script>
     </head>
     <body>
         <h2 style=" color: red">${mensagem}</h2>
@@ -19,7 +24,7 @@
                      <label>Filial:</label><input type="text" name="filial" value="${produto.filial}"/><br/>
                      
                      <input type="submit" value="Salvar" onclick="alert('${mensagem}')">
-                     <input type="button" value="Sair"><a href="index.html"></a>       
+                     <input type="button" value="Sair"><a href="javascript:sair"></a>       
         </form>
         <br>
         <table border="1">

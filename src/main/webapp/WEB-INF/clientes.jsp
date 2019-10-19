@@ -32,7 +32,7 @@
                      
                      <input type="submit" value="Salvar" onclick="alert('${mensagem}')">
                      <input type="reset" value="Limpar">
-                     <input type="button" value="Sair" onclick="Voltar()"> 
+                     <input type="button" value="Sair" onClick="Voltar()"> 
         </form>       
     </body>
 </html>
