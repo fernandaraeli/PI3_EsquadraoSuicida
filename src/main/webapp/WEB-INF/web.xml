@@ -1,48 +1,45 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <web-app version="3.1" xmlns="http://xmlns.jcp.org/xml/ns/javaee" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd">
-    
     <servlet>
         <servlet-name>produtoControle</servlet-name>
         <servlet-class>com.suicidaesquadrao.controle.produtoControle</servlet-class>
     </servlet>
-    
     <servlet>
         <servlet-name>clienteControle</servlet-name>
         <servlet-class>com.suicidaesquadrao.controle.clienteControle</servlet-class>
     </servlet>
-    
     <servlet>
         <servlet-name>usuarioControle</servlet-name>
         <servlet-class>com.suicidaesquadrao.controle.usuarioControle</servlet-class>
     </servlet>
-    
     <servlet>
         <servlet-name>Servlet</servlet-name>
         <servlet-class>com.suicidaesquadrao.controle.Servlet</servlet-class>
     </servlet>
-
-
-
+    <servlet>
+        <servlet-name>Sessao</servlet-name>
+        <servlet-class>com.suicidaesquadrao.controle.Sessao</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>produtoControle</servlet-name>
         <url-pattern>/produtoControle</url-pattern>
     </servlet-mapping>
-    
     <servlet-mapping>
         <servlet-name>clienteControle</servlet-name>
         <url-pattern>/clienteControle</url-pattern>
     </servlet-mapping>
-    
     <servlet-mapping>
         <servlet-name>usuarioControle</servlet-name>
         <url-pattern>/usuarioControle</url-pattern>
     </servlet-mapping>
-    
-     <servlet-mapping>
+    <servlet-mapping>
         <servlet-name>Servlet</servlet-name>
         <url-pattern>/Servlet</url-pattern>
     </servlet-mapping>
-
+    <servlet-mapping>
+        <servlet-name>Sessao</servlet-name>
+        <url-pattern>/Sessao</url-pattern>
+    </servlet-mapping>
     <session-config>
         <session-timeout>
             30

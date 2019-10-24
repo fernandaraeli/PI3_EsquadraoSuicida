@@ -7,7 +7,7 @@
         <title>Produtos</title>
        <script type="text/javascript">
             function Voltar(){
-                location.href = 'index.html';
+                location.href = 'main.jsp';
             }
             </script>
     </head>

@@ -23,7 +23,7 @@ public class produtoDAO {
     //Seleciona produto para alterar
     public produtos getProdutoId(Integer idProduto) throws validacaoException, SQLException, ClassNotFoundException {
         Connection conexao = ConexaoBD.getConnection();
-        PreparedStatement ps = conexao.prepareStatement("SELECT ID_PRODUTO,NOME_PRODUTO,QUANTIDADE_PRODUTO,PRECO_PRODUTO,ID_FILIAL FROM PRODUTO WHERE ID_PRODUTO=?");
+        PreparedStatement ps = conexao.prepareStatement("SELECT ID_PRODUTO,NOME_PRODUTO,QUANTIDADE_PRODUTO,PRECO_PRODUTO, ID_FILIAL FROM PRODUTO WHERE ID_PRODUTO=?");
         ps.setInt(1, idProduto);
         ResultSet rs = ps.executeQuery();
         if(rs.next()){
@@ -36,7 +36,7 @@ public class produtoDAO {
     // Listar produtos na tela
     public List<produtos> getProduto() throws SQLException, ClassNotFoundException {
         Connection conexao = ConexaoBD.getConnection();
-        PreparedStatement ps = conexao.prepareStatement("SELECT ID_PRODUTO,NOME_PRODUTO,QUANTIDADE_PRODUTO,PRECO_PRODUTO,ID_FILIAL FROM PRODUTO");
+        PreparedStatement ps = conexao.prepareStatement("SELECT ID_PRODUTO,NOME_PRODUTO,QUANTIDADE_PRODUTO,PRECO_PRODUTO, ID_FILIAL FROM PRODUTO");
         ResultSet rs = ps.executeQuery();
         List<produtos> prod = new ArrayList();
         while(rs.next()){
@@ -48,7 +48,7 @@ public class produtoDAO {
     // Salvar Produto
     public void salvar (produtos produto)throws SQLException, ClassNotFoundException{
         Connection conexao = ConexaoBD.getConnection();
-        PreparedStatement ps = conexao.prepareStatement("INSERT INTO PRODUTO (NOME_PRODUTO, QUANTIDADE_PRODUTO, PRECO_PRODUTO, FILIAL_PRODUTO) VALUES(?,?,?,?)");
+        PreparedStatement ps = conexao.prepareStatement("INSERT INTO PRODUTO (NOME_PRODUTO, QUANTIDADE_PRODUTO, PRECO_PRODUTO, ID_FILIAL ) VALUES(?,?,?,?)");
         ps.setString(1, produto.getNome());
         ps.setFloat(2, produto.getQuantidade());
         ps.setDouble(3, produto.getPreco());
@@ -60,7 +60,7 @@ public class produtoDAO {
     //atualiza produto
     public void atualizar(produtos produto)throws SQLException, ClassNotFoundException {
         Connection conexao = ConexaoBD.getConnection();
-        PreparedStatement ps = conexao.prepareStatement("UPDATE PRODUTO SET NOME_PRODUTO=?, QUANTIDADE_PRODUTO=?, PRECO_PRODUTO=?, ID_FILIAL=? WHERE ID_PRODUTO=?");
+        PreparedStatement ps = conexao.prepareStatement("UPDATE PRODUTO SET NOME_PRODUTO=?, QUANTIDADE_PRODUTO=?, PRECO_PRODUTO=?, ID_FILIAL=?  WHERE ID_PRODUTO=?");
         ps.setString(1, produto.getNome());
         ps.setFloat(2, produto.getQuantidade());
         ps.setDouble(3, produto.getPreco());
