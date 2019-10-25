@@ -18,6 +18,21 @@
             }
             </script>
     <body>
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
         <h2 style=" color: red">${mensagem}</h2>
         <h1>Filiais</h1>
         <hr>
@@ -59,7 +74,7 @@
                     <td><a href=Servlet?acao=editar&id=${c.id_filial}>Editar</a></td>
                     <td><a href=Servlet?acao=excluir&id=${c.id_filial}>Excluir</a></td>
                 </tr>
-                
+              
             </c:forEach>
         </table>
     </body>

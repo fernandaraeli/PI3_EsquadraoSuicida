@@ -17,7 +17,7 @@
             </script>
         
     <form method="POST" action="usuarioControle">
-            <input type="hidden" name="id_usuario" value="${usuario.id_usuario}"/>
+            
             <label>ID:</label><input type="text" disabled name="id" value="${usuario.id_usuario}"/><br>
             <label>Nome: </label><input type="text" name="nome" value="${usuario.nome_usuario}"/><br>
             <label>Usuário: </label><input type="text" name="user" value="${usuario.user}"/><br>

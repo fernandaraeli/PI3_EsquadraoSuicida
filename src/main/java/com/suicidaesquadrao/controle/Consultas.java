@@ -1,13 +1,13 @@
 
 package com.suicidaesquadrao.controle;
 
-import com.suicidaesquadrao.dao.ConexaoBD;
+import com.suicidaesquadrao.model.Conexao;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
 
-public class Consultas extends ConexaoBD {
+public class Consultas extends Conexao {
     
     public boolean autenticacao( String usuario, String senha) throws ClassNotFoundException, SQLException{
         

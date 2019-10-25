@@ -6,6 +6,7 @@
 package com.suicidaesquadrao.dao;
 
 import com.suicidaesquadrao.dao.ConexaoBD;
+import com.suicidaesquadrao.dao.ConexaoBD;
 import com.suicidaesquadrao.model.Filial;
 import java.sql.Connection;
 import java.sql.DriverManager;

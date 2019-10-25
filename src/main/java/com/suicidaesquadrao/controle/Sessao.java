@@ -15,6 +15,7 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 
 public class Sessao extends HttpServlet {
@@ -51,20 +52,22 @@ public class Sessao extends HttpServlet {
 
                      
         try {
-            if(co.autenticacao(usu, sen)){
+            if(co.autenticacao(usu, sen)){         
+         
+                HttpSession objsesion = request.getSession(false);
+                objsesion.setAttribute("usuario", usu);
                 
-                
-        RequestDispatcher dispatcher = request.getRequestDispatcher("main.jsp");
-        dispatcher.forward(request, response);
+                RequestDispatcher dispatcher = request.getRequestDispatcher("main.jsp");
+                dispatcher.forward(request, response);
                 
             } else {
-        RequestDispatcher dispatcher = request.getRequestDispatcher("login.jsp");
-        dispatcher.forward(request, response);
+                RequestDispatcher dispatcher = request.getRequestDispatcher("login.jsp");
+                dispatcher.forward(request, response);
             }
         } catch (ClassNotFoundException ex) {
-            Logger.getLogger(Sessao.class.getName()).log(Level.SEVERE, null, ex);
+                Logger.getLogger(Sessao.class.getName()).log(Level.SEVERE, null, ex);
         } catch (SQLException ex) {
-            Logger.getLogger(Sessao.class.getName()).log(Level.SEVERE, null, ex);
+                Logger.getLogger(Sessao.class.getName()).log(Level.SEVERE, null, ex);
         }  
     }
 
