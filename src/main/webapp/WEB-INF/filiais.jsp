@@ -59,7 +59,7 @@
                     <td><a href=Servlet?acao=editar&id=${c.id_filial}>Editar</a></td>
                     <td><a href=Servlet?acao=excluir&id=${c.id_filial}>Excluir</a></td>
                 </tr>
-                <a> teste</a>
+                
             </c:forEach>
         </table>
     </body>
