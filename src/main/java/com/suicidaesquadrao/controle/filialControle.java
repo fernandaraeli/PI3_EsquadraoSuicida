@@ -18,7 +18,7 @@ import util.validacaoException;
 
 
 
-public class Servlet extends HttpServlet {
+public class filialControle extends HttpServlet {
 
     private FilialDAO filialDAO = new FilialDAO();
     
@@ -36,11 +36,29 @@ public class Servlet extends HttpServlet {
                 Integer id_filial = Integer.parseInt(id);
                 filialDAO.excluir(id_filial);
                 request.setAttribute("mensagem", "forncedor excluido com sucesso ");
+                
+                
             }else if(acao!=null && acao.equals("editar")){
                 Integer id_filial = Integer.parseInt(id);
                 Filial filial = FilialDAO.getId_filial(id_filial);
                 request.setAttribute("filial", filial);
+                RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/filiais.jsp");
+                dispatcher.forward(request, response);
             }    
+            
+            
+            else if(acao!=null && acao.equals("salvar")){
+            RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/filiais.jsp");
+            dispatcher.forward(request, response);
+            }
+            
+            else if(acao!=null && acao.equals("voltar")){
+            request.setAttribute("filiais", filialDAO.getFiliais());
+            RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/listarFiliais.jsp");
+            dispatcher.forward(request, response);
+            }
+            
+            
         request.setAttribute("filiais", filialDAO.getFiliais());
         }catch (SQLException ex){
             request.setAttribute("mensagem", "Erro de Banco de Dados: "+ ex.getMessage());
@@ -49,7 +67,7 @@ public class Servlet extends HttpServlet {
         }catch (validacaoException ex){
            request.setAttribute("mensagem", "Erro de Dados: "+ ex.getMessage());
         }        
-        RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/filiais.jsp");
+        RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/listarFiliais.jsp");
         dispatcher.forward(request, response);
     }
     

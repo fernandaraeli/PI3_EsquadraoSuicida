@@ -4,6 +4,7 @@ package com.suicidaesquadrao.model;
 import util.validacaoException;
 
 
+
 public class produtos {
     
     private int id;

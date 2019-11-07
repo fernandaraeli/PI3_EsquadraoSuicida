@@ -32,6 +32,7 @@ public class produtoControle extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+        
         String acao=request.getParameter("acao");
         String id=request.getParameter("id");
         try{
@@ -40,14 +41,29 @@ public class produtoControle extends HttpServlet {
             Integer idProduto = Integer.parseInt(id);
             ProdutoDAO.excluir(idProduto);
             request.setAttribute("mensagem", "Produto excluído!");
+            
             //Editar
             }else if(acao!=null && acao.equals("editar")){
             Integer idProduto = Integer.parseInt(id);
             produtos produto = ProdutoDAO.getProdutoId(idProduto);
             request.setAttribute("produto", produto);
+            RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/produtos.jsp");
+            dispatcher.forward(request, response);
             }  
+            
+            else if(acao!=null && acao.equals("salvar")){
+            RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/produtos.jsp");
+            dispatcher.forward(request, response);
+            }
+            
+            else if(acao!=null && acao.equals("voltar")){
+            request.setAttribute("produto", ProdutoDAO.getProduto());
+            RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/listarProdutos.jsp");
+            dispatcher.forward(request, response);
+            }
+                 
         //atualiza lista    
-        request.setAttribute("produtos", ProdutoDAO.getProduto());
+        //request.setAttribute("produtos", ProdutoDAO.getProduto());
         //Trativa de erros
         }catch (SQLException ex){
             request.setAttribute("mensagem", "Erro de Banco de Dados: "+ ex.getMessage());
@@ -56,11 +72,8 @@ public class produtoControle extends HttpServlet {
         }catch (validacaoException ex){
             request.setAttribute("mensagem", "Erro de Dados: "+ ex.getMessage());
         }        
-        RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/produtos.jsp");
-        dispatcher.forward(request, response);
-        
-        
-        
+        RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/listarProdutos.jsp");
+        dispatcher.forward(request, response); 
     }
     
     
@@ -68,6 +81,7 @@ public class produtoControle extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+        
         //preencher campos
         String nome= request.getParameter("nome");
         float quantidade=Float.parseFloat(request.getParameter("quantidade"));
@@ -89,6 +103,8 @@ public class produtoControle extends HttpServlet {
          }else{
              ProdutoDAO.salvar(produto);
              request.setAttribute("mensagem", "Produto Salvo");
+             RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/produtos.jsp");
+             dispatcher.forward(request, response);
          }
            
          //Tratativas de Erro 
@@ -112,12 +128,8 @@ public class produtoControle extends HttpServlet {
             request.setAttribute("produtos", produto);
         }  
 
-        RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/produtos.jsp");
+        RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/listarProdutos.jsp");
         dispatcher.forward(request, response);
         
     }
-
-    
-    
-
 }

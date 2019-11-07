@@ -13,8 +13,8 @@
         <servlet-class>com.suicidaesquadrao.controle.usuarioControle</servlet-class>
     </servlet>
     <servlet>
-        <servlet-name>Servlet</servlet-name>
-        <servlet-class>com.suicidaesquadrao.controle.Servlet</servlet-class>
+        <servlet-name>filialControle</servlet-name>
+        <servlet-class>com.suicidaesquadrao.controle.filialControle</servlet-class>
     </servlet>
     <servlet>
         <servlet-name>Sessao</servlet-name>
@@ -33,8 +33,8 @@
         <url-pattern>/usuarioControle</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
-        <servlet-name>Servlet</servlet-name>
-        <url-pattern>/Servlet</url-pattern>
+        <servlet-name>filialControle</servlet-name>
+        <url-pattern>/filialControle</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
         <servlet-name>Sessao</servlet-name>

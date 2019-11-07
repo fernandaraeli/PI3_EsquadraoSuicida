@@ -41,7 +41,20 @@ public class clienteControle extends HttpServlet {
             Integer idCliente = Integer.parseInt(id);
             clientes cliente = ClienteDAO.getClienteID(idCliente);
             request.setAttribute("cliente", cliente);
-            }    
+            RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/clientes.jsp");
+            dispatcher.forward(request, response);
+            }
+            
+            else if(acao!=null && acao.equals("salvar")){
+            RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/clientes.jsp");
+            dispatcher.forward(request, response);
+            }
+            
+            else if(acao!=null && acao.equals("voltar")){
+            request.setAttribute("clientes", ClienteDAO.getCliente());
+            RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/listarClientes.jsp");
+            dispatcher.forward(request, response);
+            }
         
             request.setAttribute("clientes", ClienteDAO.getCliente());
         }catch (SQLException ex){
@@ -52,7 +65,7 @@ public class clienteControle extends HttpServlet {
             request.setAttribute("mensagem", "Erro de Dados: "+ ex.getMessage());
         }        
         
-        RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/clientes.jsp");
+        RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/listarClientes.jsp");
         dispatcher.forward(request, response);
  
     }
@@ -86,12 +99,13 @@ public class clienteControle extends HttpServlet {
          if(cliente.getId()!=0){
              ClienteDAO.atualizar(cliente);
              request.setAttribute("mensagem", "Cliente Atualizado");
-            
+
              
          }else{
              ClienteDAO.salvar(cliente);
              request.setAttribute("mensagem", "Cliente Salvo");
-             
+             RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/clientes.jsp");
+             dispatcher.forward(request, response);
          }
            
           
@@ -114,9 +128,9 @@ public class clienteControle extends HttpServlet {
             request.setAttribute("mensagem", "Erro de Driver: "+ ex.getMessage());
             request.setAttribute("clientes", cliente);
         }  
-
         
-        RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/clientes.jsp");
+        
+        RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/listarClientes.jsp");
         dispatcher.forward(request, response);
         
     }

@@ -6,11 +6,21 @@
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>Clientes TESTE</title>
     </head>
+     <script type="text/javascript">
+            function Voltar(){
+                location.href = 'main.jsp';
+            }
+            
+            function Alerta(){
+                alert("Salvo com sucesso!");
+            }
+
+            </script>
     <body>
         <h2 style=" color: red">${mensagem}</h2>
         <h1>Clientes</h1>
         <hr>
-        <form method="POST" action="clienteControle">
+        <form action="clienteControle" method="POST">
         <table border="1">
             <tr>
             <th>Id</th>
@@ -41,11 +51,14 @@
                     <td>${c.cidade}</td>
                     <td><a href=clienteControle?acao=editar&id=${c.id}>Editar</a>
                     <td><a href=clienteControle?acao=excluir&id=${c.id}>Excluir</a>
+                    
                 </tr>
             </c:forEach>
                 
         </table>
         </form>
+        <a href=clienteControle?acao=salvar><input type="button" value="Cadastrar"></a>        
+        <input type="button" value="Sair" onClick="Voltar()"> 
         <br>
         
     </body>
