@@ -20,6 +20,10 @@
         <servlet-name>Sessao</servlet-name>
         <servlet-class>com.suicidaesquadrao.controle.Sessao</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>VendaControle</servlet-name>
+        <servlet-class>com.suicidaesquadrao.controle.VendaControle</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>produtoControle</servlet-name>
         <url-pattern>/produtoControle</url-pattern>
@@ -39,6 +43,10 @@
     <servlet-mapping>
         <servlet-name>Sessao</servlet-name>
         <url-pattern>/Sessao</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>VendaControle</servlet-name>
+        <url-pattern>/VendaControle</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

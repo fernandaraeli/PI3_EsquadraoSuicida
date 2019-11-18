@@ -65,8 +65,7 @@ public class clienteControle extends HttpServlet {
             request.setAttribute("mensagem", "Erro de Dados: "+ ex.getMessage());
         }        
         
-        RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/listarClientes.jsp");
-        dispatcher.forward(request, response);
+        request.getRequestDispatcher("/WEB-INF/listarClientes.jsp").forward(request, response);
  
     }
     
