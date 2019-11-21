@@ -27,7 +27,7 @@
             <input type="submit" value="Salvar" onclick="alert('${mensagem}')">
             <input type="reset" value="Limpar">
             <input type="button" value="Sair" onclick="Voltar()">         
-        </form>  
+         
         <table border="1">
             <tr>
             <th>Id</th>
@@ -44,14 +44,14 @@
                     <td>${u.id_usuario}</td>
                     <td>${u.nome_usuario}</td>
                     <td>${u.user}</td>
-                    <td>${c.senha}</td>
-                    <td>${c.id_filial}</td>
-                    <td>${c.id_perfil}</td>
+                    <td>${u.senha}</td>
+                    <td>${u.id_filial}</td>
+                    <td>${u.id_perfil}</td>
                     <td><a href=usuarioControle?acao=editar&id=${c.id}>Editar</a>
                     <td><a href=usuarioControle?acao=excluir&id=${c.id}>Excluir</a>
                 </tr>
             </c:forEach>
-                
+         </form>        
         </table>
     </body>
 </html>

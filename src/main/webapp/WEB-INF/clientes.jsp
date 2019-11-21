@@ -13,11 +13,11 @@
         <script type="text/javascript">
             
             function Alerta(){
-                alert("cliente salvo");
+                alert("Cadastro Atualizado!");
             }
             </script>
             
-        <form method="POST" action="clienteControle">
+        <form method="POST" action="ControladorPrincipal?menu=Clientes">
                      <input type="hidden" name="id" value="${cliente.id}"/>
                      <label>ID:</label><input type="text" disabled name="id" value="${cliente.id}"/><br/>
                      <label>Razão Social:</label><input type="text" name="razao" value="${cliente.razao}"/><br/>
@@ -32,8 +32,9 @@
                      <label>Cidade:</label><input type="text" name="cidade" value="${cliente.cidade}"/><br/>
                      
                      <input type="submit" value="Salvar" onclick="Alerta()">
+                     <button type="submit" name="acao" value="Salvar">Salvar</button> 
                      <input type="reset" value="Limpar">
-                     <a href=clienteControle?acao=voltar><input type="button" value="Voltar"></a> 
+                     <a href=ControladorPrincipal?menu=Clientes&acao=Voltar><input type="button" value="Voltar"></a> 
                      
         </form> 
 

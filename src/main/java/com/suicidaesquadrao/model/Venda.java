@@ -1,75 +1,82 @@
 
 package com.suicidaesquadrao.model;
 
+import java.util.Date;
+import util.validacaoException;
+
 
 public class Venda {
     
-    Integer id;
-    Integer item;
-    Integer idCliente;
-    Integer idUsuario;
-    Integer idProduto;
+    int idVenda;
+    int numItem;
+    int idCliente;
+    int idUsuario;
+    int idProduto;
     String numVenda;
-    String descricao;
+    String nomeProduto;
     Double preco;
-    Integer quantidade;
+    Double totalPagar;
+    int quantidade;
     Double subtotal;
-    String status;
+    String statusVenda;
+    String dataVenda;
 
     public Venda() {
     }
 
-    public Venda(Integer id, Integer item, Integer idCliente, Integer idUsuario, Integer idProduto, String numVenda, String descricao, Double preco, Integer quantidade, Double subtotal, String status) {
-        this.id = id;
-        this.item = item;
+    public Venda(int idVenda, int numItem, int idCliente, int idUsuario, int idProduto, String numVenda, String nomeProduto, Double preco, Double totalPagar, int quantidade, Double subtotal, String statusVenda, String dataVenda) {
+        this.idVenda = idVenda;
+        this.numItem = numItem;
         this.idCliente = idCliente;
         this.idUsuario = idUsuario;
         this.idProduto = idProduto;
         this.numVenda = numVenda;
-        this.descricao = descricao;
+        this.nomeProduto = nomeProduto;
         this.preco = preco;
+        this.totalPagar = totalPagar;
         this.quantidade = quantidade;
         this.subtotal = subtotal;
-        this.status = status;
+        this.statusVenda = statusVenda;
+        this.dataVenda = dataVenda;
     }
 
-    public Integer getId() {
-        return id;
+    public int getIdVenda() {
+        return idVenda;
     }
 
-    public void setId(Integer id) {
-        this.id = id;
+    public void setIdVenda(int idVenda) {
+        this.idVenda = idVenda;
     }
 
-    public Integer getItem() {
-        return item;
+    public int getNumItem() {
+        return numItem;
     }
 
-    public void setItem(Integer item) {
-        this.item = item;
+    public void setNumItem(int numItem) {
+        this.numItem = numItem;
     }
 
-    public Integer getIdCliente() {
+    public int getIdCliente() {
         return idCliente;
     }
 
-    public void setIdCliente(Integer idCliente) {
+    public void setIdCliente(int idCliente) {
         this.idCliente = idCliente;
     }
 
-    public Integer getIdUsuario() {
+    public int getIdUsuario() {
         return idUsuario;
     }
 
-    public void setIdUsuario(Integer idUsuario) {
+    public void setIdUsuario(int idUsuario) {
         this.idUsuario = idUsuario;
     }
 
-    public Integer getIdProduto() {
+    public int getIdProduto() {
         return idProduto;
     }
 
-    public void setIdProduto(Integer idProduto) {
+    public void setIdProduto(int idProduto) {
         this.idProduto = idProduto;
     }
 
@@ -81,12 +88,12 @@ public class Venda {
         this.numVenda = numVenda;
     }
 
-    public String getDescricao() {
-        return descricao;
+    public String getNomeProduto() {
+        return nomeProduto;
     }
 
-    public void setDescricao(String descricao) {
-        this.descricao = descricao;
+    public void setNomeProduto(String nomeProduto) {
+        this.nomeProduto = nomeProduto;
     }
 
     public Double getPreco() {
@@ -97,11 +104,11 @@ public class Venda {
         this.preco = preco;
     }
 
-    public Integer getQuantidade() {
+    public int getQuantidade() {
         return quantidade;
     }
 
-    public void setQuantidade(Integer quantidade) {
+    public void setQuantidade(int quantidade) {
         this.quantidade = quantidade;
     }
 
@@ -113,16 +120,29 @@ public class Venda {
         this.subtotal = subtotal;
     }
 
-    public String getStatus() {
-        return status;
+    public String getStatusVenda() {
+        return statusVenda;
     }
 
-    public void setStatus(String status) {
-        this.status = status;
+    public void setStatusVenda(String statusVenda) {
+        this.statusVenda = statusVenda;
     }
 
+    public String getDataVenda() {
+        return dataVenda;
+    }
+
+    public void setDataVenda(String dataVenda) {
+        this.dataVenda = dataVenda;
+    }
+
+    public Double getTotalPagar() {
+        return totalPagar;
+    }
+
+    public void setTotalPagar(Double totalPagar) {
+        this.totalPagar = totalPagar;
+    }
     
-
-     
     
 }

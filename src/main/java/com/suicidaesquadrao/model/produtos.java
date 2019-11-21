@@ -9,12 +9,12 @@ public class produtos {
     
     private int id;
     private String nome;
-    private float quantidade;
+    private int quantidade;
     private double preco;
     private int filial;
     
 
-    public produtos(int id, String nome, float quantidade, double preco, int filial) {
+    public produtos(int id, String nome, int quantidade, double preco, int filial) {
         this.id = id;
         this.nome = nome;
         this.quantidade = quantidade;
@@ -49,11 +49,11 @@ public class produtos {
         this.nome = nome;
     }
 
-    public float getQuantidade() {
+    public int getQuantidade() {
         return quantidade;
     }
 
-    public void setQuantidade(float quantidade) {
+    public void setQuantidade(int quantidade) {
         this.quantidade = quantidade;
     }
 

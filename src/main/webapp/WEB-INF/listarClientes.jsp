@@ -1,4 +1,4 @@
-b<%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
@@ -20,7 +20,7 @@ b<%@page contentType="text/html" pageEncoding="UTF-8"%>
         <h2 style=" color: red">${mensagem}</h2>
         <h1>Clientes</h1>
         <hr>
-        <form action="clienteControle" method="POST">
+        <form action="ControladorPrincipal?menu=Clientes" method="POST">
         <table border="1">
             <tr>
             <th>Id</th>
@@ -49,15 +49,15 @@ b<%@page contentType="text/html" pageEncoding="UTF-8"%>
                     <td>${c.cep}</td>
                     <td>${c.bairro}</td>
                     <td>${c.cidade}</td>
-                    <td><a href=clienteControle?acao=editar&id=${c.id}>Editar</a>
-                    <td><a href=clienteControle?acao=excluir&id=${c.id}>Excluir</a>
+                    <td><a href=ControladorPrincipal?menu=Clientes&acao=Editar&id=${c.id}>Editar</a>
+                    <td><a href=ControladorPrincipal?menu=Clientes&acao=Excluir&id=${c.id}>Excluir</a>
                     
                 </tr>
             </c:forEach>
                 
         </table>
         </form>
-        <a href=clienteControle?acao=salvar><input type="button" value="Cadastrar"></a>        
+        <a href="ControladorPrincipal?menu=Clientes&acao=Cadastrar"><input type="button" value="Cadastrar"></a>         
         <input type="button" value="Sair" onClick="Voltar()"> 
         <br>
         

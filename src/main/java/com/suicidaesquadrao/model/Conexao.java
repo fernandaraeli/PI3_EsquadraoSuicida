@@ -15,8 +15,7 @@ public class Conexao {
         try {
               System.out.println("Conectando ao banco...");
               Class.forName("com.mysql.cj.jdbc.Driver");
-               con=DriverManager.getConnection("jdbc:mysql://localhost:3306/tads?useTimezone=true&serverTimezone=UTC","root","root");
-              //con=DriverManager.getConnection("jdbc:mysql://localhost:3306/tads","root","");
+              con=DriverManager.getConnection("jdbc:mysql://localhost:3306/tads?useTimezone=true&serverTimezone=UTC","root","root");
               
         }catch (Exception e){
             System.out.println("ERRO DE BANCO:"+ e);

@@ -38,7 +38,7 @@
   
       <li class="nav-item">
          <strong> 
-             <a class="nav-link" class="btn btn-outline-light" href="clienteControle">Clientes</a>
+             <a class="nav-link" href="ControladorPrincipal?menu=Clientes&acao=default">Clientes</a>
          </strong>
       </li>
       
@@ -56,13 +56,13 @@
       
        <li class="nav-item">
            <strong>
-        <a class="nav-link" href="UsuarioControle">Usuários</a>
+        <a class="nav-link" href="usuarioControle">Usuários</a>
            </strong>
       </li>
       
         <li class="nav-item">
            <strong>
-               <a class="nav-link" href="VendaControle" target="frame">Nova Venda</a>
+               <a class="nav-link" href="ControladorPrincipal?menu=NovaVenda&acao=default" target="frame">Nova Venda</a>
         </strong>
       </li>
     </ul>
@@ -79,7 +79,7 @@
         </div>
   </div>
 </nav>
-        <div class="m-4" style="height: 550px;">
+        <div class="m-4" style="height: 530px;">
             <iframe name="frame" style="height: 100%; width: 100%"></iframe>             
         </div>  
         

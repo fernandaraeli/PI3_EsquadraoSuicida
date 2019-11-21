@@ -1,8 +1,8 @@
 
 package com.suicidaesquadrao.controle;
 
-import com.suicidaesquadrao.dao.usuarioDao;
-import com.suicidaesquadrao.model.usuarios;
+import com.suicidaesquadrao.dao.UsuarioDAO;
+import com.suicidaesquadrao.model.Usuarios;
 import java.io.IOException;
 import java.sql.SQLException;
 import javax.servlet.RequestDispatcher;
@@ -15,7 +15,7 @@ import util.validacaoException;
 
 public class usuarioControle extends HttpServlet {
 
-    private usuarioDao UsuarioDAO = new usuarioDao();    
+    private UsuarioDAO UsuarioDAO = new UsuarioDAO();    
     
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {        
@@ -39,7 +39,7 @@ public class usuarioControle extends HttpServlet {
             
             else if(acao!=null && acao.equals("editar")){
             Integer idUsuario = Integer.parseInt(id);
-            usuarios usuario = UsuarioDAO.getUsuarioID(idUsuario);
+            Usuarios usuario = UsuarioDAO.getUsuarioID(idUsuario);
             request.setAttribute("usuario", usuario);
             }    
         
@@ -63,16 +63,17 @@ public class usuarioControle extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         
+        String id = request.getParameter("id");
         String nome_usuario= request.getParameter("nome_usuario");
         String user=request.getParameter("user");
         String senha= request.getParameter("senha");
         String id_filial= request.getParameter("id_filial");
         String id_perfil= request.getParameter("id_perfil");    
-        String id_usuario = request.getParameter("id_usuario");
         
-        usuarios usuario = new usuarios(0, user, user, senha, 0, 0);
-        if (id_usuario!=null && !id_usuario.equals("")){
-            usuario.setId_usuario(Integer.parseInt(id_usuario));
+        
+        Usuarios usuario = new Usuarios(0, user, user, senha, 0, 0);
+        if (id!=null && !id.equals("")){
+            usuario.setId_usuario(Integer.parseInt(id));
         }
         
         try{
