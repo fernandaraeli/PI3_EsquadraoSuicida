@@ -49,69 +49,13 @@ public class ControladorPrincipal extends HttpServlet {
         
     String menu=request.getParameter("menu");
     String acao=request.getParameter("acao");
-    String id=request.getParameter("id");
+    
     
     if(menu.equals("Home")){
-        request.getRequestDispatcher("/WEB-INF/registrarVenda.jsp").forward(request, response);
+        
     }
     if(menu.equals("Clientes")){
-            try {
-                switch(acao){
-            case "Excluir":
-                Integer idCliente = Integer.parseInt(id);
-                cdao.excluir(idCliente);
-                request.setAttribute("mensagem", "Cliente Excluído!");
-                request.getRequestDispatcher("/WEB-INF/listarClientes.jsp").forward(request, response);
-                break;
-                
-            case "Editar":
-                idCli = Integer.parseInt(id);
-                cliente = cdao.getClienteID(idCli);
-                request.setAttribute("cliente", cliente);
-                request.getRequestDispatcher("/WEB-INF/clientes.jsp").forward(request, response);
-                break;
-                
-            case "Salvar":
-                cdao.salvar(cliente);
-                request.setAttribute("mensagem", "Cliente Salvo");
-                request.getRequestDispatcher("/WEB-INF/listarClientes.jsp").forward(request, response);
-                break;
-                
-            case "Voltar":
-                request.setAttribute("clientes", cdao.getCliente());
-                request.getRequestDispatcher("/WEB-INF/listarClientes.jsp").forward(request, response);
-                break;
-                
-            case "Cadastrar":
-                request.getRequestDispatcher("/WEB-INF/clientes.jsp").forward(request, response);
-                break;
-                
-            default:
-                request.setAttribute("clientes", cdao.getCliente());
-                request.getRequestDispatcher("/WEB-INF/listarClientes.jsp").forward(request, response);
-            
-                String razao= request.getParameter("razao");
-                String cnpj=request.getParameter("cnpj");
-                String telefone= request.getParameter("telefone");
-                String email= request.getParameter("email");
-                String endereco= request.getParameter("endereco");
-                String complemento= request.getParameter("complemento");
-                String numero= request.getParameter("numero");
-                String cep= request.getParameter("cep");
-                String bairro= request.getParameter("bairro");
-                String cidade= request.getParameter("cidade");    
-                String idc = request.getParameter("id");
-        
-                cliente = new clientes(0, razao, cnpj, telefone, email, endereco, complemento, numero, cep, bairro, cidade);
-                if (idc!=null && !idc.equals("")){
-                cliente.setId(Integer.parseInt(idc));
-                }
-                request.getRequestDispatcher("/WEB-INF/listarClientes.jsp").forward(request, response);
-            }            
-            } catch (Exception e) {
-            }
-    
-            request.getRequestDispatcher("/WEB-INF/listarClientes.jsp").forward(request, response);
+           
     }   
     if(menu.equals("Filial")){
         

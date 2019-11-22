@@ -5,6 +5,7 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>Produtos</title>
+    </head>
      <script type="text/javascript">
             function Voltar(){
                 location.href = 'main.jsp';
@@ -15,12 +16,11 @@
             }
 
             </script>
-    </head>
     <body>
         <h2 style=" color: red">${mensagem}</h2>
         <h1>Produtos</h1>
         <hr>
-        <form method="POST" action="produtoControle">
+        <form action="produtoControle" method="POST">
         <table border="1">
             <tr>
             <th>Id</th>
@@ -28,20 +28,18 @@
             <th>Quantidade</th>
             <th>Preco</th>
             <th>Filial</th>
-           
             </tr>
-            <c:forEach var="c" items="${produtos}">
+            <c:forEach var="p" items="${produtos}">
                 <tr>
-                    <td>${c.id}</td>
-                    <td>${c.nome}</td>
-                    <td>${c.quantidade}</td>
-                    <td>${c.preco}</td>
-                    <td>${c.filial}</td>
-                    <td><a href=produtoControle?acao=editar&id=${c.id}>Editar</a>
-                    <td><a href=produtoControle?acao=excluir&id=${c.id}>Excluir</a>
+                    <td>${p.id}</td>
+                    <td>${p.nome}</td>
+                    <td>${p.quantidade}</td>
+                    <td>${p.preco}</td>
+                    <td>${p.filial}</td>
+                    <td><a href=produtoControle?acao=editar&id=${p.id}>Editar</a>
+                    <td><a href=produtoControle?acao=excluir&id=${p.id}>Excluir</a>
                 </tr>
-            </c:forEach>
-                
+            </c:forEach> 
         </table>     
         </form>
         <a href=produtoControle?acao=salvar><input type="button" value="Cadastrar"></a>        

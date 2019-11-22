@@ -82,6 +82,7 @@ public class filialControle extends HttpServlet {
         String cidade = request.getParameter("cidade_filial");
         String estado = request.getParameter("estado_filial");
         
+        
         Filial filial = new Filial(0, cnpj, nome, desc, cidade, estado);
         if (id!=null && !id.equals("")){
             filial.setId_filial(Integer.parseInt(id));

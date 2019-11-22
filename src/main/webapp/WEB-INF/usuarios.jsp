@@ -4,54 +4,34 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>Usuários</title>
+        <title>Usuarios</title>
     </head>
     <body>
-        <h2 style=" color: red">${mensagem}</h2>
-        <h1>Usuários</h1>
+       
+        <h1>Cadastro de Usuários</h1>
         <hr>
         <script type="text/javascript">
-            function Voltar(){
-                location.href = 'main.jsp';
+            
+            function Alerta(){
+                alert("Cadastro Atualizado!");
             }
             </script>
-        
-    <form method="POST" action="usuarioControle">
             
-            <label>ID:</label><input type="text" disabled name="id" value="${usuario.id_usuario}"/><br>
-            <label>Nome: </label><input type="text" name="nome" value="${usuario.nome_usuario}"/><br>
-            <label>Usuário: </label><input type="text" name="user" value="${usuario.user}"/><br>
-            <label>Senha:</label> <input type="text" name="senha" value="${usuario.senha}"/><br> 
-            <label>Filial:</label> <input type="text" name="senha" value="${usuario.id_filial}"/><br>  
-            <label>Perfil:</label> <input type="text" name="senha" value="${usuario.id_perfil}"/><br>  
-            <input type="submit" value="Salvar" onclick="alert('${mensagem}')">
-            <input type="reset" value="Limpar">
-            <input type="button" value="Sair" onclick="Voltar()">         
-         
-        <table border="1">
-            <tr>
-            <th>Id</th>
-            <th>Nome</th>
-            <th>Usuário</th>
-            <th>Senha</th>
-            <th>Filial</th>
-            <th>Perfil</th>
-          
-           
-            </tr>
-            <c:forEach var="u" items="${usuarios}">
-                <tr>
-                    <td>${u.id_usuario}</td>
-                    <td>${u.nome_usuario}</td>
-                    <td>${u.user}</td>
-                    <td>${u.senha}</td>
-                    <td>${u.id_filial}</td>
-                    <td>${u.id_perfil}</td>
-                    <td><a href=usuarioControle?acao=editar&id=${c.id}>Editar</a>
-                    <td><a href=usuarioControle?acao=excluir&id=${c.id}>Excluir</a>
-                </tr>
-            </c:forEach>
-         </form>        
-        </table>
+        <form method="POST" action="usuarioControle">
+                    
+                     <input type="hidden" name="id_usuario" value="${user.id_usuario}"/>
+                     <label>ID:</label><input type="text" disabled name="id_usuario" value="${user.id_usuario}"/><br/>
+                     <label>Nome:</label><input type="text" name="nome_usuario" value="${user.nome_usuario}"/><br/>
+                     <label>Login:</label><input type="text" name="user" value="${user.user}"/><br/>
+                     <label>Senha:</label><input type="password" name="senha"value="${user.senha}"/><br/>
+                     <label>Filial:</label><input type="text" name="id_filial" value="${user.id_filial}"/><br/>
+                     <label>Perfil:</label><input type="text" name="id_perfil" value="${user.id_perfil}"/><br/>
+                     
+
+                     
+                     <input type="submit" value="Salvar" onclick="Alerta()">
+                     <input type="reset" value="Limpar">
+                     <a href=usuarioControle?&acao=Voltar><input type="button" value="Voltar"></a> 
+        </form> 
     </body>
 </html>

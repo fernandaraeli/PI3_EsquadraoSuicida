@@ -77,11 +77,12 @@ public class produtoControle extends HttpServlet {
             throws ServletException, IOException {
         
         //preencher campos
+        String id = request.getParameter("id");
         String nome= request.getParameter("nome");
         int quantidade=Integer.parseInt(request.getParameter("quantidade"));
         double preco=Double.parseDouble(request.getParameter("preco"));
         int filial=Integer.parseInt(request.getParameter("filial"));
-        String id = request.getParameter("id");
+        
         
         produtos produto = new produtos(0,nome,quantidade,preco,filial);
         if (id!=null && !id.equals("")){

@@ -15,7 +15,8 @@ import util.validacaoException;
 
 public class usuarioControle extends HttpServlet {
 
-    private UsuarioDAO UsuarioDAO = new UsuarioDAO();    
+    private UsuarioDAO udao = new UsuarioDAO();
+    
     
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {        
@@ -32,18 +33,31 @@ public class usuarioControle extends HttpServlet {
         
         try{
             if(acao!=null && acao.equals("excluir")){
-            Integer idUsuario = Integer.parseInt(id);
-            UsuarioDAO.excluir(idUsuario);
-            request.setAttribute("mensagem", "Usuário Excluído!");
+            Integer id_usuario = Integer.parseInt(id);
+            udao.excluir(id_usuario);
+            request.setAttribute("mensagem", "Usuario Excluído!");
             }
             
             else if(acao!=null && acao.equals("editar")){
-            Integer idUsuario = Integer.parseInt(id);
-            Usuarios usuario = UsuarioDAO.getUsuarioID(idUsuario);
-            request.setAttribute("usuario", usuario);
-            }    
+            Integer id_usuario = Integer.parseInt(id);
+            Usuarios usuario = udao.getUsuarioID(id_usuario);
+            request.setAttribute("usuarios", usuario);
+            RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/usuarios.jsp");
+            dispatcher.forward(request, response);
+            }
+            
+            else if(acao!=null && acao.equals("salvar")){
+            RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/usuarios.jsp");
+            dispatcher.forward(request, response);
+            }
+            
+            else if(acao!=null && acao.equals("voltar")){
+            request.setAttribute("usuarios", udao.getUsuario());
+            RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/listarUsuarios.jsp");
+            dispatcher.forward(request, response);
+            }
         
-            request.setAttribute("usuarios", UsuarioDAO.getUsuario());
+            request.setAttribute("usuarios", udao.getUsuario());
         }catch (SQLException ex){
             request.setAttribute("mensagem", "Erro de Banco de Dados: "+ ex.getMessage());
         }catch (ClassNotFoundException ex){
@@ -52,8 +66,7 @@ public class usuarioControle extends HttpServlet {
             request.setAttribute("mensagem", "Erro de Dados: "+ ex.getMessage());
         }        
         
-        RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/usuarios.jsp");
-        dispatcher.forward(request, response);
+        request.getRequestDispatcher("/WEB-INF/listarUsuarios.jsp").forward(request, response);
  
     }
     
@@ -63,15 +76,15 @@ public class usuarioControle extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         
-        String id = request.getParameter("id");
-        String nome_usuario= request.getParameter("nome_usuario");
+        String id = request.getParameter("id_usuario");
+        String nome= request.getParameter("nome_usuario");
         String user=request.getParameter("user");
         String senha= request.getParameter("senha");
-        String id_filial= request.getParameter("id_filial");
-        String id_perfil= request.getParameter("id_perfil");    
+        int id_filial= Integer.parseInt(request.getParameter("id_filial"));   
+        int id_perfil= Integer.parseInt(request.getParameter("id_perfil"));  
         
         
-        Usuarios usuario = new Usuarios(0, user, user, senha, 0, 0);
+        Usuarios usuario = new Usuarios(0, nome, user, senha, id_filial, id_perfil);
         if (id!=null && !id.equals("")){
             usuario.setId_usuario(Integer.parseInt(id));
         }
@@ -80,14 +93,16 @@ public class usuarioControle extends HttpServlet {
             
          usuario.valida();
          if(usuario.getId_usuario()!=0){
-             UsuarioDAO.atualizar(usuario);
-             request.setAttribute("mensagem", "Usuário Atualizado");
-            
+             udao.atualizar(usuario);
+             request.setAttribute("mensagem", "Usuario Atualizado");
+             
+
              
          }else{
-             UsuarioDAO.salvar(usuario);
-             request.setAttribute("mensagem", "Usuário Salvo");
-             
+             udao.salvar(usuario);
+             request.setAttribute("mensagem", "Usuario Salvo");
+             RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/usuarios.jsp");
+             dispatcher.forward(request, response);
          }
            
           
@@ -102,7 +117,7 @@ public class usuarioControle extends HttpServlet {
             request.setAttribute("usuarios", usuario);
         }  
         try{
-            request.setAttribute("usuarios", UsuarioDAO.getUsuario());
+            request.setAttribute("usuarios", udao.getUsuario());
         }catch (SQLException ex){
            request.setAttribute("mensagem", "Erro de Banco de Dados: "+ ex.getMessage());
            request.setAttribute("usuarios", usuario);
@@ -110,9 +125,9 @@ public class usuarioControle extends HttpServlet {
             request.setAttribute("mensagem", "Erro de Driver: "+ ex.getMessage());
             request.setAttribute("usuarios", usuario);
         }  
-
         
-        RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/usuarios.jsp");
+        
+        RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/listarUsuarios.jsp");
         dispatcher.forward(request, response);
         
     }

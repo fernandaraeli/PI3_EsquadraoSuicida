@@ -17,7 +17,7 @@
             }
             </script>
             
-        <form method="POST" action="ControladorPrincipal?menu=Clientes">
+        <form method="POST" action="clienteControle">
                      <input type="hidden" name="id" value="${cliente.id}"/>
                      <label>ID:</label><input type="text" disabled name="id" value="${cliente.id}"/><br/>
                      <label>Razão Social:</label><input type="text" name="razao" value="${cliente.razao}"/><br/>
@@ -34,7 +34,7 @@
                      <input type="submit" value="Salvar" onclick="Alerta()">
                      <button type="submit" name="acao" value="Salvar">Salvar</button> 
                      <input type="reset" value="Limpar">
-                     <a href=ControladorPrincipal?menu=Clientes&acao=Voltar><input type="button" value="Voltar"></a> 
+                     <a href=clienteControle?&acao=Voltar><input type="button" value="Voltar"></a> 
                      
         </form> 
 

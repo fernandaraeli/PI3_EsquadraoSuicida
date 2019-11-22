@@ -16,7 +16,7 @@ public class Consultas extends ConexaoBD {
         
         try{
             
-            String consulta= "select * from usuario where usuario=? and senha=?";
+            String consulta= "select * from usuario where user=? and senha=?";
             pst = getConnection().prepareStatement(consulta);
             pst.setString(1, usuario);
             pst.setString(2, senha);

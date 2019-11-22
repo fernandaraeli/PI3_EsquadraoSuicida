@@ -38,7 +38,7 @@
   
       <li class="nav-item">
          <strong> 
-             <a class="nav-link" href="ControladorPrincipal?menu=Clientes&acao=default">Clientes</a>
+             <a class="nav-link" href="clienteControle">Clientes</a>
          </strong>
       </li>
       
