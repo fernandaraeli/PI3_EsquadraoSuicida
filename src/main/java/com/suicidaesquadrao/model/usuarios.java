@@ -1,8 +1,16 @@
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
 package com.suicidaesquadrao.model;
 
 import util.validacaoException;
 
-
+/**
+ *
+ * @author deise.mfarias
+ */
 public class usuarios {
     
     private int id_usuario;
@@ -11,11 +19,10 @@ public class usuarios {
     private String senha;
     private int id_filial;
     private int id_perfil;
-
-
-      public void valida () throws validacaoException{
-        if(user==null||senha.equals("")){
-            throw new validacaoException("O campo é obrigatório");
+    
+    public void valida() throws validacaoException {
+        if(user==null || senha.equals("")){
+            throw new validacaoException ("O campo é Obrigatório");
         }
     }
 
@@ -32,8 +39,8 @@ public class usuarios {
         return id_usuario;
     }
 
-    public void setId_usuario(int id_usuario) {
-        this.id_usuario = id_usuario;
+    public void setId_usuario(int id_usuarios) {
+        this.id_usuario = id_usuarios;
     }
 
     public String getNome() {
@@ -74,6 +81,8 @@ public class usuarios {
 
     public void setId_perfil(int id_perfil) {
         this.id_perfil = id_perfil;
-    }    
+    }
+    
+    
+    
 }
-   
