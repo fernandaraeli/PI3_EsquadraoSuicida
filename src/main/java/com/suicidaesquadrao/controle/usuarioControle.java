@@ -1,7 +1,8 @@
 
 package com.suicidaesquadrao.controle;
 
-import com.suicidaesquadrao.dao.UsuarioDAO;
+
+import com.suicidaesquadrao.dao.usuarioDao;
 import com.suicidaesquadrao.model.Usuarios;
 import java.io.IOException;
 import java.sql.SQLException;
@@ -15,7 +16,7 @@ import util.validacaoException;
 
 public class usuarioControle extends HttpServlet {
 
-    private UsuarioDAO udao = new UsuarioDAO();
+    private usuarioDao udao = new usuarioDao();
     
     
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)

@@ -1,6 +1,6 @@
 package com.suicidaesquadrao.dao;
 
-import com.suicidaesquadrao.model.usuarios;
+import com.suicidaesquadrao.model.Usuarios;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -20,31 +20,31 @@ public class usuarioDao {
         ps.execute();
     }
 
-    public usuarios getUsuarioID(Integer idUsuario) throws validacaoException, SQLException, ClassNotFoundException {
+    public Usuarios getUsuarioID(Integer idUsuario) throws validacaoException, SQLException, ClassNotFoundException {
         Connection conexao = ConexaoBD.getConnection();
         PreparedStatement ps = conexao.prepareStatement("SELECT ID_USUARIO,NOME_USUARIO,USER,SENHA,ID_FILIAL,ID_PERFIL FROM USUARIO WHERE ID_USUARIO=?");
         ps.setInt(1, idUsuario);
         ResultSet rs = ps.executeQuery();
         if(rs.next()){
-            return new usuarios(rs.getInt(1), rs.getString(2),rs.getString(3),rs.getString(4),rs.getInt(5),rs.getInt(6)); 
+            return new Usuarios(rs.getInt(1), rs.getString(2),rs.getString(3),rs.getString(4),rs.getInt(5),rs.getInt(6)); 
         }
         throw new validacaoException("Não achou usuárioo com código" +idUsuario);
     }
     
     
-    public List<usuarios> getUsuario() throws SQLException, ClassNotFoundException {
+    public List<Usuarios> getUsuario() throws SQLException, ClassNotFoundException {
         Connection conexao = ConexaoBD.getConnection();
         PreparedStatement ps = conexao.prepareStatement("SELECT ID_USUARIO,NOME_USUARIO,USER,SENHA,ID_FILIAL,ID_PERFIL FROM USUARIO");
         ResultSet rs = ps.executeQuery();
-        List<usuarios> usr = new ArrayList();
+        List<Usuarios> usr = new ArrayList();
         while(rs.next()){
-            usr.add(new usuarios(rs.getInt(1), rs.getString(2),rs.getString(3),rs.getString(4),rs.getInt(5),rs.getInt(6)));
+            usr.add(new Usuarios(rs.getInt(1), rs.getString(2),rs.getString(3),rs.getString(4),rs.getInt(5),rs.getInt(6)));
        
         }
     return usr;   
     }
     
-    public void salvar (usuarios usuario)throws SQLException, ClassNotFoundException{
+    public void salvar (Usuarios usuario)throws SQLException, ClassNotFoundException{
         Connection conexao = ConexaoBD.getConnection();
         PreparedStatement ps = conexao.prepareStatement("INSERT INTO USUARIO (NOME_USUARIO,USER,SENHA,ID_FILIAL,ID_PERFIL) VALUES(?,?,?,?,?)");
         ps.setString(1, usuario.getNome());
@@ -56,7 +56,7 @@ public class usuarioDao {
         ps.execute();
     }
 
-    public void atualizar(usuarios usuario)throws SQLException, ClassNotFoundException {
+    public void atualizar(Usuarios usuario)throws SQLException, ClassNotFoundException {
         Connection conexao = ConexaoBD.getConnection();
         PreparedStatement ps = conexao.prepareStatement("UPDATE USUARIO SET NOME_USUARIO=?,USER=?,SENHA=?,ID_FILIAL=?,ID_PERFIL=? WHERE ID_USUARIO=?");
         ps.setString(1, usuario.getNome());

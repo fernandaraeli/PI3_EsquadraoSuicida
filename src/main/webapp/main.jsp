@@ -79,7 +79,7 @@
         </div>
   </div>
 </nav>
-        <div class="m-4" style="height: 530px;">
+        <div class="m-4" style="height: 630px; ">
             <iframe name="frame" style="height: 100%; width: 100%"></iframe>             
         </div>  
         

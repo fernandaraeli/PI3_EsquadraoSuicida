@@ -9,8 +9,8 @@
         <title>Venda</title>
                 </head>
                     <body>  
-                        <div class="d-flex">
-                        <div class="col-sm-4">
+                        <div class="d-flex ml-auto">
+                        <div class="col-sm-5">
                         <div class="card">
                         <form action="ControladorPrincipal?menu=NovaVenda" method="POST">
                         <div class="card-body">  
@@ -61,15 +61,10 @@
                         <div class="card-body">
 
                             
-                            
-                            
                         <!--ITENS DA VENDA--> 
-                          
-                        <div class="form-group d-flex">
-                        <div class="col-sm-5"><label>Cliente:</label><input type="text" name="razao" value="${cliente.getRazao()}" placeholder="Cliente" class="form-control"></div>   
-                        </div>
-                       
-                        <div class="d-flex col-sm-5 ml-auto"><label>Nº Venda:</label><input type="text" name="NroVenda" value="${numVenda}" class="form-control"></div>
+                        <div class="d-flex col-sm-8 mr-auto"><label>Cliente:</label><input type="text" name="razao" value="${cliente.getRazao()}" class="form-control">
+                            <div class="d-flex col-sm-7 ml-auto"><label>Nº Venda:</label><input type="text" name="NroVenda" value="${numVenda}" class="form-control"></div>
+                                </div> 
                         <table class="table table-hover">
                             <thead>
                                 <tr>
