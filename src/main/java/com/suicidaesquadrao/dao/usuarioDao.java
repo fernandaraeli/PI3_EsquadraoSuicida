@@ -1,5 +1,6 @@
 package com.suicidaesquadrao.dao;
 
+import static com.suicidaesquadrao.dao.ConexaoBD.getConnection;
 import com.suicidaesquadrao.model.usuarios;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -66,5 +67,43 @@ public class usuarioDao {
         ps.setInt(5, usuario.getId_perfil());
         ps.setInt(6, usuario.getId_usuario());
         ps.execute(); 
-    }   
+    }  
+     
+    public boolean autenticacao( String usuario, String senha) throws ClassNotFoundException, SQLException{
+        Connection conexao = ConexaoBD.getConnection();
+        PreparedStatement pst = null;
+        ResultSet rs = null;
+        
+        try{
+            
+            String consulta= "select * from usuario where user=? and senha=?";
+            pst = getConnection().prepareStatement(consulta);
+            pst.setString(1, usuario);
+            pst.setString(2, senha);
+            rs = pst.executeQuery();
+           
+            if(rs.absolute(1)){
+                System.out.println("ENTORU NO ABSOLUTE FLAVIÃOOOOOO");
+                return true;
+            } 
+           
+        } catch (Exception e)  {            
+            System.err.println("ERRO JAVA " + e);
+            
+        } 
+                
+        finally {
+            
+            try {
+                if(getConnection() != null) getConnection().close();
+                if(pst != null) pst.close();
+                if(rs != null) rs.close(); 
+            } catch (Exception e ){
+                  System.err.println("Error 2 " + e);
+            }
+         
+        }
+        
+       return false;
+    }
 }

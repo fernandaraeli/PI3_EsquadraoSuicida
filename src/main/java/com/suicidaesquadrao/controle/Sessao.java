@@ -5,8 +5,8 @@
  */
 package com.suicidaesquadrao.controle;
 
+import com.suicidaesquadrao.dao.usuarioDao;
 import java.io.IOException;
-import java.io.PrintWriter;
 import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -46,7 +46,7 @@ public class Sessao extends HttpServlet {
         String sen = request.getParameter("txtsenha");
         
               
-        Consultas co = new  Consultas();  
+        usuarioDao co = new  usuarioDao();  
 
                      
         try {
