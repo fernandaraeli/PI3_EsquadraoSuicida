@@ -40,7 +40,7 @@ public class produtoControle extends HttpServlet {
             }else if(acao!=null && acao.equals("editar")){
             Integer idProduto = Integer.parseInt(id);
             produtos produto = ProdutoDAO.getProdutoId(idProduto);
-            request.setAttribute("produto", produto);
+            request.setAttribute("produtos", produto);
             RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/produtos.jsp");
             dispatcher.forward(request, response);
             }  
@@ -51,13 +51,16 @@ public class produtoControle extends HttpServlet {
             }
             
             else if(acao!=null && acao.equals("voltar")){
-            request.setAttribute("produto", ProdutoDAO.getProduto());
+            request.setAttribute("produtos", ProdutoDAO.getProduto());
             RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/listarProdutos.jsp");
             dispatcher.forward(request, response);
+            
             }
                  
         //atualiza lista    
-        //request.setAttribute("produtos", ProdutoDAO.getProduto());
+        request.setAttribute("produtos", ProdutoDAO.getProduto());
+        
+
         //Trativa de erros
         }catch (SQLException ex){
             request.setAttribute("mensagem", "Erro de Banco de Dados: "+ ex.getMessage());

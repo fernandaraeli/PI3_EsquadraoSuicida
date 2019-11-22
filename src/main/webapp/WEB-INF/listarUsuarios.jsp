@@ -4,6 +4,7 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
         <title>Lista Usuario</title>
     </head>
      <script type="text/javascript">
@@ -21,7 +22,7 @@
         <h1>Usuarios</h1>
         <hr>
         <form action="usuarioControle" method="POST">
-        <table border="1">
+        <table class="table table-hover">
             <tr>
             <th>Id</th>
             <th>Nome</th>
@@ -33,7 +34,7 @@
             <c:forEach var="u" items="${usuarios}">
                 <tr>
                     <td>${u.id_usuario}</td>
-                    <td>${u.nome_usuario}</td>
+                    <td>${u.nome}</td>
                     <td>${u.user}</td>
                     <td>${u.senha}</td>
                     <td>${u.id_filial}</td>

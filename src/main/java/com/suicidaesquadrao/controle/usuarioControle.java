@@ -3,7 +3,7 @@ package com.suicidaesquadrao.controle;
 
 
 import com.suicidaesquadrao.dao.usuarioDao;
-import com.suicidaesquadrao.model.Usuarios;
+import com.suicidaesquadrao.model.usuarios;
 import java.io.IOException;
 import java.sql.SQLException;
 import javax.servlet.RequestDispatcher;
@@ -41,7 +41,7 @@ public class usuarioControle extends HttpServlet {
             
             else if(acao!=null && acao.equals("editar")){
             Integer id_usuario = Integer.parseInt(id);
-            Usuarios usuario = udao.getUsuarioID(id_usuario);
+            usuarios usuario = udao.getUsuarioID(id_usuario);
             request.setAttribute("usuarios", usuario);
             RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/usuarios.jsp");
             dispatcher.forward(request, response);
@@ -85,7 +85,7 @@ public class usuarioControle extends HttpServlet {
         int id_perfil= Integer.parseInt(request.getParameter("id_perfil"));  
         
         
-        Usuarios usuario = new Usuarios(0, nome, user, senha, id_filial, id_perfil);
+        usuarios usuario = new usuarios(0, nome, user, senha, id_filial, id_perfil);
         if (id!=null && !id.equals("")){
             usuario.setId_usuario(Integer.parseInt(id));
         }
