@@ -8,9 +8,6 @@
         <title>Produtos</title>
     </head>
      <script type="text/javascript">
-            function Voltar(){
-                location.href = 'main.jsp';
-            }            
             function Alerta(){
                 alert("Salvo com sucesso!");
             }
@@ -42,7 +39,7 @@
             </c:forEach> 
         </table>     
         </form>
-        <a href=produtoControle?acao=salvar><input type="button" value="Cadastrar"></a>        
-        <input type="button" value="Sair" onClick="Voltar()"> 
+        <a href="produtoControle?acao=salvar" class="btn btn-success">Cadastrar</a>        
+        <a href="main.jsp" class="btn btn-danger">Sair</a> 
     </body>
 </html>

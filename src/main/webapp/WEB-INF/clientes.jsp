@@ -31,7 +31,7 @@
                      <label>Bairro:</label><input type="text" name="bairro" value="${cliente.bairro}"/><br/>
                      <label>Cidade:</label><input type="text" name="cidade" value="${cliente.cidade}"/><br/>
                      
-                     <input type="submit" value="Salvar" onclick="Alerta()">
+                    
                      <button type="submit" name="acao" value="Salvar">Salvar</button> 
                      <input type="reset" value="Limpar">
                      <a href=clienteControle?&acao=Voltar><input type="button" value="Voltar"></a> 

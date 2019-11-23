@@ -15,7 +15,7 @@ public class usuarioDao {
 
     public void excluir(Integer idUsuario) throws SQLException, ClassNotFoundException {
         Connection conexao = ConexaoBD.getConnection();
-        PreparedStatement ps = conexao.prepareStatement("DELETE FROM USUARIO WHERE ID_USUARIO=?");
+        PreparedStatement ps = conexao.prepareStatement("DELETE FROM usuario WHERE id_usuario=?");
         ps.setInt(1, idUsuario);
              
         ps.execute();
@@ -23,19 +23,19 @@ public class usuarioDao {
 
     public usuarios getUsuarioID(Integer idUsuario) throws validacaoException, SQLException, ClassNotFoundException {
         Connection conexao = ConexaoBD.getConnection();
-        PreparedStatement ps = conexao.prepareStatement("SELECT ID_USUARIO,NOME_USUARIO,USER,SENHA,ID_FILIAL,ID_PERFIL FROM USUARIO WHERE ID_USUARIO=?");
+        PreparedStatement ps = conexao.prepareStatement("SELECT id_usuario,nome_usuario,user,senha,id_filial,id_perfil FROM usuario WHERE id_usuario=?");
         ps.setInt(1, idUsuario);
         ResultSet rs = ps.executeQuery();
         if(rs.next()){
             return new usuarios(rs.getInt(1), rs.getString(2),rs.getString(3),rs.getString(4),rs.getInt(5),rs.getInt(6)); 
         }
-        throw new validacaoException("Não achou usuárioo com código" +idUsuario);
+        throw new validacaoException("Não achou usuário com código" +idUsuario);
     }
     
     
     public List<usuarios> getUsuario() throws SQLException, ClassNotFoundException {
         Connection conexao = ConexaoBD.getConnection();
-        PreparedStatement ps = conexao.prepareStatement("SELECT ID_USUARIO,NOME_USUARIO,USER,SENHA,ID_FILIAL,ID_PERFIL FROM USUARIO");
+        PreparedStatement ps = conexao.prepareStatement("SELECT id_usuario,nome_usuario,user,senha,id_filial,id_perfil FROM usuario");
         ResultSet rs = ps.executeQuery();
         List<usuarios> usr = new ArrayList();
         while(rs.next()){
@@ -47,7 +47,7 @@ public class usuarioDao {
     
     public void salvar (usuarios usuario)throws SQLException, ClassNotFoundException{
         Connection conexao = ConexaoBD.getConnection();
-        PreparedStatement ps = conexao.prepareStatement("INSERT INTO USUARIO (NOME_USUARIO,USER,SENHA,ID_FILIAL,ID_PERFIL) VALUES(?,?,?,?,?)");
+        PreparedStatement ps = conexao.prepareStatement("INSERT INTO usuario (nome_usuario,user,senha,id_filial,id_perfil) VALUES(?,?,?,?,?)");
         ps.setString(1, usuario.getNome());
         ps.setString(2, usuario.getUser());
         ps.setString(3, usuario.getSenha());
@@ -59,7 +59,7 @@ public class usuarioDao {
 
     public void atualizar(usuarios usuario)throws SQLException, ClassNotFoundException {
         Connection conexao = ConexaoBD.getConnection();
-        PreparedStatement ps = conexao.prepareStatement("UPDATE USUARIO SET NOME_USUARIO=?,USER=?,SENHA=?,ID_FILIAL=?,ID_PERFIL=? WHERE ID_USUARIO=?");
+        PreparedStatement ps = conexao.prepareStatement("UPDATE usuario SET nome_usuario=?,user=?,senha=?,id_filial=?,id_perfil=? WHERE id_usuario=?");
         ps.setString(1, usuario.getNome());
         ps.setString(2, usuario.getUser());
         ps.setString(3, usuario.getSenha());
@@ -83,7 +83,7 @@ public class usuarioDao {
             rs = pst.executeQuery();
            
             if(rs.absolute(1)){
-                System.out.println("ENTORU NO ABSOLUTE FLAVIÃOOOOOO");
+                System.out.println("Acessou");
                 return true;
             } 
            

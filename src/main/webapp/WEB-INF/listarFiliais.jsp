@@ -8,14 +8,7 @@
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
         <title>Cadastro Filiais</title>
     </head>
-           <script type="text/javascript">
-            function Voltar(){
-                location.href = 'main.jsp';
-            }
-            </script>
     <body>
-        
-        
         
         <h2 style=" color: red">${mensagem}</h2>
         <h1>Filiais</h1>
@@ -47,8 +40,8 @@
             </c:forEach>
         </table>         
         </form>
-                <a href=filialControle?acao=salvar><input type="button" value="Cadastrar"></a>        
-                <input type="button" value="Sair" onClick="Voltar()">  
+                <a href="filialControle?acao=salvar" class="btn btn-success">Cadastrar</a>        
+                <a href="main.jsp" class="btn btn-danger">Sair</a>  
         <br>
 
     </body>

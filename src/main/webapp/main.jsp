@@ -36,11 +36,12 @@
   <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
     <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
         
-        <li class="nav-item"> 
-        <a href=?main.jsp?>
-            <img src="../java/com/suicidaesquadrao/imagem/home.png" alt="home"/> </a> 
-        </li>     
-  
+      <li class="nav-item">
+         <strong> 
+             <a class="nav-link" href="main.jsp">Home</a>
+         </strong>
+      </li>
+
       <li class="nav-item">
          <strong> 
              <a class="nav-link" href="clienteControle">Clientes</a>
@@ -61,13 +62,13 @@
       
        <li class="nav-item">
            <strong>
-        <a class="nav-link" href="usuarioControle" target="frame">Usuários</a>
+        <a class="nav-link" href="usuarioControle">Usuários</a>
            </strong>
       </li>
       
         <li class="nav-item">
            <strong>
-               <a class="nav-link" href="ControladorPrincipal?menu=NovaVenda&acao=default" target="frame">Nova Venda</a>
+               <a class="nav-link" href="ControladorPrincipal?menu=NovaVenda&acao=default">Nova Venda</a>
         </strong>
       </li>
       
