@@ -19,7 +19,7 @@ public class clienteDAO {
     //Método para buscar clientes no Banco    
     public clientes buscar(String cnpj){
         clientes c = new clientes();
-        String sql = "SELECT * FROM CLIENTE WHERE CNPJ=" + cnpj;
+        String sql = "SELECT * FROM cliente WHERE cnpj=" + cnpj;
         try{
             Connection conexao = ConexaoBD.getConnection();
             PreparedStatement ps = conexao.prepareStatement(sql);
@@ -48,7 +48,7 @@ public class clienteDAO {
     //Metodo inserir cadastro de cliente
     public void salvar (clientes cliente)throws SQLException, ClassNotFoundException{
         Connection conexao = ConexaoBD.getConnection();
-        PreparedStatement ps = conexao.prepareStatement("INSERT INTO CLIENTE (RAZAO,CNPJ,TELEFONE,EMAIL,ENDERECO,COMPLEMENTO,NUMERO,CEP,BAIRRO,CIDADE) VALUES(?,?,?,?,?,?,?,?,?,?)");
+        PreparedStatement ps = conexao.prepareStatement("INSERT INTO cliente (razao,cnpj,telefone,email,endereco,complemento,numero,cep,bairro,cidade) VALUES(?,?,?,?,?,?,?,?,?,?)");
         ps.setString(1, cliente.getRazao());
         ps.setString(2, cliente.getCnpj());
         ps.setString(3, cliente.getTelefone());
@@ -68,7 +68,7 @@ public class clienteDAO {
     //Metodo excluir cadastro de cliente
     public void excluir(Integer idCliente) throws SQLException, ClassNotFoundException {
         Connection conexao = ConexaoBD.getConnection();
-        PreparedStatement ps = conexao.prepareStatement("DELETE FROM CLIENTE WHERE ID=?");
+        PreparedStatement ps = conexao.prepareStatement("delete from cliente where id=?");
         ps.setInt(1, idCliente);
              
         ps.execute();
@@ -78,7 +78,7 @@ public class clienteDAO {
     //Metodo Atualizar cadastro de cliente
     public void atualizar(clientes cliente)throws SQLException, ClassNotFoundException {
         Connection conexao = ConexaoBD.getConnection();
-        PreparedStatement ps = conexao.prepareStatement("UPDATE CLIENTE SET RAZAO=?,CNPJ=?,TELEFONE=?,EMAIL=?,ENDERECO=?,COMPLEMENTO=?,NUMERO=?,CEP=?,BAIRRO=?,CIDADE=? WHERE ID=?");
+        PreparedStatement ps = conexao.prepareStatement("UPDATE cliente SET razao=?,cnpj=?,telefone=?,email=?,endereco=?,complemento=?,numero=?,cep=?,bairro=?,cidade=? WHERE id=?");
         ps.setString(1, cliente.getRazao());
         ps.setString(2, cliente.getCnpj());
         ps.setString(3, cliente.getTelefone());
@@ -97,7 +97,7 @@ public class clienteDAO {
     //Metodo listar todos os clientes
     public List<clientes> listarCliente() throws SQLException, ClassNotFoundException {
         Connection conexao = ConexaoBD.getConnection();
-        PreparedStatement ps = conexao.prepareStatement("SELECT ID,RAZAO,CNPJ,TELEFONE,EMAIL,ENDERECO,COMPLEMENTO,NUMERO,CEP,BAIRRO,CIDADE FROM CLIENTE");
+        PreparedStatement ps = conexao.prepareStatement("SELECT id,razao,cnpj,telefone,email,endereco,complemento,numero,cep,bairro,cidade FROM cliente");
         ResultSet rs = ps.executeQuery();
         List<clientes> cli = new ArrayList();
         while(rs.next()){
@@ -111,7 +111,7 @@ public class clienteDAO {
 
     public clientes getClienteID(Integer idCliente) throws validacaoException, SQLException, ClassNotFoundException {
         Connection conexao = ConexaoBD.getConnection();
-        PreparedStatement ps = conexao.prepareStatement("SELECT ID,RAZAO,CNPJ,TELEFONE,EMAIL,ENDERECO,COMPLEMENTO,NUMERO,CEP,BAIRRO,CIDADE FROM CLIENTE WHERE ID=?");
+        PreparedStatement ps = conexao.prepareStatement("SELECT id,razao,cnpj,telefone,email,endereco,complemento,numero,cep,bairro,cidade FROM cliente WHERE id=?");
         ps.setInt(1, idCliente);
         ResultSet rs = ps.executeQuery();
         if(rs.next()){
@@ -123,7 +123,7 @@ public class clienteDAO {
     
     public List<clientes> getCliente() throws SQLException, ClassNotFoundException {
         Connection conexao = ConexaoBD.getConnection();
-        PreparedStatement ps = conexao.prepareStatement("SELECT ID,RAZAO,CNPJ,TELEFONE,EMAIL,ENDERECO,COMPLEMENTO,NUMERO,CEP,BAIRRO,CIDADE FROM CLIENTE");
+        PreparedStatement ps = conexao.prepareStatement("SELECT id,razao,cnpj,telefone,email,endereco,complemento,numero,cep,bairro,cidade FROM cliente");
         ResultSet rs = ps.executeQuery();
         List<clientes> cli = new ArrayList();
         while(rs.next()){

@@ -5,7 +5,7 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-        
+
         <title>Venda</title>
                 </head>
                     <body>  
@@ -20,7 +20,7 @@
                         <div class="form-group"><label>Dados Cliente</label></div>                       
                         <div class="form-group d-flex">     
                         <div class="col-sm-6 d-flex">
-                            <input type="text" name="cnpj" value="${cliente.getCnpj()}" class="form-control" placeholder="CNPJ">                                
+                            <input type="text" name="cnpj" value="${cliente.getCnpj()}" class="form-control" placeholder="CNPJ" required>                                
                             <input type="submit" name="acao" value="BuscarCliente" class="btn btn-outline-info">  
                         </div>
                         <div class="col-sm-6">
@@ -34,7 +34,7 @@
                         <div class="form-group"><label>Dados Produto</label></div>
                         <div class="form-group d-flex">
                         <div class="col-sm-6 d-flex">
-                            <input type="text" name="idproduto" value="${produto.getId()}" class="form-control" placeholder="Codigo">
+                            <input type="text" name="idproduto" value="${produto.getId()}" class="form-control" placeholder="Codigo" required>
                             <button type="submit" name="acao" value="BuscarProduto" class="btn btn-outline-info">BuscarProduto</button>                           
                         </div>
                         <div class="col-sm-6"><input type="text" name="nomeproduto" value="${produto.getNome()}" placeholder="Produto" class="form-control"></div>
@@ -44,6 +44,7 @@
                         <div class="col-sm-3"><input type="number" value="1" name="quantidade" placeholder="" class="form-control"></div>
                         <div class="col-sm-3"><input type="text" name="estoque" value="${produto.getQuantidade()}" placeholder="Estoque" class="form-control"></div>
                         </div>
+                        
                         
                         
                         

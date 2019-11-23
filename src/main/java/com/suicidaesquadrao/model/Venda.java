@@ -1,7 +1,7 @@
 
 package com.suicidaesquadrao.model;
 
-import java.util.Date;
+import java.sql.Timestamp;
 import util.validacaoException;
 
 
@@ -19,12 +19,12 @@ public class Venda {
     int quantidade;
     Double subtotal;
     String statusVenda;
-    String dataVenda;
+    Timestamp dataVenda;
 
     public Venda() {
     }
 
-    public Venda(int idVenda, int numItem, int idCliente, int idUsuario, int idProduto, String numVenda, String nomeProduto, Double preco, Double totalPagar, int quantidade, Double subtotal, String statusVenda, String dataVenda) {
+    public Venda(int idVenda, int numItem, int idCliente, int idUsuario, int idProduto, String numVenda, String nomeProduto, Double preco, Double totalPagar, int quantidade, Double subtotal, String statusVenda, Timestamp dataVenda) {
         this.idVenda = idVenda;
         this.numItem = numItem;
         this.idCliente = idCliente;
@@ -128,11 +128,11 @@ public class Venda {
         this.statusVenda = statusVenda;
     }
 
-    public String getDataVenda() {
+    public Timestamp getDataVenda() {
         return dataVenda;
     }
 
-    public void setDataVenda(String dataVenda) {
+    public void setDataVenda(Timestamp dataVenda) {
         this.dataVenda = dataVenda;
     }
 

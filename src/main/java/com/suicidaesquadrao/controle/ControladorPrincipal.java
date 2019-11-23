@@ -8,15 +8,14 @@ import com.suicidaesquadrao.model.Venda;
 import com.suicidaesquadrao.model.clientes;
 import com.suicidaesquadrao.model.produtos;
 import java.io.IOException;
-import java.sql.SQLException;
+import java.sql.Timestamp;
 import java.util.ArrayList;
 import java.util.List;
-import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import util.validacaoException;
+
 
 
 public class ControladorPrincipal extends HttpServlet {
@@ -36,13 +35,14 @@ public class ControladorPrincipal extends HttpServlet {
     int quantidade;
     double subtotal; 
     double totalPagar;
-
+    Timestamp data = new Timestamp(System.currentTimeMillis());
+    
     String numVenda;
     VendaDAO vdao = new VendaDAO();
     
     int idCli;
-
-
+    
+    
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         
@@ -100,7 +100,8 @@ public class ControladorPrincipal extends HttpServlet {
                 descricao = request.getParameter("nomeproduto");
                 preco = Double.parseDouble(request.getParameter("preco"));
                 quantidade = Integer.parseInt(request.getParameter("quantidade"));
-                subtotal = preco*quantidade;     
+                subtotal = preco*quantidade; 
+                
                 //SET nos campos da tabela de venda e adiciona do ArrayList
                 venda=new Venda();
                 venda.setNumItem(item);
@@ -134,7 +135,7 @@ public class ControladorPrincipal extends HttpServlet {
                 venda.setIdCliente(cliente.getId());
                 venda.setIdUsuario(1);
                 venda.setNumVenda(numVenda);
-                venda.setDataVenda("2019-11-20");
+                venda.setDataVenda(data);
                 venda.setTotalPagar(totalPagar);
                 venda.setStatusVenda("1");
                 vdao.gravarVenda(venda);      
@@ -185,6 +186,13 @@ public class ControladorPrincipal extends HttpServlet {
         }
         request.getRequestDispatcher("/WEB-INF/registrarVenda.jsp").forward(request, response);
         }
+    
+    if(menu.equals("Relatórios")){
+        
+        
+        
+        
+    }
     }  
         
    

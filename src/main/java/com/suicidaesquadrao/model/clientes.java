@@ -41,12 +41,8 @@ public class clientes {
     public void valida () throws validacaoException{
         if(razao==null||razao.equals("")){
             throw new validacaoException("O campo é obrigatório");
-        //}if(quantidade==0){
-          //  throw new validacaoException("O campo é obrigatório");
-        //}if(preco==0){
-            //throw new validacaoException("O campo é obrigatório");
-        //}if(filial==0){
-          //  throw new validacaoException("O campo é obrigatório");
+        }if(cnpj==null){
+           throw new validacaoException("O campo é obrigatório");
         }
     }
 

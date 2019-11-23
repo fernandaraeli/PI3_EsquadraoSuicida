@@ -20,7 +20,7 @@ public class produtoDAO {
         produtos prod = new produtos();
         try {
         Connection conexao = ConexaoBD.getConnection();
-        PreparedStatement ps = conexao.prepareStatement("SELECT * FROM PRODUTO WHERE ID_PRODUTO=" + idProduto);
+        PreparedStatement ps = conexao.prepareStatement("SELECT * FROM produto WHERE id_produto=" + idProduto);
         ResultSet rs = ps.executeQuery();
         while(rs.next()){
             prod.setId(rs.getInt(1));
@@ -39,7 +39,7 @@ public class produtoDAO {
     public int atualizarEstoque(int idProduto, int qtd){
         try {
         Connection conexao = ConexaoBD.getConnection();
-        PreparedStatement ps = conexao.prepareStatement("UPDATE PRODUTO SET QUANTIDADE_PRODUTO=? WHERE ID_PRODUTO=?");
+        PreparedStatement ps = conexao.prepareStatement("UPDATE produto SET quantidade_produto=? WHERE id_produto=?");
         ps.setInt(1, qtd);
         ps.setInt(2, idProduto);
         ps.executeUpdate();
@@ -51,7 +51,7 @@ public class produtoDAO {
     //Exclui Produtos
     public void excluir(Integer idProduto) throws SQLException, ClassNotFoundException {
         Connection conexao = ConexaoBD.getConnection();
-        PreparedStatement ps = conexao.prepareStatement("DELETE FROM PRODUTO WHERE ID_PRODUTO=?");
+        PreparedStatement ps = conexao.prepareStatement("DELETE FROM produto WHERE id_produto=?");
         ps.setInt(1, idProduto);
              
         ps.execute();
@@ -59,7 +59,7 @@ public class produtoDAO {
     //Seleciona produto para alterar
     public produtos getProdutoId(Integer idProduto) throws validacaoException, SQLException, ClassNotFoundException {
         Connection conexao = ConexaoBD.getConnection();
-        PreparedStatement ps = conexao.prepareStatement("SELECT ID_PRODUTO,NOME_PRODUTO,QUANTIDADE_PRODUTO,PRECO_PRODUTO, ID_FILIAL FROM PRODUTO WHERE ID_PRODUTO=?");
+        PreparedStatement ps = conexao.prepareStatement("SELECT id_produto,nome_produto,quantidade_produto,preco_produto,id_filial FROM produto WHERE id_produto=?");
         ps.setInt(1, idProduto);
         ResultSet rs = ps.executeQuery();
         if(rs.next()){
@@ -72,7 +72,7 @@ public class produtoDAO {
     // Listar produtos na tela
     public List<produtos> getProduto() throws SQLException, ClassNotFoundException {
         Connection conexao = ConexaoBD.getConnection();
-        PreparedStatement ps = conexao.prepareStatement("SELECT ID_PRODUTO,NOME_PRODUTO,QUANTIDADE_PRODUTO,PRECO_PRODUTO, ID_FILIAL FROM PRODUTO");
+        PreparedStatement ps = conexao.prepareStatement("SELECT id_produto,nome_produto,quantidade_produto,preco_produto,id_filial FROM produto");
         ResultSet rs = ps.executeQuery();
         List<produtos> prod = new ArrayList();
         while(rs.next()){
@@ -84,7 +84,7 @@ public class produtoDAO {
     // Salvar Produto
     public void salvar (produtos produto)throws SQLException, ClassNotFoundException{
         Connection conexao = ConexaoBD.getConnection();
-        PreparedStatement ps = conexao.prepareStatement("INSERT INTO PRODUTO (NOME_PRODUTO, QUANTIDADE_PRODUTO, PRECO_PRODUTO, ID_FILIAL ) VALUES(?,?,?,?)");
+        PreparedStatement ps = conexao.prepareStatement("INSERT INTO produto (nome_produto,quantidade_produto,preco_produto,id_filial) VALUES(?,?,?,?)");
         ps.setString(1, produto.getNome());
         ps.setInt(2, produto.getQuantidade());
         ps.setDouble(3, produto.getPreco());
@@ -96,7 +96,7 @@ public class produtoDAO {
     //atualiza produto
     public void atualizar(produtos produto)throws SQLException, ClassNotFoundException {
         Connection conexao = ConexaoBD.getConnection();
-        PreparedStatement ps = conexao.prepareStatement("UPDATE PRODUTO SET NOME_PRODUTO=?, QUANTIDADE_PRODUTO=?, PRECO_PRODUTO=?, ID_FILIAL=?  WHERE ID_PRODUTO=?");
+        PreparedStatement ps = conexao.prepareStatement("UPDATE produto SET nome_produto=?, quantidade_produto=?, preco_produto=?, id_filial=?  WHERE id_produto=?");
         ps.setString(1, produto.getNome());
         ps.setInt(2, produto.getQuantidade());
         ps.setDouble(3, produto.getPreco());

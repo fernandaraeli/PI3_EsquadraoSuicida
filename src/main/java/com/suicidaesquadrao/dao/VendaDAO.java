@@ -5,7 +5,6 @@ import com.suicidaesquadrao.model.Venda;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
-import org.apache.taglibs.standard.tag.common.fmt.ParseDateSupport;
 
 
 public class VendaDAO {
@@ -14,15 +13,14 @@ public class VendaDAO {
         ConexaoBD cbd = new ConexaoBD();
         PreparedStatement ps;
         ResultSet rs;
-        int retorno;    
-    
-    
+        int retorno;  
+        
+        
     //Busca o ultimo numero de venda registrado no banco
     public String buscaUltNumVenda(){
-        
-         
+ 
         String numVenda="";
-        String sql = "SELECT MAX(NUMVENDA) FROM VENDA";
+        String sql = "select max(numvenda) from venda";
         try {
             con=cbd.getConnection();
             ps=con.prepareStatement(sql);
@@ -38,19 +36,17 @@ public class VendaDAO {
     
     //Insere a venda no banco
     public int gravarVenda (Venda venda){
-        String sql = "INSERT INTO VENDA (IDCLIENTE, IDUSUARIO, NUMVENDA, DATAVENDA, TOTALPAGAR, STATUS) VALUES(?,?,?,?,?,?)";
+        String sql = "INSERT INTO venda (idcliente, idusuario, numvenda, datavenda, totalpagar, status) VALUES(?,?,?,?,?,?)";
         try {
             Connection conexao = ConexaoBD.getConnection();
             PreparedStatement ps = conexao.prepareStatement(sql);
             ps.setInt(1, venda.getIdCliente());
             ps.setInt(2, venda.getIdUsuario());
             ps.setString(3, venda.getNumVenda());
-            ps.setString(4, venda.getDataVenda());
+            ps.setTimestamp(4, venda.getDataVenda());
             ps.setDouble(5, venda.getTotalPagar());
             ps.setString(6, venda.getStatusVenda());
-            
             ps.executeUpdate();
-            
         } catch (Exception e) {
         }
         return retorno;  
@@ -59,7 +55,7 @@ public class VendaDAO {
     
     //Insere Item detalhado da venda
     public int gravarItemVenda (Venda venda){
-        String sql = "INSERT INTO ITEM_VENDA(IDVENDA, IDPRODUTO, QUANTIDADE, PRECOVENDA) VALUES(?,?,?,?)";
+        String sql = "INSERT INTO item_venda(idvenda, idproduto, quantidade, precovenda) VALUES(?,?,?,?)";
         try {
             Connection conexao = ConexaoBD.getConnection();
             PreparedStatement ps = conexao.prepareStatement(sql);
@@ -68,12 +64,8 @@ public class VendaDAO {
             ps.setInt(3, venda.getQuantidade());
             ps.setDouble(4, venda.getPreco());
             ps.executeUpdate();
-            
         } catch (Exception e) {
         }   
         return retorno;
     }
-    
-    
-    
 }

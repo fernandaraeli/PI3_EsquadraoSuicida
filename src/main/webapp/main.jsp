@@ -8,7 +8,7 @@
     String usuario = (String)objsession.getAttribute("usuario");
     
     if(usuario.equals("")){       
-        response.sendRedirect("login.jsp");
+        response.sendRedirect("index.jsp");
     }
     
 
@@ -23,7 +23,7 @@
         
             <script type="text/javascript">
             function Voltar(){
-                location.href = 'login.jsp';
+                location.href = 'index.jsp';
             }
             </script>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
@@ -65,6 +65,11 @@
                <a class="nav-link" href="ControladorPrincipal?menu=NovaVenda&acao=default" target="frame">Nova Venda</a>
         </strong>
       </li>
+      
+    <li class="nav-item">
+           <strong>
+        <a class="nav-link" href="ControlePrincipal">Relatórios</a>
+           </strong>
     </ul>
       
       
