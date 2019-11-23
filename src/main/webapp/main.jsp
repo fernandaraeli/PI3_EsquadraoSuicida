@@ -17,28 +17,28 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <title>Cadastros</title>
+        <title>Menu Principal</title>
                 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 
         
             <script type="text/javascript">
             function Voltar(){
-                location.href = 'index.jsp';
+                location.href ='index.jsp';
             }
             </script>
-        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+            <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     </head>
     <body>
+        <nav class="navbar navbar-expand-lg navbar-light bg-light ">
+        <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
+        <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
         
-     <nav class="navbar navbar-expand-lg navbar-light bg-light ">
-
-
-  <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
-    <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
         
+      <!--MENUS-->  
       <li class="nav-item">
          <strong> 
-             <a class="nav-link" href="main.jsp">Home</a>
+             <a class="nav-link" href="main.jsp">
+                 <img src="imagem/logoHome.jpg" alt="70" height="22"/></a>
          </strong>
       </li>
 
