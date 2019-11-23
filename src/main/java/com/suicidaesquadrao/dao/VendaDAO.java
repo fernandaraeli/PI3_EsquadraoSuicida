@@ -13,7 +13,8 @@ public class VendaDAO {
         ConexaoBD cbd = new ConexaoBD();
         PreparedStatement ps;
         ResultSet rs;
-        int retorno;  
+        int retorno; 
+        String resultado;
         
         
     //Busca o ultimo numero de venda registrado no banco
@@ -68,4 +69,12 @@ public class VendaDAO {
         }   
         return retorno;
     }
+    
+    //buscar Venda por data
+    public String buscarVendaData(){
+        
+     
+        return resultado;
+    }
+    
 }

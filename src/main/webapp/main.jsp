@@ -35,6 +35,11 @@
 
   <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
     <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
+        
+        <li class="nav-item"> 
+        <a href=?main.jsp?>
+            <img src="../java/com/suicidaesquadrao/imagem/home.png" alt="home"/> </a> 
+        </li>     
   
       <li class="nav-item">
          <strong> 
@@ -56,7 +61,7 @@
       
        <li class="nav-item">
            <strong>
-        <a class="nav-link" href="usuarioControle">Usuários</a>
+        <a class="nav-link" href="usuarioControle" target="frame">Usuários</a>
            </strong>
       </li>
       
@@ -66,10 +71,11 @@
         </strong>
       </li>
       
-    <li class="nav-item">
+        <li class="nav-item">
            <strong>
-        <a class="nav-link" href="ControlePrincipal">Relatórios</a>
+                <a class="nav-link" href="ControladorPrincipal?menu=Relatorios&acao=default" target="frame">Relatórios</a>
            </strong>
+        </li>
     </ul>
       
       

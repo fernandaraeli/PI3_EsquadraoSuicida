@@ -42,6 +42,9 @@ public class ControladorPrincipal extends HttpServlet {
     
     int idCli;
     
+    String dataini;
+    String datafim;
+    
     
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
@@ -187,11 +190,17 @@ public class ControladorPrincipal extends HttpServlet {
         request.getRequestDispatcher("/WEB-INF/registrarVenda.jsp").forward(request, response);
         }
     
-    if(menu.equals("Relatórios")){
-        
-        
-        
-        
+    if(menu.equals("Relatorios")){
+        switch (acao){
+            case "FaturamentoPeriodo":
+            request.getRequestDispatcher("/WEB-INF/relatorioFaturamentoPeriodo.jsp").forward(request, response);    
+            break;
+            
+            default:
+                
+            request.getRequestDispatcher("/WEB-INF/relatorios.jsp").forward(request, response);
+        }
+        request.getRequestDispatcher("/WEB-INF/relatorios.jsp").forward(request, response);
     }
     }  
         
