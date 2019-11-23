@@ -1,9 +1,3 @@
-<%-- 
-    Document   : creditos
-    Created on : 22/11/2019, 21:00:57
-    Author     : deise.mfarias
---%>
-
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -24,7 +18,9 @@
                 <p class="card-text">Flavio Quaresma de Oliveira</p>
                 <p class="card-text">Igor Pavan Kuroda</p><br>
                 <p class="card-text">Professor Orientador: Fernando Tsuda</p>
+                <a href="index.jsp">Voltar</a>
             </div>
+                
         </div>
 
     </body>
