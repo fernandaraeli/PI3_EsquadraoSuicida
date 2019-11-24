@@ -129,7 +129,7 @@ public class clienteControle extends HttpServlet {
         }  
         
         
-        RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/listarClientes.jsp");
+        RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/clientes.jsp");
         dispatcher.forward(request, response);
         
     }
