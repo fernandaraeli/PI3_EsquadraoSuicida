@@ -74,7 +74,7 @@
       
         <li class="nav-item">
            <strong>
-                <a class="nav-link" href="ControladorPrincipal?menu=FaturamentoDiario&acao=default">Faturamento Diario</a>
+                <a class="nav-link" href="ControladorPrincipal?menu=FaturamentoDiario&acao=default">Relatórios</a>
            </strong>
         </li>
     </ul>

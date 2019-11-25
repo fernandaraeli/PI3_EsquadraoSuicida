@@ -7,11 +7,8 @@ import com.suicidaesquadrao.model.GerarNumVenda;
 import com.suicidaesquadrao.model.Venda;
 import com.suicidaesquadrao.model.clientes;
 import com.suicidaesquadrao.model.produtos;
-import com.sun.javafx.scene.control.skin.VirtualFlow;
 import java.io.IOException;
 import java.sql.Date;
-import java.text.DateFormat;
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.List;
 import javax.servlet.ServletException;
@@ -50,6 +47,7 @@ public class ControladorPrincipal extends HttpServlet {
         
     String menu=request.getParameter("menu");
     String acao=request.getParameter("acao");
+    String selecao=request.getParameter("selecao");
     
     
     if(menu.equals("Home")){
@@ -190,18 +188,18 @@ public class ControladorPrincipal extends HttpServlet {
         }
     
     if(menu.equals("FaturamentoDiario")){
-        //venda = new Venda();
         switch (acao){
             case "Pesquisar":
-                lista = vdao.listarVenda();
-                request.setAttribute("lista", lista);
-                request.getRequestDispatcher("/WEB-INF/relatorioFaturamentoDiario.jsp").forward(request, response);
+                List<Venda>vendas=vdao.listarVenda();
+                request.setAttribute("vendas", vendas);
+                request.getRequestDispatcher("/WEB-INF/relFaturamentoDiario.jsp").forward(request, response);
                 break;
-           
+            case "Imprimir":
+                request.getRequestDispatcher("/WEB-INF/relFaturamentoDiario.jsp").forward(request, response);
+                
             default:
-                request.getRequestDispatcher("/WEB-INF/relatorioFaturamentoDiario.jsp").forward(request, response);
+                request.getRequestDispatcher("/WEB-INF/relFaturamentoDiario.jsp").forward(request, response);
         }
-        request.getRequestDispatcher("main.jsp").forward(request, response);
     }
     }  
         

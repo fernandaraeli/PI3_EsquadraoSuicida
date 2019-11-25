@@ -77,7 +77,7 @@ public class VendaDAO {
     }
     
     //Listar todas as vendas
-    public List<Venda> listarVenda(){
+    public List listarVenda(){
         List<Venda>lista = new ArrayList<>();
         String sql = "select * from venda";
         try {
