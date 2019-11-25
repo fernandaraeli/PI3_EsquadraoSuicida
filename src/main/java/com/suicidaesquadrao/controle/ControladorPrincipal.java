@@ -7,8 +7,11 @@ import com.suicidaesquadrao.model.GerarNumVenda;
 import com.suicidaesquadrao.model.Venda;
 import com.suicidaesquadrao.model.clientes;
 import com.suicidaesquadrao.model.produtos;
+import com.sun.javafx.scene.control.skin.VirtualFlow;
 import java.io.IOException;
-import java.sql.Timestamp;
+import java.sql.Date;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.List;
 import javax.servlet.ServletException;
@@ -24,10 +27,11 @@ public class ControladorPrincipal extends HttpServlet {
     clientes cliente = new clientes();
     produtoDAO pdao = new produtoDAO();
     produtos produto = new produtos();
-  
-    //Criar ArrayList para exibição dos itens na tela de venda
+    VendaDAO vdao = new VendaDAO();
     Venda venda = new Venda();
     List<Venda>lista=new ArrayList<>();
+  
+    //Campos para o Array de Venda
     int item;
     int codigo;
     String descricao;
@@ -35,15 +39,9 @@ public class ControladorPrincipal extends HttpServlet {
     int quantidade;
     double subtotal; 
     double totalPagar;
-    Timestamp data = new Timestamp(System.currentTimeMillis());
-    
+    Date dat;
     String numVenda;
-    VendaDAO vdao = new VendaDAO();
-    
     int idCli;
-    
-    String dataini;
-    String datafim;
     
     
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
@@ -134,11 +132,12 @@ public class ControladorPrincipal extends HttpServlet {
                 int estoqueAtual = (produto.getQuantidade()-quantidade);
                 proddao.atualizarEstoque(idProduto, estoqueAtual);
                 }
-                //Armazenar os itens na tabela Venda             
+                //Armazenar os itens na tabela Venda
                 venda.setIdCliente(cliente.getId());
                 venda.setIdUsuario(1);
                 venda.setNumVenda(numVenda);
-                venda.setDataVenda(data);
+                //venda.setDataVenda(data);
+                venda.setDataVenda(new java.util.Date());
                 venda.setTotalPagar(totalPagar);
                 venda.setStatusVenda("1");
                 vdao.gravarVenda(venda);      
@@ -190,17 +189,19 @@ public class ControladorPrincipal extends HttpServlet {
         request.getRequestDispatcher("/WEB-INF/registrarVenda.jsp").forward(request, response);
         }
     
-    if(menu.equals("Relatorios")){
+    if(menu.equals("FaturamentoDiario")){
+        //venda = new Venda();
         switch (acao){
-            case "FaturamentoPeriodo":
-            request.getRequestDispatcher("/WEB-INF/relatorioFaturamentoPeriodo.jsp").forward(request, response);    
-            break;
-            
+            case "Pesquisar":
+                lista = vdao.listarVenda();
+                request.setAttribute("lista", lista);
+                request.getRequestDispatcher("/WEB-INF/relatorioFaturamentoDiario.jsp").forward(request, response);
+                break;
+           
             default:
-                
-            request.getRequestDispatcher("/WEB-INF/relatorios.jsp").forward(request, response);
+                request.getRequestDispatcher("/WEB-INF/relatorioFaturamentoDiario.jsp").forward(request, response);
         }
-        request.getRequestDispatcher("/WEB-INF/relatorios.jsp").forward(request, response);
+        request.getRequestDispatcher("main.jsp").forward(request, response);
     }
     }  
         

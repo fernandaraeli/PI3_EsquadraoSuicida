@@ -3,8 +3,11 @@ package com.suicidaesquadrao.dao;
 
 import com.suicidaesquadrao.model.Venda;
 import java.sql.Connection;
+import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.util.ArrayList;
+import java.util.List;
 
 
 public class VendaDAO {
@@ -15,6 +18,7 @@ public class VendaDAO {
         ResultSet rs;
         int retorno; 
         String resultado;
+        
         
         
     //Busca o ultimo numero de venda registrado no banco
@@ -44,11 +48,12 @@ public class VendaDAO {
             ps.setInt(1, venda.getIdCliente());
             ps.setInt(2, venda.getIdUsuario());
             ps.setString(3, venda.getNumVenda());
-            ps.setTimestamp(4, venda.getDataVenda());
+            ps.setDate(4, new java.sql.Date(venda.getDataVenda().getTime()));
             ps.setDouble(5, venda.getTotalPagar());
             ps.setString(6, venda.getStatusVenda());
             ps.executeUpdate();
         } catch (Exception e) {
+            e.printStackTrace();
         }
         return retorno;  
     }
@@ -66,15 +71,36 @@ public class VendaDAO {
             ps.setDouble(4, venda.getPreco());
             ps.executeUpdate();
         } catch (Exception e) {
+            e.printStackTrace();
         }   
         return retorno;
     }
     
-    //buscar Venda por data
-    public String buscarVendaData(){
-        
-     
-        return resultado;
+    //Listar todas as vendas
+    public List<Venda> listarVenda(){
+        List<Venda>lista = new ArrayList<>();
+        String sql = "select * from venda";
+        try {
+            con=cbd.getConnection();
+            ps=con.prepareStatement(sql);
+            rs=ps.executeQuery();        
+            while(rs.next()){
+                Venda v = new Venda();
+                v.setIdVenda(rs.getInt("idvenda"));
+                v.setIdCliente(rs.getInt("idcliente"));
+                v.setIdUsuario(rs.getInt("idusuario"));
+                v.setNumVenda(rs.getString("numvenda"));
+                v.setDataVenda(new java.util.Date(rs.getDate("datavenda").getTime()));
+                v.setTotalPagar(rs.getDouble("totalpagar"));
+                v.setStatusVenda(rs.getString("status"));
+                lista.add(v);
+            }
+            ps.close();
+            con.close();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return lista;
     }
-    
+        
 }

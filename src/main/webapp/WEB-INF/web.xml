@@ -2,7 +2,7 @@
 <web-app version="3.1" xmlns="http://xmlns.jcp.org/xml/ns/javaee" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd">
     <servlet>
         <servlet-name>produtoControle</servlet-name>
-        <servlet-class>com.suicidaesquadrao.controle.produtoControle</servlet-class>
+        <servlet-class>com.suicidaesquadrao.controle.RelatorioControle</servlet-class>
     </servlet>
     <servlet>
         <servlet-name>clienteControle</servlet-name>
@@ -23,6 +23,10 @@
     <servlet>
         <servlet-name>ControladorPrincipal</servlet-name>
         <servlet-class>com.suicidaesquadrao.controle.ControladorPrincipal</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>RelatorioControle</servlet-name>
+        <servlet-class>com.suicidaesquadrao.controle.RelatorioControle</servlet-class>
     </servlet>
     <servlet-mapping>
         <servlet-name>produtoControle</servlet-name>
@@ -47,6 +51,10 @@
     <servlet-mapping>
         <servlet-name>ControladorPrincipal</servlet-name>
         <url-pattern>/ControladorPrincipal</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>RelatorioControle</servlet-name>
+        <url-pattern>/RelatorioControle</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>
