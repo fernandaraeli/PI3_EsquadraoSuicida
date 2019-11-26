@@ -79,7 +79,7 @@
                                 <div class="form-group"><label>Dados Cliente</label></div>                       
                             <div class="form-group d-flex">     
                                 <div class="col-sm-6 d-flex">
-                                <input type="text" name="cnpj" value="${cliente.getCnpj()}" class="form-control" placeholder="CNPJ" required>                                
+                                    <input type="text" name="cnpj" value="${cliente.getCnpj()}" class="form-control" placeholder="CNPJ" required>                                
                                 <input type="submit" name="acao" value="BuscarCliente" class="btn btn-outline-info">  
                                 </div>
                                 <div class="col-sm-6">
@@ -91,7 +91,7 @@
                             <div class="form-group"><label>Dados Produto</label></div>
                                 <div class="form-group d-flex">
                                     <div class="col-sm-6 d-flex">
-                                    <input type="text" name="idproduto" value="${produto.getId()}" class="form-control" placeholder="Codigo" required>
+                                    <input type="text" name="idproduto" value="${produto.getId()}" class="form-control" placeholder="Codigo">
                                     <button type="submit" name="acao" value="BuscarProduto" class="btn btn-outline-info">BuscarProduto</button>                           
                                     </div>
                                     <div class="col-sm-6"><input type="text" name="nomeproduto" value="${produto.getNome()}" placeholder="Produto" class="form-control"></div>

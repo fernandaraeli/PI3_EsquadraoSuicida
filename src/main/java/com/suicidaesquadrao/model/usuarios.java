@@ -26,6 +26,11 @@ public class usuarios {
         }
     }
 
+    public usuarios() {
+    }
+    
+    
+
     public usuarios(int id_usuario, String nome, String user, String senha, int id_filial, int id_perfil) {
         this.id_usuario = id_usuario;
         this.nome = nome;

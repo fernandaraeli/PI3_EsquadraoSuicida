@@ -3,7 +3,7 @@ package com.suicidaesquadrao.dao;
 
 import com.suicidaesquadrao.model.Venda;
 import java.sql.Connection;
-import java.sql.Date;
+import java.util.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.util.ArrayList;
@@ -48,7 +48,7 @@ public class VendaDAO {
             ps.setInt(1, venda.getIdCliente());
             ps.setInt(2, venda.getIdUsuario());
             ps.setString(3, venda.getNumVenda());
-            ps.setDate(4, new java.sql.Date(venda.getDataVenda().getTime()));
+             ps.setDate(4, new java.sql.Date(venda.getDataVenda().getTime()));
             ps.setDouble(5, venda.getTotalPagar());
             ps.setString(6, venda.getStatusVenda());
             ps.executeUpdate();
@@ -90,7 +90,63 @@ public class VendaDAO {
                 v.setIdCliente(rs.getInt("idcliente"));
                 v.setIdUsuario(rs.getInt("idusuario"));
                 v.setNumVenda(rs.getString("numvenda"));
-                v.setDataVenda(new java.util.Date(rs.getDate("datavenda").getTime()));
+                v.setDataVenda(new java.sql.Date(rs.getDate("datavenda").getTime()));
+                v.setTotalPagar(rs.getDouble("totalpagar"));
+                v.setStatusVenda(rs.getString("status"));
+                lista.add(v);
+            }
+            ps.close();
+            con.close();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return lista;
+    }
+
+    
+    //Listar venda pelo número da venda
+    public List buscarNumeroVenda(String numvenda){
+        List<Venda>lista = new ArrayList<>();
+        String sql = "select * from venda where numvenda=" +numvenda;
+        try {
+            con=cbd.getConnection();
+            ps=con.prepareStatement(sql);
+            rs=ps.executeQuery();        
+            while(rs.next()){
+                Venda v = new Venda();
+                v.setIdVenda(rs.getInt("idvenda"));
+                v.setIdCliente(rs.getInt("idcliente"));
+                v.setIdUsuario(rs.getInt("idusuario"));
+                v.setNumVenda(rs.getString("numvenda"));
+                v.setDataVenda(new java.sql.Date(rs.getDate("datavenda").getTime()));
+                v.setTotalPagar(rs.getDouble("totalpagar"));
+                v.setStatusVenda(rs.getString("status"));
+                lista.add(v);
+            }
+            ps.close();
+            con.close();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return lista;
+    }
+    
+    
+        //Listar venda pela Data da Venda
+    public List buscarVendaData(Date dtvenda){
+        List<Venda>lista = new ArrayList<>();
+        String sql = "select * from venda where numvenda=" +dtvenda;
+        try {
+            con=cbd.getConnection();
+            ps=con.prepareStatement(sql);
+            rs=ps.executeQuery();        
+            while(rs.next()){
+                Venda v = new Venda();
+                v.setIdVenda(rs.getInt("idvenda"));
+                v.setIdCliente(rs.getInt("idcliente"));
+                v.setIdUsuario(rs.getInt("idusuario"));
+                v.setNumVenda(rs.getString("numvenda"));
+                v.setDataVenda(new java.sql.Date(rs.getDate("datavenda").getTime()));
                 v.setTotalPagar(rs.getDouble("totalpagar"));
                 v.setStatusVenda(rs.getString("status"));
                 lista.add(v);

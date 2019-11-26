@@ -5,7 +5,7 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-        <title>Faturamento Diario</title>
+        <title>Listar Vendas</title>
     </head>
     <body>
         
@@ -74,8 +74,6 @@
 <nav class="navbar navbar-expand-lg">
             <div class="collapse navbar-collapse" id="navbarTogglerDemo02">&nbsp;</div>
         </nav>        
-        
-        
         <div>
             <table class="table table-hover">
                 <thead>
@@ -103,20 +101,11 @@
                 </c:forEach>
                 </tbody>
             </table>
-            <form action="ControladorPrincipal?menu=Relatorios&acao=FaturamentoDiario" method="POST">
-                
-                <div class="col-sm-4 d-flex">
-                    <input type="text" name="numvenda" value="" placeholder="Número da Venda" class="form-control">  
-                    <input type="submit" name="selecao" value="Pesquisar" class="btn btn-outline-info">  
-                </div><br/>
-                <div class="col-sm-4 d-flex">
-                    <input type="date" name="datavenda">
-                    <input type="submit" name="selecao" value="Pesquisar2" class="btn btn-outline-info">  
-                </div><br/>
-                <div class="col-sm-4 d-flex">
+            <form action="ControladorPrincipal?menu=Relatorios&acao=ListarVendas" method="POST">
+                <input type="submit" name="selecao" value="Pesquisar" class="btn btn-success">
+                <input type="submit" name="selecao" value="Exportar" class="btn btn-info">
                 <input type="submit" name="selecao" value="Imprimir" onclick="print()" class="btn btn-info">
-                </div>
-            </form>
+                            </form>
         </div>
     
     </body>

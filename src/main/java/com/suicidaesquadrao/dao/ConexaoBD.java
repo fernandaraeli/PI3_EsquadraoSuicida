@@ -10,7 +10,7 @@ public class ConexaoBD {
     public static Connection getConnection ()throws SQLException, ClassNotFoundException{
         Class.forName("com.mysql.cj.jdbc.Driver");
 
-        return DriverManager.getConnection("jdbc:mysql://localhost:3306/tads?useTimezone=true&serverTimezone=UTC","root","root");
+        return DriverManager.getConnection("jdbc:mysql://localhost:3306/tads?useTimezone=true&serverTimezone=UTC","root","adminadmin");
     }
 
 }    
