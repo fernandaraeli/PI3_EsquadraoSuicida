@@ -9,14 +9,35 @@
 
     </head>
         <script type="text/javascript">  
-            
-            
-            function 
-            
-            
-            
             function Alerta(){
-                alert("Cadastro Realizado Com Sucesso!");
+                var cnpj = formuser.cnpj_filial.value;
+                var nomeDaFilial = formuser.nome_filial.value;
+                var descFilial = formuser.desc_filial.value;
+                var cidade = formuser.cidade_filial.value;
+                var estado = formuser.estado_filial.value;
+                
+                if(cnpj.length !== 14){
+                    alert('Insira o CNPJ da Filial ou preencha corretamente');
+                    formuser.cnpj.focus();
+                    return false;
+                }
+                if(nomeDaFilial === ""){
+                    alert('Preencha o nome da Filial');
+                    formuser.nomeDaFilial.focus();
+                    return false;
+                }
+                if(cidade === ""){
+                    alert('Preencha a cidade da Filial');
+                    formuser.cidade.focus();
+                    return false;
+                }
+                if(estado === ""){
+                   alert('Preencha um estado válido');
+                   formuser.estado.focus();
+                   return false;
+                }
+                
+                alert('Cadastro realizado com sucesso!');
             }
             </script>
     <body>
@@ -79,7 +100,7 @@
 </nav>
         
         
-        <form method="POST" action="filialControle">
+        <form method="POST" action="filialControle" name="formuser">
           
             
               <div class="form-row">                    
@@ -93,7 +114,7 @@
                      
                       <div class="form-group col-md-3">
                         <label for="inputPassword4">CNPJ</label>
-                        <input type="text" class="form-control" placeholder="99.999.999/9999-99" name ="cnpj_filial" value="${cliente.cnpj}"/>
+                        <input type="text" class="form-control" placeholder="99.999.999/9999-99" name ="cnpj_filial" value="${cliente.cnpj}" required/>
                       </div>             
               </div>
                       
@@ -103,7 +124,7 @@
                
                       <div class="form-group col-md-4">
                         <label for="inputPassword4">Nome da Filial</label>
-                        <input type="text" class="form-control" placeholder="Nome da Filial" name ="nome_filial" value="${filial.nome_filial}"/>
+                        <input type="text" class="form-control" placeholder="Nome da Filial" name ="nome_filial" value="${filial.nome_filial}" required/>
                       </div>             
               </div> 
                 <div class="form-row">                    
@@ -123,17 +144,17 @@
                      
                     <div class="form-group col-md-3">
                         <label for="inputPassword4">Cidade</label>
-                        <input type="text" class="form-control" placeholder="Nome da Cidade" name ="cidade_filial" value="${filial.cidade_filial}"/>
+                        <input type="text" class="form-control" placeholder="Nome da Cidade" name ="cidade_filial" value="${filial.cidade_filial}" required/>
                     </div>  
                     
                      <div class="form-group col-md-1">
                         <label for="inputPassword4">Estado</label>
-                        <input type="text" class="form-control" placeholder="UF" name ="estado_filial"value="${filial.estado_filial}"/>
+                        <input type="text" class="form-control" placeholder="UF" name ="estado_filial"value="${filial.estado_filial}" required/>
                     </div> 
               </div>
                     
                   &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                 <button type="submit" class="btn btn-primary" onclick="Alerta()">Cadastrar</button>
+                 <button type="submit" class="btn btn-primary" onclick="return Alerta()">Cadastrar</button>
                  <button type="reset" class="btn btn-primary">Limpar</button>
                  <!--
                  <button type="reset" class="btn btn-primary" ><a href=filialControle?acao=voltar>Voltar</a></button>         

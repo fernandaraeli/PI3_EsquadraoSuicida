@@ -5,7 +5,19 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-
+        <script>
+            function confere(){
+                var quantidade = quantidade.value;
+                var estoque = estoque.value;
+                
+                if(estoque < quantidade){
+                    alert('Quantidade em falta no estoque');
+                    return false;
+                }
+            }
+            
+        </script>
+        
         <title>Venda</title>
                 </head>
                     <body>
@@ -83,7 +95,7 @@
                                 <input type="submit" name="acao" value="BuscarCliente" class="btn btn-outline-info">  
                                 </div>
                                 <div class="col-sm-6">
-                                <input type="text" name="razao" value="${cliente.getRazao()}" placeholder="Cliente" class="form-control"> 
+                                <input type="text" name="razao" value="${cliente.getRazao()}" placeholder="Cliente" class="form-control" disabled="disabled" > 
                                 </div>
                             </div>  
     
@@ -94,17 +106,17 @@
                                     <input type="text" name="idproduto" value="${produto.getId()}" class="form-control" placeholder="Codigo">
                                     <button type="submit" name="acao" value="BuscarProduto" class="btn btn-outline-info">BuscarProduto</button>                           
                                     </div>
-                                    <div class="col-sm-6"><input type="text" name="nomeproduto" value="${produto.getNome()}" placeholder="Produto" class="form-control"></div>
+                                    <div class="col-sm-6"><input type="text" name="nomeproduto" value="${produto.getNome()}" placeholder="Produto" class="form-control" disabled="disabled"></div>
                                 </div>
                                 <div class="form-group d-flex">
                                     <div class="col-sm-6"><input type="text" name="preco" value="${produto.getPreco()}" placeholder="R$0,00" class="form-control"></div>
-                                    <div class="col-sm-3"><input type="number" value="1" name="quantidade" placeholder="" class="form-control"></div>
-                                    <div class="col-sm-3"><input type="text" name="estoque" value="${produto.getQuantidade()}" placeholder="Estoque" class="form-control"></div>
+                                    <div class="col-sm-3"><input type="number" name="quantidade"  value="1" placeholder="" class="form-control" min="1"></div>
+                                    <div class="col-sm-3"><input type="text" name="estoque" value="${produto.getQuantidade()}" placeholder="Estoque" class="form-control" disabled="disabled"></div>
                                 </div>
                            
                         <!--BOTÃO PARA INSERIR O ITEM NA VENDA-->   
                                     <div class="form-group">
-                                        <div class="col-sm-3"><button type="submit" name="acao" value="InserirProduto" class="btn btn-outline-info">Inserir</button>&nbsp;&nbsp;
+                                        <div class="col-sm-3"><button type="submit" name="acao" value="InserirProduto" class="btn btn-outline-info" onclick="return confere()">Inserir</button>&nbsp;&nbsp;
                                             <a href="main.jsp" class="btn btn-danger">Sair</a></div>
                                     </div>      
                                 </div>
@@ -117,8 +129,8 @@
 
                             
                         <!--ITENS DA VENDA--> 
-                        <div class="d-flex col-sm-8 mr-auto"><label>Cliente:</label><input type="text" name="razao" value="${cliente.getRazao()}" class="form-control">
-                            <div class="d-flex col-sm-7 ml-auto"><label>Nº Venda:</label><input type="text" name="NroVenda" value="${numVenda}" class="form-control"></div>
+                        <div class="d-flex col-sm-8 mr-auto"><label>Cliente:</label><input type="text" name="razao" value="${cliente.getRazao()}" class="form-control" disabled="disabled">
+                            <div class="d-flex col-sm-7 ml-auto"><label>Nº Venda:</label><input type="text" name="NroVenda" value="${numVenda}" class="form-control" disabled="disabled"></div>
                                 </div> 
                         <table class="table table-hover">
                             <thead>
