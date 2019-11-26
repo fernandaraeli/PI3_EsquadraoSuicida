@@ -45,7 +45,7 @@
             </div>
         </div>
         
-        <footer
+        <footer>
             <div align="right">
                 <a style="color: white" href="creditos.jsp">Créditos</a>&nbsp;&nbsp;&nbsp;&nbsp;
             </div>

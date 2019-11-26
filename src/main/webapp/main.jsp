@@ -91,6 +91,11 @@
         </div>
   </div>
 </nav>
+            <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    </head>
+    <body>
+        
+        
         <div class="m-4" style="height: 630px; ">
             <iframe name="frame" style="height: 100%; width: 100%"></iframe>             
         </div>  
