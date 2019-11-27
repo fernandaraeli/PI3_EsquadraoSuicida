@@ -11,7 +11,36 @@
         <script type="text/javascript">
             
             function Alerta(){
-                alert("Cadastro Realizado Com Sucesso!");
+                var cnpj = form.cnpj.value;
+                var nome = form.razao.value;
+                var cep = form.cep.value;
+                var cidade = form.cidade.value;
+                var tel = form.telefone.value;
+                var email  = form.email.value;
+                
+                if(cnpj.length != 14){
+                    alert('Insira o CNPJ ou preencha corretamente');
+                    return false;
+                }
+                if(nome == ""){
+                    alert('insira o nome');
+                    return false;
+                }
+                if(email == ""){
+                    return true;
+                }else if(email.indexOf('@')== -1){
+                    alert('Preencha um e-mail')
+                    return false;
+                }
+                if(cep.length != 5){
+                    alert('Insira o cep ou preencha corretamente');
+                    return false;
+                }
+                if(cidade == ""){
+                    alert('insira a cidade');
+                    return false;
+                }
+                alert("Sucesso!");
             }
             </script>
         
@@ -79,7 +108,7 @@
             
             
             
-            <form method="POST" action="clienteControle" class="form-sign">
+        <form name="form" method="POST" action="clienteControle" class="form-sign">
                 
                 <div class="form-row">
                     
@@ -93,7 +122,7 @@
                      
                       <div class="form-group col-md-3">
                         <label for="inputPassword4">CNPJ</label>
-                        <input type="text" class="form-control" placeholder="99.999.999/9999-99" name="cnpj" value="${cliente.cnpj}"/>
+                        <input type="text" class="form-control" placeholder="99.999.999/9999-99" name="cnpj" value="${cliente.cnpj}" required=""/>
                       </div>             
                 </div>
                       
@@ -105,7 +134,7 @@
                     </div>
                      <div class="form-group col-md-4">
                         <label for="inputPassword4">Nome do Cliente</label>
-                        <input type="text" name="razao" class="form-control" placeholder="Nome da Empresa" value="${cliente.razao}"/>
+                        <input type="text" name="razao" class="form-control" placeholder="Nome da Empresa" value="${cliente.razao}" required/>
                       </div> 
                     
                 </div>    
@@ -118,12 +147,12 @@
                     
                      <div class="form-group col-md-1">
                         <label for="inputPassword4">Telefone</label>
-                        <input type="text" class="form-control" placeholder="(99)9999-9999" name="telefone" value="${cliente.telefone}"/>
+                        <input type="number" class="form-control" placeholder="(99)9999-9999" name="telefone" value="${cliente.telefone}"/>
                       </div> 
                     
                       <div class="form-group col-md-3">
                         <label for="inputPassword4">Email</label>
-                        <input type="text" name="email" class="form-control" placeholder="fulano@provedor.com.br" value="${cliente.email}"/>
+                        <input type="text" name="email" class="form-control" placeholder="exemplo@exemplo.com" value="${cliente.email}"/>
                       </div> 
                       
                 </div>    
@@ -135,12 +164,12 @@
                     
                      <div class="form-group col-md-3">
                         <label for="inputPassword4">Endereço</label>
-                        <input type="text" class="form-control" placeholder="Rua ..." name="endereco"  value="${cliente.endereco}"/>
+                        <input type="text" class="form-control" placeholder="Rua..." name="endereco"  value="${cliente.endereco}"/>
                       </div> 
                     
                       <div class="form-group col-md-1">
                         <label for="inputPassword4">Número</label>
-                        <input type="text" name="numero" class="form-control" placeholder="123 ..." value="${cliente.numero}"/>
+                        <input type="number" name="numero" class="form-control" placeholder="123 ..." value="${cliente.numero}"/>
                       </div> 
                       
                 </div>  
@@ -158,7 +187,7 @@
                     
                       <div class="form-group col-md-1">
                         <label for="inputPassword4">Cep</label>
-                        <input type="text"  class="form-control" placeholder="9999-999" name="cep" value="${cliente.cep}"/>
+                        <input type="numbervds"  class="form-control" placeholder="99999-999" name="cep" value="${cliente.cep}" required/>
                       </div> 
                       
                 </div>  
@@ -171,17 +200,17 @@
                     
                      <div class="form-group col-md-2">
                         <label for="inputPassword4">Bairro</label>
-                        <input type="text" class="form-control" placeholder="Complemento" name="bairro" value="${cliente.bairro}"/>
+                        <input type="text" class="form-control" placeholder="Bairro" name="bairro" value="${cliente.bairro}"/>
                       </div> 
                     
                       <div class="form-group col-md-2">
                         <label for="inputPassword4">Cidade</label>
-                        <input type="text"  class="form-control" placeholder="9999-999" name="cidade" value="${cliente.cidade}"/>
+                        <input type="text"  class="form-control" placeholder="Cidade" name="cidade" value="${cliente.cidade}" required/>
                       </div>                      
                 </div> 
                       
                  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                 <button type="submit" class="btn btn-primary" onclick="Alerta()">Cadastrar</button>
+                 <button type="submit" class="btn btn-primary" onclick="return Alerta()">Cadastrar</button>
                  <button type="reset" class="btn btn-primary">Limpar</button>
                  <!--
                  <button type="reset" class="btn btn-primary" ><a href=clienteControle?&acao=Voltar>Voltar</a></button>      
