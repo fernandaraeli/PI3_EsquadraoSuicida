@@ -9,49 +9,31 @@
         
                 <script type="text/javascript">
             
-            funcition validaProd(){
-               
-               var nome = validaProd.Nome.value;
-               var quant = validaProd.quantidade.value;
-               var preco = validaProd.preco.value;
-               var filial = validaProd.filial.value; 
-               
-               if(nome == ""){                
-                    alert("Preencha o Nome de Produto");
-                    validaProd.Nome.focus();
-                    return false;                        
-               }
-               else if(quant == ""){
-                    alert("Preencha a Qunatidade do Produto");
-                    validaProd.quantidade.focus();
-                    return false;
-               }
-               else if(preco == ""){
-                    alert("Preencha o valor do produto");
-                    validaProd.preco.focus();
-                    return false;
-               }
-               else if(filial == ""){
-                   alert("Preencha o Id da Filial");
-                   validaProd.filial.focus();
-                   return false;
-               }
-               else {
-                   alert("Cadastro Realizado com Sucesso.");
-                   return true;
-               }
-               
-               
-            }
-            
-            
             function Alerta(){
+               
+                var nome = form.Nome.value;
+                var quant = form.quantidade.value;
+                var preco = form.preco.value;
+                var filial = form.filial.value; 
+               
+                if(nome == ""){                
+                    alert("Preencha o Nome de Produto");
+                    return false;                        
+                }
+                else if(quant == ""){
+                    alert("Preencha a Qunatidade do Produto");
+                    return false;
+                }
+                else if(preco == ""){
+                    alert("Preencha o valor do produto");
+                    return false;
+                }
+                else if(filial == ""){
+                   alert("Preencha o Id da Filial");
+                   return false;
+                }
                 alert("Cadastro salvo com sucesso!");
             }
-            
-            
-            
-            
             </script>        
     </head>
     <body>
@@ -113,7 +95,7 @@
   </div>
 </nav>
         
-        <form name="validaProd" method="POST" action="produtoControle">
+        <form name="form" method="POST" action="produtoControle">
             
             <div class="form-row"> 
                 
@@ -128,7 +110,7 @@
                      
                 <div class="form-group col-md-5">
                      <label for="inputPassword4">Nome do Produto</label>
-                     <input type="text" class="form-control" placeholder="Nome do Produto" name="Nome"  value="${produto.nome}"/>
+                     <input type="text" class="form-control" placeholder="Nome do Produto" name="Nome"  value="${produto.nome}" required/>
                 </div>             
             </div>
                      
@@ -141,24 +123,24 @@
                                  
                 <div class="form-group col-md-2">
                      <label for="inputPassword4">Quantidade</label>
-                     <input type="text" class="form-control" placeholder="Estoque" name="quantidade value="${produto.quantidade}"/>
+                     <input type="text" class="form-control" placeholder="Estoque" name="quantidade" min="1" value="${produto.quantidade}" required/>
                 </div>
                 
                 <div class="form-group col-md-2">
                      <label for="inputPassword4">Preço</label>
-                     <input type="text" class="form-control" placeholder="R$" name="preco" value="${produto.preco}"/>
+                     <input type="text" class="form-control" placeholder="R$" name="preco" min="1" value="${produto.preco}" required/>
                 </div>
                 
                  <div class="form-group col-md-2">
                      <label for="inputPassword4">Filial</label>
-                     <input type="text" class="form-control" placeholder="Escolha Filial" name="filial" value="${produto.filial}"/>
+                     <input type="text" class="form-control" placeholder="Escolha Filial" name="filial" value="${produto.filial}" required/>
                 </div>
                 
             </div>
             
                 
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-            <button type="submit" class="btn btn-primary" onclick="Alerta()">Cadastrar</button>
+            <button type="submit" class="btn btn-primary" onclick="return Alerta()">Cadastrar</button>
             <button type="reset" class="btn btn-primary">Limpar</button>
            
             <!--

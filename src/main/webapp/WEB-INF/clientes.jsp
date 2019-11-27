@@ -32,7 +32,7 @@
                     alert('Preencha um e-mail')
                     return false;
                 }
-                if(cep.length != 5){
+                if(cep.length != 8){
                     alert('Insira o cep ou preencha corretamente');
                     return false;
                 }
