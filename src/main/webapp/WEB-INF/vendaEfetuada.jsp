@@ -7,20 +7,35 @@
         <title>Venda Efetuada</title>
     </head>
     <body>
+    <center>
+        <br>
+        <br>
+    
         <h1>Venda Efetuada</h1>
+        <br>
+        <div>
+            <img src="imagem/Check-icon.png"  alt="100" height="80"/>
+        </div>
+        <br>
+        <br>
+        
         <div>
             <form action="ControladorPrincipal?menu=NovaVenda" method="POST">
                 <div>
-                    <label>Cliente: </label><input type="text" name="razao" value="${cliente.getRazao()}" size="50" style="text-align: center" disabled="disabled"><br>
+                   <b>Número da Venda:</b> ${numVenda}<br>
                 </div>
+                <br>
                 <div>
-                    <label>Nº Venda:</label><input type="text" name="NroVenda" value="${numVenda}" size="50" style="text-align: center" disabled="disabled"><br>
+                    <b>Cliente:</b> ${cliente.getRazao()}<br>
                 </div>
+                <br>
                 <div>
-                    <label>Valor total em R$:</label><input type="text" name="TotalAPagar" value=" ${totalPagar}" style="text-align: center"  disabled="disabled">
+                    <b>Total da Venda:</b> R$ ${totalPagar}<br>
                 </div>
             </form>
+                <br>
             <a href="ControladorPrincipal?menu=NovaVenda&acao=default" class="btn btn-success">OK</a>
-        </div>    
+        </div> 
+    </center>
     </body>
 </html>

@@ -38,45 +38,37 @@
         </script>
     </head>
     <body>
-       
-     
-             <nav class="navbar navbar-expand-lg navbar-light bg-light ">
+     <nav class="navbar navbar-expand-lg navbar-light bg-light ">
         <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
-        <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
-        
+            <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
         
       <!--MENUS-->  
       <li class="nav-item">
          <strong> 
-             <a class="nav-link" href="main.jsp">
-                 <img src="imagem/logoHome.jpg" alt="70" height="22"/></a>
+            <a class="nav-link" href="main.jsp">
+            <img src="imagem/logoHome.jpg" alt="70" height="22"/></a>
          </strong>
       </li>
-
       <li class="nav-item">
          <strong> 
              <a class="nav-link" href="clienteControle">Clientes</a>
          </strong>
       </li>
-      
        <li class="nav-item">
          <strong> 
         <a class="nav-link" href="filialControle">Filial</a>
         </strong>
       </li>
-      
        <li class="nav-item">
            <strong>
         <a class="nav-link" href="produtoControle">Produtos</a>
         </strong>
       </li>
-      
        <li class="nav-item">
            <strong>
         <a class="nav-link" href="usuarioControle">Usuários</a>
            </strong>
       </li>
-      
         <li class="nav-item">
            <strong>
                <a class="nav-link" href="ControladorPrincipal?menu=NovaVenda&acao=default">Nova Venda</a>
@@ -85,19 +77,12 @@
       
         <li class="nav-item">
            <strong>
-                <a class="nav-link" href="ControladorPrincipal?menu=FaturamentoDiario&acao=default">Relatórios</a>
+                 <a class="nav-link" href="ControladorPrincipal?menu=Relatorios&acao=default&selecao=default">Relatórios</a>
            </strong>
         </li>
     </ul>
-      
-      
-      
- 
   </div>
-</nav>
-        
-        
-            
+  </nav>
         <form name="form" method="POST" action="usuarioControle">
             
              <div class="form-row">                    
@@ -144,14 +129,15 @@
                         <input type="text" class="form-control" placeholder="Perfil" name="perfil" value="${user.id_perfil}" required/>
                     </div> 
             </div> 
-            
-            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-            <button type="submit" class="btn btn-primary" onclick="return Alerta()">Cadastrar</button>
-            <button type="reset" class="btn btn-primary">Limpar</button>
-            
-            <!--
-            <button type="reset" class="btn btn-primary" ><a href=usuarioControle?&acao=Voltar>Voltar</a></button> 
-            -->
+              <br>
+              
+              <div class="form-row">
+                   <div class="form-group col-md-1">            
+                    </div> 
+                        <button type="submit" class="btn btn-success" onclick="return Alerta()">Cadastrar</button>&nbsp
+                        <button type="reset" class="btn btn-primary">Limpar</button>&nbsp;
+                        <a href="usuarioControle?acao=voltar" class="btn btn-danger">Voltar</a> 
+              </div>
         </form>
         
             
