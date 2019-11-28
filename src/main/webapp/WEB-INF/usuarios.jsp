@@ -11,7 +11,29 @@
         <script type="text/javascript">
             
             function Alerta(){
-                alert("Cadastro Atualizado!");
+                var nome = form.nome_usuario.value;
+                var login = form.user.value;
+                var senha = form.senha.value;
+                var filial = form.id_filial.value;
+                var perfil = form.perfil.value;
+                
+                if(nome == ""){
+                    alert('Preencha o nome de usuário');
+                    return false;
+                }else if(login == ""){
+                    alert('Preencha um login');
+                    return false;
+                }else if(senha == ""){
+                    alert('Preencha uma senha')
+                    return false;
+                }else if(filial == ""){
+                    alert('Preencha uma filial');
+                    return false;
+                }else if(perfil == ""){
+                    alert('Preencha um perfil');
+                    return false;
+                }
+                alert('Sucesso!');
             }
         </script>
     </head>
@@ -76,7 +98,7 @@
         
         
             
-        <form method="POST" action="usuarioControle">
+        <form name="form" method="POST" action="usuarioControle">
             
              <div class="form-row">                    
                     <div class="form-group col-md-1">            
@@ -89,7 +111,7 @@
                      
                       <div class="form-group col-md-3">
                         <label for="inputPassword4">Nome do Usuário</label>
-                        <input type="text" class="form-control" placeholder="Usuário" name="nome_usuario" value="${user.nome_usuario}"/>
+                        <input type="text" class="form-control" placeholder="Usuário" name="nome_usuario" value="${user.nome_usuario}" required/>
                       </div>             
              </div> 
                       
@@ -99,32 +121,32 @@
               
                     <div class="form-group col-md-2">
                         <label for="inputPassword4">Login de Usuário</label>
-                        <input type="text" class="form-control" placeholder="Login de Acesso" name="user" value="${user.user}"/>
+                        <input type="text" class="form-control" placeholder="Login de Acesso" name="user" value="${user.user}" required/>
                     </div>
                     
                     <div class="form-group col-md-2">
                         <label for="inputPassword4">Senha de Usuário</label>
-                        <input type="password" class="form-control" placeholder="Senha de Acesso" name="senha"value="${user.senha}"/>
+                        <input type="password" class="form-control" placeholder="Senha de Acesso" name="senha"value="${user.senha}" requires/>
                     </div> 
-             </div> 
+            </div> 
             
-             <div class="form-row">                    
+            <div class="form-row">                    
                     <div class="form-group col-md-1">            
                     </div>                    
               
                     <div class="form-group col-md-2">
                         <label for="inputPassword4">Filial</label>
-                        <input type="text" class="form-control" placeholder="Filial" name="id_filial" value="${user.id_filial}"/>
+                        <input type="text" class="form-control" placeholder="Filial" name="id_filial" value="${user.id_filial}"required/>
                     </div>
                     
                     <div class="form-group col-md-2">
                         <label for="inputPassword4">Perfil</label>
-                        <input type="text" class="form-control" placeholder="Perfil" value="${user.id_perfil}"/>
+                        <input type="text" class="form-control" placeholder="Perfil" name="perfil" value="${user.id_perfil}" required/>
                     </div> 
-             </div> 
+            </div> 
             
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-            <button type="submit" class="btn btn-primary" onclick="Alerta()">Cadastrar</button>
+            <button type="submit" class="btn btn-primary" onclick="return Alerta()">Cadastrar</button>
             <button type="reset" class="btn btn-primary">Limpar</button>
             
             <!--
