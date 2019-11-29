@@ -76,6 +76,7 @@ public class usuarioControle extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+        request.setCharacterEncoding("UTF-8");
         
         String id = request.getParameter("id_usuario");
         String nome= request.getParameter("nome_usuario");

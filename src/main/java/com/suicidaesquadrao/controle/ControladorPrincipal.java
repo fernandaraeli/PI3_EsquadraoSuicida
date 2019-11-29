@@ -16,6 +16,7 @@ import java.io.IOException;
 import java.sql.Date;
 import java.util.ArrayList;
 import java.util.List;
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -186,6 +187,15 @@ public class ControladorPrincipal extends HttpServlet {
                 request.setAttribute("totalPagar", totalPagar);
                 request.setAttribute("numVenda", numVenda);
                 break;
+            /*case "EditarProduto":
+                Integer idProduto = Integer.parseInt(id);
+                produtos produto = ProdutoDAO.getProdutoId(idProduto);
+                request.setAttribute("produtos", produto);
+                break;
+            case "RemoverProduto":
+                lista.remove(venda);
+                request.setAttribute("mensagem", "Produto excluído!");
+                break;*/
             default:
                 //Gerar o numero da Venda
                 numVenda = vdao.buscaUltNumVenda();
