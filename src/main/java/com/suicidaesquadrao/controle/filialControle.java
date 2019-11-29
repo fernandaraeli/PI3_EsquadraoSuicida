@@ -4,10 +4,7 @@ import com.suicidaesquadrao.dao.FilialDAO;
 import com.suicidaesquadrao.model.Filial;
 
 import java.io.IOException;
-import java.io.PrintWriter;
 import java.sql.SQLException;
-import java.util.ArrayList;
-import java.util.List;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -50,6 +47,7 @@ public class filialControle extends HttpServlet {
             else if(acao!=null && acao.equals("salvar")){
             RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/filiais.jsp");
             dispatcher.forward(request, response);
+            request.setAttribute("filiais", filialDAO.getFiliais());
             }
             
             else if(acao!=null && acao.equals("voltar")){
@@ -60,6 +58,7 @@ public class filialControle extends HttpServlet {
             
             
         request.setAttribute("filiais", filialDAO.getFiliais());
+        
         }catch (SQLException ex){
             request.setAttribute("mensagem", "Erro de Banco de Dados: "+ ex.getMessage());
         }catch (ClassNotFoundException ex){

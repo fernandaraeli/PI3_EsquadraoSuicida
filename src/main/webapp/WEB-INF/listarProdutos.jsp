@@ -67,7 +67,7 @@
             <div class="collapse navbar-collapse" id="navbarTogglerDemo02">   <a href="produtoControle?acao=salvar" class=" btn bg-light">Cadastrar</a> </div>
         </nav>   
         
-        <form action="produtoControle" method="POST">
+        <form method="POST" action="produtoControle" >
         <table class="table table-hover">
             <tr>
             <th>Id</th>
@@ -75,18 +75,18 @@
             <th>Quantidade</th>
             <th>Preco</th>
             <th>Filial</th>
-                 <th>Ação</th>
+            <th>Ação</th>
             <th>Ação</th>
             </tr>
             <c:forEach var="p" items="${produtos}">
                 <tr>
-                    <td>${p.id}</td>
-                    <td>${p.nome}</td>
-                    <td>${p.quantidade}</td>
-                    <td>${p.preco}</td>
-                    <td>${p.filial}</td>
-                    <td><a href=produtoControle?acao=editar&id=${p.id}>Editar</a>
-                    <td><a href=produtoControle?acao=excluir&id=${p.id}>Excluir</a>
+                    <td>${p.id_produto}</td>
+                    <td>${p.nome_produto}</td>
+                    <td>${p.quantidade_produto}</td>
+                    <td>${p.preco_produto}</td>
+                    <td>${p.id_filial}</td>
+                    <td><a href=produtoControle?acao=editar&id=${p.id_produto}>Editar</a>
+                    <td><a href=produtoControle?acao=excluir&id=${p.id_produto}>Excluir</a>
                 </tr>
             </c:forEach> 
         </table>     

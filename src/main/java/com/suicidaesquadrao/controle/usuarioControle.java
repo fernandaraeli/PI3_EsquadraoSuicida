@@ -30,13 +30,14 @@ public class usuarioControle extends HttpServlet {
            
                 
         String acao=request.getParameter("acao");
-        String id=request.getParameter("id");
+        String id=request.getParameter("id_usuario");
         
         try{
             if(acao!=null && acao.equals("excluir")){
             Integer id_usuario = Integer.parseInt(id);
             udao.excluir(id_usuario);
             request.setAttribute("mensagem", "Usuario Excluído!");
+            request.setAttribute("usuarios", udao.getUsuario());
             }
             
             else if(acao!=null && acao.equals("editar")){
@@ -78,11 +79,11 @@ public class usuarioControle extends HttpServlet {
             throws ServletException, IOException {
         
         String id = request.getParameter("id_usuario");
-        String nome= request.getParameter("nome_usuario");
+        String nome= request.getParameter("nome");
         String user=request.getParameter("user");
         String senha= request.getParameter("senha");
-        int id_filial= Integer.parseInt(request.getParameter("id_filial"));   
-        int id_perfil= Integer.parseInt(request.getParameter("id_perfil"));  
+        Integer id_filial= Integer.parseInt(request.getParameter("id_filial"));   
+        Integer id_perfil= Integer.parseInt(request.getParameter("id_perfil"));  
         
         
         usuarios usuario = new usuarios(0, nome, user, senha, id_filial, id_perfil);
@@ -96,7 +97,8 @@ public class usuarioControle extends HttpServlet {
          if(usuario.getId_usuario()!=0){
              udao.atualizar(usuario);
              request.setAttribute("mensagem", "Usuario Atualizado");
-             
+             RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/usuarios.jsp");
+             dispatcher.forward(request, response);
 
              
          }else{
@@ -106,7 +108,9 @@ public class usuarioControle extends HttpServlet {
              dispatcher.forward(request, response);
          }
            
-          
+        
+         request.setAttribute("usuarios", udao.getUsuario());  
+         
         }catch (validacaoException ex){
            request.setAttribute("mensagem", "Erro de Validacao dos Campos: "+ ex.getMessage());
            request.setAttribute("usuarios", usuario);
@@ -117,16 +121,6 @@ public class usuarioControle extends HttpServlet {
             request.setAttribute("mensagem", "Erro de Driver: "+ ex.getMessage());
             request.setAttribute("usuarios", usuario);
         }  
-        try{
-            request.setAttribute("usuarios", udao.getUsuario());
-        }catch (SQLException ex){
-           request.setAttribute("mensagem", "Erro de Banco de Dados: "+ ex.getMessage());
-           request.setAttribute("usuarios", usuario);
-        }catch (ClassNotFoundException ex){
-            request.setAttribute("mensagem", "Erro de Driver: "+ ex.getMessage());
-            request.setAttribute("usuarios", usuario);
-        }  
-        
         
         RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/listarUsuarios.jsp");
         dispatcher.forward(request, response);

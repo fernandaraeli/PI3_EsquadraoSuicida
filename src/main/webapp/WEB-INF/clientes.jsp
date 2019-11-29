@@ -196,7 +196,7 @@
               <div class="form-row">
                    <div class="form-group col-md-1">            
                     </div> 
-                        <button type="submit" class="btn btn-success" onclick="return Alerta()">Cadastrar</button>&nbsp
+                        <button type="submit" class="btn btn-success" onclick="return Alerta()">Salvar</button>&nbsp
                         <button type="reset" class="btn btn-primary">Limpar</button>&nbsp;
                         <a href="clienteControle?acao=voltar" class="btn btn-danger">Voltar</a> 
               </div>

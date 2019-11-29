@@ -103,7 +103,7 @@ public class ControladorPrincipal extends HttpServlet {
                 request.setAttribute("cliente", cliente);
                 totalPagar = 0.0;
                 item = item+1; //contador
-                codigo = produto.getId();
+                codigo = produto.getId_produto();
                 descricao = request.getParameter("nomeproduto");
                 preco = Double.parseDouble(request.getParameter("preco"));
                 quantidade = Integer.parseInt(request.getParameter("quantidade"));
@@ -136,7 +136,7 @@ public class ControladorPrincipal extends HttpServlet {
                 int idProduto = lista.get(i).getIdProduto();
                 produtoDAO proddao = new produtoDAO();
                 produto = proddao.buscarProduto(idProduto);
-                int estoqueAtual = (produto.getQuantidade()-quantidade);
+                int estoqueAtual = (produto.getQuantidade_produto()-quantidade);
                 proddao.atualizarEstoque(idProduto, estoqueAtual);
                 }
                 //Armazenar os itens na tabela Venda

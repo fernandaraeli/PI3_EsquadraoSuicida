@@ -1,20 +1,13 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package com.suicidaesquadrao.model;
 
 import util.validacaoException;
 
-/**
- *
- * @author deise.mfarias
- */
+
 public class usuarios {
     
     private int id_usuario;
-    private String nome;
+    private String nome_usuario;
     private String user;
     private String senha;
     private int id_filial;
@@ -33,7 +26,7 @@ public class usuarios {
 
     public usuarios(int id_usuario, String nome, String user, String senha, int id_filial, int id_perfil) {
         this.id_usuario = id_usuario;
-        this.nome = nome;
+        this.nome_usuario = nome;
         this.user = user;
         this.senha = senha;
         this.id_filial = id_filial;
@@ -48,12 +41,12 @@ public class usuarios {
         this.id_usuario = id_usuarios;
     }
 
-    public String getNome() {
-        return nome;
+    public String getNome_usuario() {
+        return nome_usuario;
     }
 
-    public void setNome(String nome) {
-        this.nome = nome;
+    public void setNome_usuario(String nome) {
+        this.nome_usuario = nome;
     }
 
     public String getUser() {

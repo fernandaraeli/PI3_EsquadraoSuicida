@@ -89,14 +89,14 @@
                     <div class="form-group col-md-1">            
                     </div>                    
                      <div class="form-group col-md-1">
-                        <input type="hidden" name="id_usuario" value="${user.id_usuario}"/>
+                        <input type="hidden" name="id_usuario" value="${usuarios.id_usuario}"/>
                         <label>Id</label>
-                        <input type="text" disabled class="form-control" name="id_usuario" value="${user.id_usuario}"/>                      
+                        <input type="text" disabled class="form-control" name="id_usuario" value="${usuarios.id_usuario}"/>                      
                      </div>
                      
                       <div class="form-group col-md-3">
                         <label for="inputPassword4">Nome do Usuário</label>
-                        <input type="text" class="form-control" placeholder="Usuário" name="nome_usuario" value="${user.nome_usuario}" required/>
+                        <input type="text" class="form-control" placeholder="Usuário" name="nome_usuario" value="${usuarios.nome_usuario}" required/>
                       </div>             
              </div> 
                       
@@ -106,12 +106,12 @@
               
                     <div class="form-group col-md-2">
                         <label for="inputPassword4">Login de Usuário</label>
-                        <input type="text" class="form-control" placeholder="Login de Acesso" name="user" value="${user.user}" required/>
+                        <input type="text" class="form-control" placeholder="Login de Acesso" name="user" value="${usuarios.user}" required/>
                     </div>
                     
                     <div class="form-group col-md-2">
                         <label for="inputPassword4">Senha de Usuário</label>
-                        <input type="password" class="form-control" placeholder="Senha de Acesso" name="senha"value="${user.senha}" requires/>
+                        <input type="password" class="form-control" placeholder="Senha de Acesso" name="senha"value="${usuarios.senha}" requires/>
                     </div> 
             </div> 
             
@@ -121,12 +121,12 @@
               
                     <div class="form-group col-md-2">
                         <label for="inputPassword4">Filial</label>
-                        <input type="text" class="form-control" placeholder="Filial" name="id_filial" value="${user.id_filial}"required/>
+                        <input type="text" class="form-control" placeholder="Filial" name="id_filial" value="${usuarios.id_filial}"required/>
                     </div>
                     
                     <div class="form-group col-md-2">
                         <label for="inputPassword4">Perfil</label>
-                        <input type="text" class="form-control" placeholder="Perfil" name="perfil" value="${user.id_perfil}" required/>
+                        <input type="text" class="form-control" placeholder="Perfil" name="perfil" value="${usuarios.id_perfil}" required/>
                     </div> 
             </div> 
               <br>
@@ -134,7 +134,7 @@
               <div class="form-row">
                    <div class="form-group col-md-1">            
                     </div> 
-                        <button type="submit" class="btn btn-success" onclick="return Alerta()">Cadastrar</button>&nbsp
+                        <button type="submit" class="btn btn-success" onclick="return Alerta()">Salvar</button>&nbsp
                         <button type="reset" class="btn btn-primary">Limpar</button>&nbsp;
                         <a href="usuarioControle?acao=voltar" class="btn btn-danger">Voltar</a> 
               </div>

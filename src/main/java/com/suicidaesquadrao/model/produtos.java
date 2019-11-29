@@ -7,19 +7,19 @@ import util.validacaoException;
 
 public class produtos {
     
-    private int id;
-    private String nome;
-    private int quantidade;
-    private double preco;
-    private int filial;
+    private int id_produto;
+    private String nome_produto;
+    private int quantidade_produto;
+    private double preco_produto;
+    private int id_filial;
     
 
     public produtos(int id, String nome, int quantidade, double preco, int filial) {
-        this.id = id;
-        this.nome = nome;
-        this.quantidade = quantidade;
-        this.preco = preco;
-        this.filial = filial;
+        this.id_produto = id;
+        this.nome_produto = nome;
+        this.quantidade_produto = quantidade;
+        this.preco_produto = preco;
+        this.id_filial = filial;
         
     }
 
@@ -28,52 +28,51 @@ public class produtos {
     }
     
     public void valida () throws validacaoException{
-        if(nome==null||nome.equals("")){
+        if(nome_produto==null||nome_produto.equals("")){
             throw new validacaoException("O campo é obrigatório");
         }
     }
 
-    public int getId() {
-        return id;
+    public int getId_produto() {
+        return id_produto;
     }
 
-    public void setId(int id) {
-        this.id = id;
+    public void setId_produto(int id_produto) {
+        this.id_produto = id_produto;
     }
 
-    public String getNome() {
-        return nome;
+    public String getNome_produto() {
+        return nome_produto;
     }
 
-    public void setNome(String nome) {
-        this.nome = nome;
+    public void setNome_produto(String nome_produto) {
+        this.nome_produto = nome_produto;
     }
 
-    public int getQuantidade() {
-        return quantidade;
+    public int getQuantidade_produto() {
+        return quantidade_produto;
     }
 
-    public void setQuantidade(int quantidade) {
-        this.quantidade = quantidade;
+    public void setQuantidade_produto(int quantidade_produto) {
+        this.quantidade_produto = quantidade_produto;
     }
 
-    public double getPreco() {
-        return preco;
+    public double getPreco_produto() {
+        return preco_produto;
     }
 
-    public void setPreco(double preco) {
-        this.preco = preco;
+    public void setPreco_produto(double preco_produto) {
+        this.preco_produto = preco_produto;
     }
 
-    public int getFilial() {
-        return filial;
+    public int getId_filial() {
+        return id_filial;
     }
 
-    public void setFilial(int filial) {
-        this.filial = filial;
+    public void setId_filial(int id_filial) {
+        this.id_filial = id_filial;
     }
 
     
-    
-    
+
 }

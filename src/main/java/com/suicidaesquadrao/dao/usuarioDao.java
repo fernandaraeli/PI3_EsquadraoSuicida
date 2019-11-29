@@ -13,7 +13,7 @@ import util.validacaoException;
 
 public class usuarioDao {
 
-    public void excluir(Integer idUsuario) throws SQLException, ClassNotFoundException {
+    public void excluir(int idUsuario) throws SQLException, ClassNotFoundException {
         Connection conexao = ConexaoBD.getConnection();
         PreparedStatement ps = conexao.prepareStatement("DELETE FROM usuario WHERE id_usuario=?");
         ps.setInt(1, idUsuario);
@@ -48,7 +48,7 @@ public class usuarioDao {
     public void salvar (usuarios usuario)throws SQLException, ClassNotFoundException{
         Connection conexao = ConexaoBD.getConnection();
         PreparedStatement ps = conexao.prepareStatement("INSERT INTO usuario (nome_usuario,user,senha,id_filial,id_perfil) VALUES(?,?,?,?,?)");
-        ps.setString(1, usuario.getNome());
+        ps.setString(1, usuario.getNome_usuario());
         ps.setString(2, usuario.getUser());
         ps.setString(3, usuario.getSenha());
         ps.setInt(4, usuario.getId_filial());
@@ -60,7 +60,7 @@ public class usuarioDao {
     public void atualizar(usuarios usuario)throws SQLException, ClassNotFoundException {
         Connection conexao = ConexaoBD.getConnection();
         PreparedStatement ps = conexao.prepareStatement("UPDATE usuario SET nome_usuario=?,user=?,senha=?,id_filial=?,id_perfil=? WHERE id_usuario=?");
-        ps.setString(1, usuario.getNome());
+        ps.setString(1, usuario.getNome_usuario());
         ps.setString(2, usuario.getUser());
         ps.setString(3, usuario.getSenha());
         ps.setInt(4, usuario.getId_filial());
@@ -77,7 +77,7 @@ public class usuarioDao {
         try{
             
             String consulta= "select * from usuario where user=? and senha=?";
-            pst = getConnection().prepareStatement(consulta);
+            pst = conexao.prepareStatement(consulta);
             pst.setString(1, usuario);
             pst.setString(2, senha);
             rs = pst.executeQuery();

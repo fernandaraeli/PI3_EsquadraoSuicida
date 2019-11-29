@@ -35,6 +35,7 @@ public class clienteControle extends HttpServlet {
             Integer idCliente = Integer.parseInt(id);
             ClienteDAO.excluir(idCliente);
             request.setAttribute("mensagem", "Cliente Excluído!");
+            
             }
             
             else if(acao!=null && acao.equals("editar")){
@@ -48,6 +49,7 @@ public class clienteControle extends HttpServlet {
             else if(acao!=null && acao.equals("salvar")){
             RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/clientes.jsp");
             dispatcher.forward(request, response);
+            
             }
             
             else if(acao!=null && acao.equals("voltar")){
@@ -98,7 +100,7 @@ public class clienteControle extends HttpServlet {
          if(cliente.getId()!=0){
              ClienteDAO.atualizar(cliente);
              request.setAttribute("mensagem", "Cliente Atualizado");
-
+             request.setAttribute("clientes", ClienteDAO.getCliente());
              
          }else{
              ClienteDAO.salvar(cliente);

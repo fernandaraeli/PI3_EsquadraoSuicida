@@ -90,14 +90,14 @@
                 </div>
                 
                 <div class="form-group col-md-1">
-                    <input type="hidden" name="id" value="${produto.id}"/>
+                    <input type="hidden" name="id" value="${produtos.id_produto}"/>
                     <label>Id</label>
-                    <input type="text" disabled name="id_filial" class="form-control" type="hidden" name="id"  value="${produto.id}"/>
+                    <input type="text" disabled name="id" class="form-control" name="id"  value="${produtos.id_produto}"/>
                 </div>
                      
                 <div class="form-group col-md-5">
                      <label for="inputPassword4">Nome do Produto</label>
-                     <input type="text" class="form-control" placeholder="Nome do Produto" name="Nome"  value="${produto.nome}" required/>
+                     <input type="text" class="form-control" placeholder="Nome do Produto" name="nome"  value="${produtos.nome_produto}" required/>
                 </div>             
             </div>
                      
@@ -110,17 +110,17 @@
                                  
                 <div class="form-group col-md-2">
                      <label for="inputPassword4">Quantidade</label>
-                     <input type="text" class="form-control" placeholder="Estoque" name="quantidade" min="1" value="${produto.quantidade}" required/>
+                     <input type="text" class="form-control" placeholder="Estoque" name="quantidade" min="1" value="${produtos.quantidade_produto}" required/>
                 </div>
                 
                 <div class="form-group col-md-2">
                      <label for="inputPassword4">Preço</label>
-                     <input type="text" class="form-control" placeholder="R$" name="preco" min="1" value="${produto.preco}" required/>
+                     <input type="text" class="form-control" placeholder="R$" name="preco" min="1" value="${produtos.preco_produto}" required/>
                 </div>
                 
                  <div class="form-group col-md-2">
                      <label for="inputPassword4">Filial</label>
-                     <input type="text" class="form-control" placeholder="Escolha Filial" name="filial" value="${produto.filial}" required/>
+                     <input type="text" class="form-control" placeholder="Escolha Filial" name="filial" value="${produtos.id_filial}" required/>
                 </div>
                 
             </div>
@@ -129,7 +129,7 @@
               <div class="form-row">
                    <div class="form-group col-md-1">            
                     </div> 
-                        <button type="submit" class="btn btn-success" onclick="return Alerta()">Cadastrar</button>&nbsp
+                        <button type="submit" class="btn btn-success" onclick="return Alerta()">Salvar</button>&nbsp
                         <button type="reset" class="btn btn-primary">Limpar</button>&nbsp;
                         <a href="produtoControle?acao=voltar" class="btn btn-danger">Voltar</a> 
               </div>
