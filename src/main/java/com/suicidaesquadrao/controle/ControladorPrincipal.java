@@ -13,7 +13,9 @@ import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
-import java.sql.Date;
+import java.util.Date;
+
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.List;
 import javax.servlet.RequestDispatcher;
@@ -191,11 +193,21 @@ public class ControladorPrincipal extends HttpServlet {
                 Integer idProduto = Integer.parseInt(id);
                 produtos produto = ProdutoDAO.getProdutoId(idProduto);
                 request.setAttribute("produtos", produto);
-                break;
-            case "RemoverProduto":
-                lista.remove(venda);
-                request.setAttribute("mensagem", "Produto excluído!");
                 break;*/
+            case "RemoverProduto":
+                Integer nitem = item;
+                for (int i = 0; i < lista.size(); i++) {
+                    venda = lista.get(i);
+                    if (venda.getNumItem()==nitem){
+                        lista.remove(venda);
+                    } 
+                request.setAttribute("numVenda", numVenda);
+                request.setAttribute("produto", produto);
+                request.setAttribute("lista", lista);
+                request.setAttribute("cliente", cliente);
+                request.setAttribute("totalPagar", totalPagar);
+                } 
+                break;
             default:
                 //Gerar o numero da Venda
                 numVenda = vdao.buscaUltNumVenda();
@@ -255,12 +267,19 @@ public class ControladorPrincipal extends HttpServlet {
                         request.getRequestDispatcher("/WEB-INF/relFaturamentoDiario.jsp").forward(request, response);
                         break;
                     case "Pesquisar2":
+                        try {
                         //buscar pela data da venda
-                        numVenda = request.getParameter("datavenda");
+                        String data = request.getParameter("datavenda");
+                        SimpleDateFormat formato = new SimpleDateFormat("YYYY-MM-dd");
+                        dat = formato.parse(data);
                         venda.setDataVenda(dat);                        
                         List<Venda>vendas2=vdao.buscarVendaData(dat);
                         request.setAttribute("vendas", vendas2);
                         request.getRequestDispatcher("/WEB-INF/relFaturamentoDiario.jsp").forward(request, response);
+                        } catch (Exception e) {
+                        }
+                        request.getRequestDispatcher("/WEB-INF/relFaturamentoDiario.jsp").forward(request, response);
+
                         break;    
                     case "Imprimir":
                         request.getRequestDispatcher("/WEB-INF/relFaturamentoDiario.jsp").forward(request, response);

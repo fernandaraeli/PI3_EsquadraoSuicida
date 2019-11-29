@@ -7,26 +7,15 @@
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
         <script>
             function confere(){
-                var quant = quantidade.value;
-                var estq = estoque.value;
-                var idprod = idproduto.value;
+                var quantidade = quantidade.value;
+                var estoque = estoque.value;
                 
-                if(idprod == ""){
-                    alert('Insira o id do produto');
-                    return false;
-                }
-                if(estq < quant){
+                if(estoque < quantidade){
                     alert('Quantidade em falta no estoque');
                     return false;
                 }
             }
-            function verifica(){
-                var idprod = idproduto.value;
-                if(idprod == ""){
-                    alert('Insira o id do produto');
-                    return false;
-                }
-            }
+            
         </script>
         <title>Venda</title>
     </head>
@@ -98,15 +87,15 @@
                             <div class="form-group"><label>Dados Produto</label></div>
                                 <div class="form-group d-flex">
                                     <div class="col-sm-6 d-flex">
-                                        <input type="text" name="idproduto" value="${produto.getId()}" class="form-control" placeholder="Codigo" >
-                                        <button type="submit" name="acao" value="BuscarProduto" onclick="return verifica()" class="btn btn-outline-info">BuscarProduto</button>                           
+                                        <input type="text" name="idproduto" value="${produto.getId_produto()}" class="form-control" placeholder="Codigo">
+                                        <button type="submit" name="acao" value="BuscarProduto" class="btn btn-outline-info">BuscarProduto</button>                           
                                     </div>
-                                    <div class="col-sm-6"><input type="text" name="nomeproduto" value="${produto.getNome()}" placeholder="Produto" class="form-control" disabled="disabled"></div>
+                                    <div class="col-sm-6"><input type="text" name="nomeproduto" value="${produto.getNome_produto()}" placeholder="Produto" class="form-control" disabled="disabled"></div>
                                 </div>
                                 <div class="form-group d-flex">
-                                    <div class="col-sm-6"><input type="text" name="preco" value="${produto.getPreco()}" placeholder="R$0,00" class="form-control"></div>
+                                    <div class="col-sm-6"><input type="text" name="preco" value="${produto.getPreco_produto()}" placeholder="R$0,00" class="form-control"></div>
                                     <div class="col-sm-3"><input type="number" name="quantidade"  value="1" placeholder="" class="form-control" min="1"></div>
-                                    <div class="col-sm-3"><input type="text" name="estoque" value="${produto.getQuantidade()}" placeholder="Estoque" class="form-control" disabled="disabled"></div>
+                                    <div class="col-sm-3"><input type="text" name="estoque" value="${produto.getQuantidade_produto()}" placeholder="Estoque" class="form-control" disabled="disabled"></div>
                                 </div>
                            
                         <!--BOTÃO PARA INSERIR O ITEM NA VENDA-->   
@@ -148,8 +137,8 @@
                                         <td>${v.getQuantidade()}</td>
                                         <td>${v.getSubtotal()}</td>
                                         <td class="d-flex">
-                                        <a href="ControladorPrincipal?menu=NovaVenda&acao=EditarProduto" class="btn btn-warning">Editar</a>
-                                        <a href="ControladorPrincipal?menu=NovaVenda&acao=RemoverProduto" class="btn btn-danger" style="margin-left: 10px;">Remover</a>
+                                        <a href="#" class="btn btn-warning">Editar</a>
+                                        <a href="ControladorPrincipal?menu=NovaVenda&acao=RemoverProduto&selecao=${v.getNumItem()}" class="btn btn-danger" style="margin-left: 10px;">Remover</a>
                                         </td>
                                     </tr>
                                 </c:forEach>
@@ -162,7 +151,7 @@
                                 <a href="ControladorPrincipal?menu=NovaVenda&acao=Cancelar" class="btn btn-danger">Cancelar</a> 
                             </div>
                         </div>
-                            <div class="col-sm-4 ml-auto"><input type="text" value="R$ ${totalPagar}"name="total" class="form-control" disabled="disabled"></div>       
+                        <div class="col-sm-4 ml-auto"><input type="text" value="R$ ${totalPagar}"name="total" class="form-control"></div>       
                     </div>
                 </div>           
             </div>

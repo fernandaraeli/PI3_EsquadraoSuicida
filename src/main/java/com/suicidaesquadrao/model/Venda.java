@@ -144,16 +144,15 @@ public class Venda {
         this.totalPagar = totalPagar;
     }
     
-    /*public String getDateTime() {
-        DateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
-        Date date = new Date();
-    return dateFormat.format(date);
-}*/
-    
+   
     public String getData() {
         String myData;
         myData = DateFormat.getDateInstance().format(this.dataVenda);
     return myData;
 }
+    
+       public void setDataVendaRel(Date dataVenda) {
+        this.dataVenda = dataVenda;
+    }
     
 }

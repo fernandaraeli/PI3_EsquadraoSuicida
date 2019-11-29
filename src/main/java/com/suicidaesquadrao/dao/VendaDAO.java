@@ -48,7 +48,7 @@ public class VendaDAO {
             ps.setInt(1, venda.getIdCliente());
             ps.setInt(2, venda.getIdUsuario());
             ps.setString(3, venda.getNumVenda());
-             ps.setDate(4, new java.sql.Date(venda.getDataVenda().getTime()));
+            ps.setDate(4, new java.sql.Date(venda.getDataVenda().getTime()));
             ps.setDouble(5, venda.getTotalPagar());
             ps.setString(6, venda.getStatusVenda());
             ps.executeUpdate();
@@ -135,7 +135,7 @@ public class VendaDAO {
         //Listar venda pela Data da Venda
     public List buscarVendaData(Date dtvenda){
         List<Venda>lista = new ArrayList<>();
-        String sql = "select * from venda where numvenda=" +dtvenda;
+        String sql = "select * from `venda` where date_format(datavenda,'%d/%m/%Y')=" +dtvenda;
         try {
             con=cbd.getConnection();
             ps=con.prepareStatement(sql);
