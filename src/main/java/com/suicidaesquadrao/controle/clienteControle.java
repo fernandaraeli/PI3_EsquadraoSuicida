@@ -76,6 +76,7 @@ public class clienteControle extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+        request.setCharacterEncoding("UTF-8");
         
         String razao= request.getParameter("razao");
         String cnpj=request.getParameter("cnpj");

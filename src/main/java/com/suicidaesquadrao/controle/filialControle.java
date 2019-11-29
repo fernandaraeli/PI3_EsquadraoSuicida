@@ -73,6 +73,7 @@ public class filialControle extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+        request.setCharacterEncoding("UTF-8");
         
         String id = request.getParameter("id_filial");
         String cnpj = request.getParameter("cnpj_filial");
