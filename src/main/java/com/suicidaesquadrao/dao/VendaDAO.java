@@ -41,7 +41,7 @@ public class VendaDAO {
     
     //Insere a venda no banco
     public int gravarVenda (Venda venda){
-        String sql = "INSERT INTO venda (idcliente, idusuario, numvenda, datavenda, totalpagar, status) VALUES(?,?,?,?,?,?)";
+        String sql = "INSERT INTO venda (idcliente, idusuario, numvenda, datavenda, totalpagar, status, idfilial) VALUES(?,?,?,?,?,?)";
         try {
             Connection conexao = ConexaoBD.getConnection();
             PreparedStatement ps = conexao.prepareStatement(sql);
@@ -51,6 +51,7 @@ public class VendaDAO {
             ps.setDate(4, new java.sql.Date(venda.getDataVenda().getTime()));
             ps.setDouble(5, venda.getTotalPagar());
             ps.setString(6, venda.getStatusVenda());
+            ps.setInt(7, venda.getIdfilial());
             ps.executeUpdate();
         } catch (Exception e) {
             e.printStackTrace();
@@ -93,6 +94,7 @@ public class VendaDAO {
                 v.setDataVenda(new java.sql.Date(rs.getDate("datavenda").getTime()));
                 v.setTotalPagar(rs.getDouble("totalpagar"));
                 v.setStatusVenda(rs.getString("status"));
+                v.setIdfilial(rs.getInt("idfilial"));
                 lista.add(v);
             }
             ps.close();
@@ -121,6 +123,7 @@ public class VendaDAO {
                 v.setDataVenda(new java.sql.Date(rs.getDate("datavenda").getTime()));
                 v.setTotalPagar(rs.getDouble("totalpagar"));
                 v.setStatusVenda(rs.getString("status"));
+                v.setIdfilial(rs.getInt("idfilial"));
                 lista.add(v);
             }
             ps.close();
@@ -149,6 +152,7 @@ public class VendaDAO {
                 v.setDataVenda(new java.sql.Date(rs.getDate("datavenda").getTime()));
                 v.setTotalPagar(rs.getDouble("totalpagar"));
                 v.setStatusVenda(rs.getString("status"));
+                v.setIdfilial(rs.getInt("idfilial"));
                 lista.add(v);
             }
             ps.close();

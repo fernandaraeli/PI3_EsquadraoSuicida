@@ -1,14 +1,17 @@
 package com.suicidaesquadrao.controle;
 
+import com.suicidaesquadrao.dao.FilialDAO;
 import com.suicidaesquadrao.dao.VendaDAO;
 import com.suicidaesquadrao.dao.clienteDAO;
 import com.suicidaesquadrao.dao.produtoDAO;
 import com.suicidaesquadrao.dao.usuarioDao;
+import com.suicidaesquadrao.model.Filial;
 import com.suicidaesquadrao.model.GerarNumVenda;
 import com.suicidaesquadrao.model.Venda;
 import com.suicidaesquadrao.model.clientes;
 import com.suicidaesquadrao.model.produtos;
 import com.suicidaesquadrao.model.usuarios;
+import com.sun.org.apache.xalan.internal.xsltc.compiler.util.ErrorMessages;
 import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileWriter;
@@ -18,6 +21,7 @@ import java.util.Date;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.List;
+import javafx.application.Preloader;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -36,6 +40,8 @@ public class ControladorPrincipal extends HttpServlet {
     usuarios usuario = new usuarios();
     VendaDAO vdao = new VendaDAO();
     Venda venda = new Venda();
+    Filial filial = new Filial();
+    FilialDAO fdao = new FilialDAO();
     
     List<Venda>lista=new ArrayList<>();
   
@@ -50,6 +56,8 @@ public class ControladorPrincipal extends HttpServlet {
     Date dat;
     String numVenda;
     int idCli;
+    int idFilial;
+    int idUsuario;
     
     
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
@@ -150,6 +158,7 @@ public class ControladorPrincipal extends HttpServlet {
                 venda.setDataVenda(new java.util.Date());
                 venda.setTotalPagar(totalPagar);
                 venda.setStatusVenda("1");
+                venda.setIdfilial(filial.getId_filial());
                 vdao.gravarVenda(venda);      
                 //Armazenar o item detalhado da venda na tabela item_venda
                 int idvenda = Integer.parseInt(vdao.buscaUltNumVenda());

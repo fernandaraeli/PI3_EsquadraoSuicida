@@ -20,11 +20,12 @@ public class Venda {
     Double subtotal;
     String statusVenda;
     Date dataVenda;
+    int idfilial;
 
     public Venda() {
     }
 
-    public Venda(int idVenda, int numItem, int idCliente, int idUsuario, int idProduto, String numVenda, String nomeProduto, Double preco, Double totalPagar, int quantidade, Double subtotal, String statusVenda, Date dataVenda) {
+    public Venda(int idVenda, int numItem, int idCliente, int idUsuario, int idProduto, String numVenda, String nomeProduto, Double preco, Double totalPagar, int quantidade, Double subtotal, String statusVenda, Date dataVenda, int idfilial) {
         this.idVenda = idVenda;
         this.numItem = numItem;
         this.idCliente = idCliente;
@@ -38,6 +39,7 @@ public class Venda {
         this.subtotal = subtotal;
         this.statusVenda = statusVenda;
         this.dataVenda = dataVenda;
+        this.idfilial = idfilial;
     }
 
     public int getIdVenda() {
@@ -154,5 +156,16 @@ public class Venda {
        public void setDataVendaRel(Date dataVenda) {
         this.dataVenda = dataVenda;
     }
+
+    public int getIdfilial() {
+        return idfilial;
+    }
+
+
+    public void setIdfilial(int idfilial) {
+        this.idfilial = idfilial;
+    }
+       
+       
     
 }
