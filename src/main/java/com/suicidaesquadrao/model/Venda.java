@@ -1,6 +1,7 @@
 
 package com.suicidaesquadrao.model;
 import java.text.DateFormat;
+import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
@@ -20,12 +21,11 @@ public class Venda {
     Double subtotal;
     String statusVenda;
     Date dataVenda;
-    int idfilial;
 
     public Venda() {
     }
 
-    public Venda(int idVenda, int numItem, int idCliente, int idUsuario, int idProduto, String numVenda, String nomeProduto, Double preco, Double totalPagar, int quantidade, Double subtotal, String statusVenda, Date dataVenda, int idfilial) {
+    public Venda(int idVenda, int numItem, int idCliente, int idUsuario, int idProduto, String numVenda, String nomeProduto, Double preco, Double totalPagar, int quantidade, Double subtotal, String statusVenda, Date dataVenda) {
         this.idVenda = idVenda;
         this.numItem = numItem;
         this.idCliente = idCliente;
@@ -39,7 +39,6 @@ public class Venda {
         this.subtotal = subtotal;
         this.statusVenda = statusVenda;
         this.dataVenda = dataVenda;
-        this.idfilial = idfilial;
     }
 
     public int getIdVenda() {
@@ -146,26 +145,30 @@ public class Venda {
         this.totalPagar = totalPagar;
     }
     
-   
-    public String getData() {
-        String myData;
-        myData = DateFormat.getDateInstance().format(this.dataVenda);
-    return myData;
-}
-    
-       public void setDataVendaRel(Date dataVenda) {
-        this.dataVenda = dataVenda;
-    }
+    //Criei dois métodos gets para apresentar a data em dois formatos
+        
+        //Retorna data no formatado de String
+	public String getDataFormatada() {
+        	SimpleDateFormat formatador = new SimpleDateFormat("dd/MM/yyyy");
+        	String dataFormat = formatador.format(dataVenda);
+        	return dataFormat;
+    	}
+	
+	//Retorna data no formatado de Date do MySQL
+   	public Date getData() {
+        	return dataVenda;
+    	}
+        
+        //Seta um valor de tipo Date (java.util.Date) para o banco
+    	public void setData(Date dataVenda) {
+        	this.dataVenda = dataVenda;
 
-    public int getIdfilial() {
-        return idfilial;
-    }
+        }
+        
+        public void setDataFormatada(String dataVenda) {
+        	this.dataVenda = this.dataVenda;
+    	}
+        
+        
 
-
-    public void setIdfilial(int idfilial) {
-        this.idfilial = idfilial;
-    }
-       
-       
-    
 }

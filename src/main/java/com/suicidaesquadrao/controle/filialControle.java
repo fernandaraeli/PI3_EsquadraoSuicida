@@ -32,7 +32,7 @@ public class filialControle extends HttpServlet {
             if(acao!=null && acao.equals("excluir")){
                 Integer id_filial = Integer.parseInt(id);
                 filialDAO.excluir(id_filial);
-                request.setAttribute("mensagem", "forncedor excluido com sucesso ");
+                request.setAttribute("mensagem", "fornecedor excluido com sucesso ");
                 
                 
             }else if(acao!=null && acao.equals("editar")){
@@ -84,6 +84,7 @@ public class filialControle extends HttpServlet {
         
         
         Filial filial = new Filial(0, cnpj, nome, desc, cidade, estado);
+        
         if (id!=null && !id.equals("")){
             filial.setId_filial(Integer.parseInt(id));
         }

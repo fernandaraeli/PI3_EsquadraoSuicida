@@ -37,52 +37,10 @@
             </script>        
     </head>
     <body>
-    <nav class="navbar navbar-expand-lg navbar-light bg-light ">
-        <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
-            <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
-        
-      <!--MENUS-->  
-      <li class="nav-item">
-         <strong> 
-            <a class="nav-link" href="main.jsp">
-            <img src="imagem/logoHome.jpg" alt="70" height="22"/></a>
-         </strong>
-      </li>
-      <li class="nav-item">
-         <strong> 
-             <a class="nav-link" href="clienteControle">Clientes</a>
-         </strong>
-      </li>
-       <li class="nav-item">
-         <strong> 
-        <a class="nav-link" href="filialControle">Filial</a>
-        </strong>
-      </li>
-       <li class="nav-item">
-           <strong>
-        <a class="nav-link" href="produtoControle">Produtos</a>
-        </strong>
-      </li>
-       <li class="nav-item">
-           <strong>
-        <a class="nav-link" href="usuarioControle">Usuários</a>
-           </strong>
-      </li>
-        <li class="nav-item">
-           <strong>
-               <a class="nav-link" href="ControladorPrincipal?menu=NovaVenda&acao=default">Nova Venda</a>
-        </strong>
-      </li>
-      
-        <li class="nav-item">
-           <strong>
-                 <a class="nav-link" href="ControladorPrincipal?menu=Relatorios&acao=default&selecao=default">Relatórios</a>
-           </strong>
-        </li>
-    </ul>
-  </div>
-  </nav>
-        <form name="form" method="POST" action="produtoControle">
+        <nav class="navbar navbar-expand-lg">
+            <div class="collapse navbar-collapse" id="navbarTogglerDemo02">&nbsp;</div>
+        </nav> 
+         <form name="form" method="POST" action="produtoControle">
             
             <div class="form-row"> 
                 

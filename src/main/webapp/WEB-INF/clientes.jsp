@@ -6,92 +6,21 @@
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>Clientes</title>
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-        
-        
-        <script type="text/javascript">
-            
-            function Alerta(){
-                var cnpj = form.cnpj.value;
-                var nome = form.razao.value;
-                var cep = form.cep.value;
-                var cidade = form.cidade.value;
-                var tel = form.telefone.value;
-                var email  = form.email.value;
-                
-                if(cnpj.length != 14){
-                    alert('Insira o CNPJ ou preencha corretamente');
-                    return false;
-                }
-                if(nome == ""){
-                    alert('insira o nome');
-                    return false;
-                }
-                if(email == ""){
-                    return true;
-                }else if(email.indexOf('@')== -1){
-                    alert('Preencha um e-mail')
-                    return false;
-                }
-                if(cep.length != 8){
-                    alert('Insira o cep ou preencha corretamente');
-                    return false;
-                }
-                if(cidade == ""){
-                    alert('insira a cidade');
-                    return false;
-                }
-                alert("Sucesso!");
-            }
-            </script>
-        
+
     </head>
     <body>
-    <nav class="navbar navbar-expand-lg navbar-light bg-light ">
-        <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
-            <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
-        
-      <!--MENUS-->  
-      <li class="nav-item">
-         <strong> 
-            <a class="nav-link" href="main.jsp">
-            <img src="imagem/logoHome.jpg" alt="70" height="22"/></a>
-         </strong>
-      </li>
-      <li class="nav-item">
-         <strong> 
-             <a class="nav-link" href="clienteControle">Clientes</a>
-         </strong>
-      </li>
-       <li class="nav-item">
-         <strong> 
-        <a class="nav-link" href="filialControle">Filial</a>
-        </strong>
-      </li>
-       <li class="nav-item">
-           <strong>
-        <a class="nav-link" href="produtoControle">Produtos</a>
-        </strong>
-      </li>
-       <li class="nav-item">
-           <strong>
-        <a class="nav-link" href="usuarioControle">Usuários</a>
-           </strong>
-      </li>
-        <li class="nav-item">
-           <strong>
-               <a class="nav-link" href="ControladorPrincipal?menu=NovaVenda&acao=default">Nova Venda</a>
-        </strong>
-      </li>
-      
-        <li class="nav-item">
-           <strong>
-                 <a class="nav-link" href="ControladorPrincipal?menu=Relatorios&acao=default&selecao=default">Relatórios</a>
-           </strong>
-        </li>
-    </ul>
-    </div>
-    </nav>
-        <form name="form" method="POST" action="clienteControle" class="form-sign">
+         <script type="text/javascript">
+            
+            function Alerta(){
+                alert("Cadastro Realizado Com Sucesso!");
+            }
+            </script>
+            
+        <nav class="navbar navbar-expand-lg">
+            <div class="collapse navbar-collapse" id="navbarTogglerDemo02">&nbsp;</div>
+        </nav> 
+            
+      <form name="form" method="POST" action="clienteControle" class="form-sign">
                 
                 <div class="form-row">
                     

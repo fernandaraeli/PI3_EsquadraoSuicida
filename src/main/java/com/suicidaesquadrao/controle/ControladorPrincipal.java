@@ -1,28 +1,25 @@
 package com.suicidaesquadrao.controle;
 
-import com.suicidaesquadrao.dao.FilialDAO;
 import com.suicidaesquadrao.dao.VendaDAO;
 import com.suicidaesquadrao.dao.clienteDAO;
 import com.suicidaesquadrao.dao.produtoDAO;
 import com.suicidaesquadrao.dao.usuarioDao;
-import com.suicidaesquadrao.model.Filial;
 import com.suicidaesquadrao.model.GerarNumVenda;
 import com.suicidaesquadrao.model.Venda;
 import com.suicidaesquadrao.model.clientes;
 import com.suicidaesquadrao.model.produtos;
 import com.suicidaesquadrao.model.usuarios;
-import com.sun.org.apache.xalan.internal.xsltc.compiler.util.ErrorMessages;
 import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
-import java.util.Date;
-
+import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.ArrayList;
 import java.util.List;
-import javafx.application.Preloader;
-import javax.servlet.RequestDispatcher;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -36,16 +33,11 @@ public class ControladorPrincipal extends HttpServlet {
     clientes cliente = new clientes();
     produtoDAO pdao = new produtoDAO();
     produtos produto = new produtos();
-    usuarioDao udao = new usuarioDao();
-    usuarios usuario = new usuarios();
     VendaDAO vdao = new VendaDAO();
     Venda venda = new Venda();
-    Filial filial = new Filial();
-    FilialDAO fdao = new FilialDAO();
-    
-    List<Venda>lista=new ArrayList<>();
   
-    //Campos para o Array de Venda
+    //Criar ArrayList para exibição dos itens na tela de venda
+    List<Venda>lista=new ArrayList<>();
     int item;
     int codigo;
     String descricao;
@@ -53,37 +45,20 @@ public class ControladorPrincipal extends HttpServlet {
     int quantidade;
     double subtotal; 
     double totalPagar;
-    Date dat;
+    Date data;
     String numVenda;
+    String ultVenda;
     int idCli;
-    int idFilial;
-    int idUsuario;
     
     
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException {
+            throws ServletException, IOException, ParseException {
         
         
     String menu=request.getParameter("menu");
     String acao=request.getParameter("acao");
     String selecao=request.getParameter("selecao");
-    
-    
-    if(menu.equals("Home")){
-        
-    }
-    if(menu.equals("Clientes")){
-           
-    }   
-    if(menu.equals("Filial")){
-        
-    }
-    if(menu.equals("Produtos")){
-        
-    }
-    if(menu.equals("Usuarios")){
-        
-    }
+   
     if(menu.equals("NovaVenda")){
         venda = new Venda();
         switch (acao){
@@ -98,6 +73,7 @@ public class ControladorPrincipal extends HttpServlet {
                 break;
             case "BuscarProduto": 
                 //Buscar produto no BD através do ID
+
                 try {
                 int idp = Integer.parseInt(request.getParameter("idproduto"));
                 produto = pdao.getProdutoId(idp);
@@ -110,7 +86,7 @@ public class ControladorPrincipal extends HttpServlet {
                 } catch (Exception e) {
                 }
             case "InserirProduto":
-                //Lista os produtos na tela de venda
+                //Listar os produtos na tela de venda
                 request.setAttribute("cliente", cliente);
                 totalPagar = 0.0;
                 item = item+1; //contador
@@ -129,7 +105,6 @@ public class ControladorPrincipal extends HttpServlet {
                 venda.setQuantidade(quantidade);
                 venda.setSubtotal(subtotal);
                 lista.add(venda); 
-                
                 //Calcula o totalPagar dos itens
                 for (int i = 0; i < lista.size(); i++) {
                 totalPagar= totalPagar + lista.get(i).getSubtotal();
@@ -151,15 +126,14 @@ public class ControladorPrincipal extends HttpServlet {
                 proddao.atualizarEstoque(idProduto, estoqueAtual);
                 }
                 //Armazenar os itens na tabela Venda
-                
                 venda.setIdCliente(cliente.getId());
-                venda.setIdUsuario(usuario.getId_usuario());
+                venda.setIdUsuario(1);
                 venda.setNumVenda(numVenda);
-                venda.setDataVenda(new java.util.Date());
+                venda.setDataVenda(data);
                 venda.setTotalPagar(totalPagar);
                 venda.setStatusVenda("1");
-                venda.setIdfilial(filial.getId_filial());
-                vdao.gravarVenda(venda);      
+                vdao.gravarVenda(venda);  
+                
                 //Armazenar o item detalhado da venda na tabela item_venda
                 int idvenda = Integer.parseInt(vdao.buscaUltNumVenda());
                 for (int i = 0; i < lista.size(); i++) {
@@ -172,6 +146,7 @@ public class ControladorPrincipal extends HttpServlet {
                 venda = new Venda();
                 //Gerar o numero da Venda
                 numVenda = vdao.buscaUltNumVenda();
+                ultVenda = numVenda;
                 if(numVenda==null){
                 numVenda="000000001";
                 request.setAttribute("numVenda", numVenda);
@@ -180,42 +155,22 @@ public class ControladorPrincipal extends HttpServlet {
                 int incrementar=Integer.parseInt(numVenda);
                 GerarNumVenda gerarNum = new GerarNumVenda();
                 numVenda = gerarNum.NumeroVenda(incrementar);
-                request.setAttribute("numVenda", numVenda);
-                request.setAttribute("produto", produto);
-                request.setAttribute("lista", lista);
+                request.setAttribute("numVenda", numVenda); 
+                }
+                }
+                request.setAttribute("ultVenda", ultVenda);
                 request.setAttribute("cliente", cliente);
                 request.setAttribute("totalPagar", totalPagar);
-                }
-                venda = new Venda();
-                lista=new ArrayList<>();
                 request.getRequestDispatcher("/WEB-INF/vendaEfetuada.jsp").forward(request, response);
-                }
+                lista=new ArrayList<>();
+                item = 0;
+                totalPagar = 0;
                 break;
             case "Cancelar":
                 venda = new Venda();
                 lista=new ArrayList<>();
                 totalPagar = 0;
                 request.setAttribute("totalPagar", totalPagar);
-                request.setAttribute("numVenda", numVenda);
-                break;
-            /*case "EditarProduto":
-                Integer idProduto = Integer.parseInt(id);
-                produtos produto = ProdutoDAO.getProdutoId(idProduto);
-                request.setAttribute("produtos", produto);
-                break;*/
-            case "RemoverProduto":
-                Integer nitem = item;
-                for (int i = 0; i < lista.size(); i++) {
-                    venda = lista.get(i);
-                    if (venda.getNumItem()==nitem){
-                        lista.remove(venda);
-                    } 
-                request.setAttribute("numVenda", numVenda);
-                request.setAttribute("produto", produto);
-                request.setAttribute("lista", lista);
-                request.setAttribute("cliente", cliente);
-                request.setAttribute("totalPagar", totalPagar);
-                } 
                 break;
             default:
                 //Gerar o numero da Venda
@@ -235,6 +190,7 @@ public class ControladorPrincipal extends HttpServlet {
         request.getRequestDispatcher("/WEB-INF/registrarVenda.jsp").forward(request, response);
         }
     
+    //Menu Relatórios
     if(menu.equals("Relatorios")){
         switch (acao){
             case "ListarVendas":
@@ -263,33 +219,28 @@ public class ControladorPrincipal extends HttpServlet {
                        }
                     default:
                         request.getRequestDispatcher("/WEB-INF/relListarVendas.jsp").forward(request, response);
-                 }    
+                 } 
             
             case "FaturamentoDiario":
                 switch (selecao){
-                    case "Pesquisar":
+                    /*case "Pesquisar":
                         //buscar pelo numero da venda
                         numVenda = request.getParameter("numvenda");
                         venda.setNumVenda(numVenda);                        
                         List<Venda>vendas=vdao.buscarNumeroVenda(numVenda);
                         request.setAttribute("vendas", vendas);
                         request.getRequestDispatcher("/WEB-INF/relFaturamentoDiario.jsp").forward(request, response);
-                        break;
-                    case "Pesquisar2":
-                        try {
+                        break;*/
+                        
+                    case "Pesquisar":
                         //buscar pela data da venda
-                        String data = request.getParameter("datavenda");
-                        SimpleDateFormat formato = new SimpleDateFormat("YYYY-MM-dd");
-                        dat = formato.parse(data);
-                        venda.setDataVenda(dat);                        
-                        List<Venda>vendas2=vdao.buscarVendaData(dat);
-                        request.setAttribute("vendas", vendas2);
+                        String dtVenda = request.getParameter("datavenda");
+                        venda.setDataFormatada(dtVenda);
+                        List<Venda>vendas=vdao.buscarVendaData(dtVenda);
+                        request.setAttribute("vendas", vendas);
                         request.getRequestDispatcher("/WEB-INF/relFaturamentoDiario.jsp").forward(request, response);
-                        } catch (Exception e) {
-                        }
-                        request.getRequestDispatcher("/WEB-INF/relFaturamentoDiario.jsp").forward(request, response);
-
-                        break;    
+                        break; 
+                        
                     case "Imprimir":
                         request.getRequestDispatcher("/WEB-INF/relFaturamentoDiario.jsp").forward(request, response);
                     default:
@@ -299,8 +250,8 @@ public class ControladorPrincipal extends HttpServlet {
             case "Listar10MaisVendidos":
                 switch (selecao){
                     case "Pesquisar":
-                        List<Venda>vendas=vdao.listarVenda();
-                        request.setAttribute("vendas", vendas);
+                        //List<Venda>vendas=vdao.listarVenda();
+                        //request.setAttribute("vendas", vendas);
                         request.getRequestDispatcher("/WEB-INF/relListar10MaisVendidos.jsp").forward(request, response);
                         break;
                     case "Imprimir":
@@ -311,20 +262,29 @@ public class ControladorPrincipal extends HttpServlet {
              default:
                     request.getRequestDispatcher("/WEB-INF/relatorios.jsp").forward(request, response);    
     }
+    } 
     }  
-    }    
+        
    
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        processRequest(request, response);
+        try {
+            processRequest(request, response);
+        } catch (ParseException ex) {
+            Logger.getLogger(ControladorPrincipal.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 
   
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        processRequest(request, response);
+        try {
+            processRequest(request, response);
+        } catch (ParseException ex) {
+            Logger.getLogger(ControladorPrincipal.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 
     

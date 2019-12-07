@@ -35,7 +35,6 @@ public class clienteControle extends HttpServlet {
             Integer idCliente = Integer.parseInt(id);
             ClienteDAO.excluir(idCliente);
             request.setAttribute("mensagem", "Cliente Excluído!");
-            
             }
             
             else if(acao!=null && acao.equals("editar")){
@@ -49,7 +48,6 @@ public class clienteControle extends HttpServlet {
             else if(acao!=null && acao.equals("salvar")){
             RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/clientes.jsp");
             dispatcher.forward(request, response);
-            
             }
             
             else if(acao!=null && acao.equals("voltar")){
@@ -76,7 +74,6 @@ public class clienteControle extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        request.setCharacterEncoding("UTF-8");
         
         String razao= request.getParameter("razao");
         String cnpj=request.getParameter("cnpj");
@@ -101,7 +98,7 @@ public class clienteControle extends HttpServlet {
          if(cliente.getId()!=0){
              ClienteDAO.atualizar(cliente);
              request.setAttribute("mensagem", "Cliente Atualizado");
-             request.setAttribute("clientes", ClienteDAO.getCliente());
+
              
          }else{
              ClienteDAO.salvar(cliente);
@@ -113,7 +110,7 @@ public class clienteControle extends HttpServlet {
           
         }catch (validacaoException ex){
            request.setAttribute("mensagem", "Erro de Validacao dos Campos: "+ ex.getMessage());
-           request.setAttribute("Clientes", cliente);
+           request.setAttribute("clientes", cliente);
         }catch (SQLException ex){
            request.setAttribute("mensagem", "Erro de Banco de Dados: "+ ex.getMessage());
            request.setAttribute("clientes", cliente);

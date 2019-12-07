@@ -22,7 +22,7 @@
         <div>
             <form action="ControladorPrincipal?menu=NovaVenda" method="POST">
                 <div>
-                   <b>Número da Venda:</b> ${numVenda}<br>
+                   <b>Número da Venda:</b> ${ultVenda}<br>
                 </div>
                 <br>
                 <div>

@@ -3,10 +3,13 @@ package com.suicidaesquadrao.dao;
 
 import com.suicidaesquadrao.model.Venda;
 import java.sql.Connection;
-import java.util.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Timestamp;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 
@@ -20,6 +23,11 @@ public class VendaDAO {
         String resultado;
         
         
+    public java.sql.Date getCurrentDatetime() {
+        java.util.Date today = new java.util.Date();
+        return new java.sql.Date(today.getTime());
+    }
+
         
     //Busca o ultimo numero de venda registrado no banco
     public String buscaUltNumVenda(){
@@ -41,20 +49,21 @@ public class VendaDAO {
     
     //Insere a venda no banco
     public int gravarVenda (Venda venda){
-        String sql = "INSERT INTO venda (idcliente, idusuario, numvenda, datavenda, totalpagar, status, idfilial) VALUES(?,?,?,?,?,?)";
+        
+        
+        String sql = "INSERT INTO venda (idcliente, idusuario, numvenda, datavenda, totalpagar, status) VALUES(?,?,?,?,?,?)";
         try {
             Connection conexao = ConexaoBD.getConnection();
             PreparedStatement ps = conexao.prepareStatement(sql);
             ps.setInt(1, venda.getIdCliente());
             ps.setInt(2, venda.getIdUsuario());
             ps.setString(3, venda.getNumVenda());
-            ps.setDate(4, new java.sql.Date(venda.getDataVenda().getTime()));
+            java.sql.Date date = getCurrentDatetime();
+            ps.setDate(4, date);
             ps.setDouble(5, venda.getTotalPagar());
             ps.setString(6, venda.getStatusVenda());
-            ps.setInt(7, venda.getIdfilial());
             ps.executeUpdate();
         } catch (Exception e) {
-            e.printStackTrace();
         }
         return retorno;  
     }
@@ -72,10 +81,10 @@ public class VendaDAO {
             ps.setDouble(4, venda.getPreco());
             ps.executeUpdate();
         } catch (Exception e) {
-            e.printStackTrace();
         }   
         return retorno;
     }
+    
     
     //Listar todas as vendas
     public List listarVenda(){
@@ -91,10 +100,9 @@ public class VendaDAO {
                 v.setIdCliente(rs.getInt("idcliente"));
                 v.setIdUsuario(rs.getInt("idusuario"));
                 v.setNumVenda(rs.getString("numvenda"));
-                v.setDataVenda(new java.sql.Date(rs.getDate("datavenda").getTime()));
+                v.setDataVenda(rs.getDate("datavenda"));
                 v.setTotalPagar(rs.getDouble("totalpagar"));
                 v.setStatusVenda(rs.getString("status"));
-                v.setIdfilial(rs.getInt("idfilial"));
                 lista.add(v);
             }
             ps.close();
@@ -120,10 +128,9 @@ public class VendaDAO {
                 v.setIdCliente(rs.getInt("idcliente"));
                 v.setIdUsuario(rs.getInt("idusuario"));
                 v.setNumVenda(rs.getString("numvenda"));
-                v.setDataVenda(new java.sql.Date(rs.getDate("datavenda").getTime()));
+                v.setDataVenda(rs.getDate("datavenda"));
                 v.setTotalPagar(rs.getDouble("totalpagar"));
                 v.setStatusVenda(rs.getString("status"));
-                v.setIdfilial(rs.getInt("idfilial"));
                 lista.add(v);
             }
             ps.close();
@@ -136,9 +143,9 @@ public class VendaDAO {
     
     
         //Listar venda pela Data da Venda
-    public List buscarVendaData(Date dtvenda){
+    public List buscarVendaData(String dtvenda){
         List<Venda>lista = new ArrayList<>();
-        String sql = "select * from `venda` where date_format(datavenda,'%d/%m/%Y')=" +dtvenda;
+        String sql = "select * from venda where datavenda=" +dtvenda;
         try {
             con=cbd.getConnection();
             ps=con.prepareStatement(sql);
@@ -149,18 +156,16 @@ public class VendaDAO {
                 v.setIdCliente(rs.getInt("idcliente"));
                 v.setIdUsuario(rs.getInt("idusuario"));
                 v.setNumVenda(rs.getString("numvenda"));
-                v.setDataVenda(new java.sql.Date(rs.getDate("datavenda").getTime()));
+                v.setData(rs.getDate("datavenda"));
                 v.setTotalPagar(rs.getDouble("totalpagar"));
                 v.setStatusVenda(rs.getString("status"));
-                v.setIdfilial(rs.getInt("idfilial"));
                 lista.add(v);
             }
             ps.close();
             con.close();
-        } catch (Exception e) {
+        } catch (Exception e){ 
             e.printStackTrace();
         }
         return lista;
     }
-        
 }

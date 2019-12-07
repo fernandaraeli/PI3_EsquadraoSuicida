@@ -44,37 +44,37 @@
 
       <li class="nav-item">
          <strong> 
-             <a class="nav-link" href="clienteControle">Clientes</a>
+             <a class="nav-link" href="clienteControle" target="frame">Clientes</a>
          </strong>
       </li>
       
        <li class="nav-item">
          <strong> 
-        <a class="nav-link" href="filialControle">Filial</a>
+        <a class="nav-link" href="filialControle" target="frame">Filial</a>
         </strong>
       </li>
       
        <li class="nav-item">
            <strong>
-        <a class="nav-link" href="produtoControle">Produtos</a>
+        <a class="nav-link" href="produtoControle" target="frame">Produtos</a>
         </strong>
       </li>
       
        <li class="nav-item">
            <strong>
-        <a class="nav-link" href="usuarioControle">Usuários</a>
+        <a class="nav-link" href="usuarioControle" target="frame">Usuários</a>
            </strong>
       </li>
       
         <li class="nav-item">
            <strong>
-               <a class="nav-link" href="ControladorPrincipal?menu=NovaVenda&acao=default">Nova Venda</a>
+               <a class="nav-link" href="ControladorPrincipal?menu=NovaVenda&acao=default" target="frame">Nova Venda</a>
         </strong>
       </li>
       
         <li class="nav-item">
            <strong>
-                <a class="nav-link" href="ControladorPrincipal?menu=Relatorios&acao=default&selecao=default">Relatórios</a>
+                <a class="nav-link" href="ControladorPrincipal?menu=Relatorios&acao=default&selecao=default" target="frame">Relatórios</a>
            </strong>
         </li>
     </ul>
@@ -96,7 +96,7 @@
     <body>
         
         
-        <div class="m-4" style="height: 630px; ">
+        <div class="m-4" style="height: 730px; ">
             <iframe name="frame" style="height: 100%; width: 100%"></iframe>             
         </div>  
         
