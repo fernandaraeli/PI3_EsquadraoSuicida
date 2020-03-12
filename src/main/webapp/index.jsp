@@ -27,7 +27,7 @@
                       <form action="Sessao" method="post" class="form-sign">
                         
                         <div class="form-group text-center">
-                            <h3>Login</h3>
+                            <h3>Entrar</h3>
                         </div>
                         
                         <div class="form-group">
